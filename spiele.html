@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spielplan - Berlin Thunderbirds</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* FARBVARIABLEN */
+        :root {
+            --thunder-dark: #0a1128;
+            --thunder-blue: #1c3a7d;
+            --thunder-light: #4a90e2;
+            --thunder-silver: #d1d1d1;
+            --color-u10: #052c54;
+            --color-u13: #2d5a27;
+            --color-u16: #8b0000;
+            --color-won: #22c55e;
+            --color-lost: #ef4444;
+        }
+
+        body { 
+            margin: 0; 
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            background: var(--thunder-dark); 
+            color: white; 
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVIGATION --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 17, 40, 0.98);
+            padding: 10px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 9999;
+            box-sizing: border-box;
+            border-bottom: 2px solid var(--thunder-blue);
+        }
+
+        /* Flexibler Logo-Abstand */
+        header a.logo-link { display: flex; align-items: center; margin-left: 0; text-decoration: none; position: relative; }
+        header img { height: 66px; transition: 0.3s ease; z-index: 2; }
+        .logo-hover-text { position: absolute; left: 20px; color: var(--thunder-light); font-weight: bold; text-transform: uppercase; font-size: 1.2rem; opacity: 0; transition: all 0.4s ease; pointer-events: none; white-space: nowrap; z-index: 1; }
+        header a.logo-link:hover img { opacity: 0.2; filter: grayscale(100%); }
+        header a.logo-link:hover .logo-hover-text { opacity: 1; left: 80px; }
+
+        nav { display: flex; align-items: center; gap: 20px; }
+
+        /* Dropdown Logik */
+        .dropdown { position: relative; display: inline-block; }
+        .nav-link { 
+            color: white; text-decoration: none; font-size: 14px; font-weight: bold; 
+            text-transform: uppercase; transition: 0.2s; cursor: pointer;
+            display: flex; align-items: center; gap: 5px; padding: 15px 0;
+        }
+        .nav-link:hover { color: var(--thunder-light); }
+
+        .dropdown-content {
+            display: none; position: absolute; background-color: rgba(10, 17, 40, 0.98);
+            min-width: 200px; box-shadow: 0px 8px 16px rgba(0,0,0,0.8);
+            border: 1px solid var(--thunder-blue); border-radius: 4px; top: 100%; left: 0; z-index: 10000;
+        }
+        .dropdown:hover .dropdown-content { display: block; }
+        .dropdown-content a {
+            color: white; padding: 12px 16px; text-decoration: none; display: block;
+            font-size: 13px; text-transform: uppercase; font-weight: bold;
+            border-bottom: 1px solid rgba(255,255,255,0.05); transition: 0.2s;
+        }
+        .dropdown-content a:hover { background-color: var(--thunder-blue); color: var(--thunder-light); padding-left: 20px; }
+
+        .social-nav { display: flex; gap: 15px; margin-left: 10px; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 20px; }
+        .social-nav a { font-size: 1.2rem; transition: 0.2s; color: white; }
+        .social-nav a:hover { transform: scale(1.2); color: var(--thunder-light); }
+
+        /* HAMBURGER MENU TOGGLE ICON */
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* --- HERO NAVIGATION --- */
+        .hero-nav {
+            margin-top: 88px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            height: 35vh;
+            width: 100%;
+            border-bottom: 4px solid var(--thunder-blue);
+        }
+
+        .nav-item { position: relative; text-decoration: none; color: white; overflow: hidden; display: flex; justify-content: center; align-items: center; border-right: 1px solid rgba(255,255,255,0.1); }
+        .nav-item img { position: absolute; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.4) grayscale(0.6); transition: 0.6s; }
+        .nav-item:hover img { filter: brightness(0.8) grayscale(0); transform: scale(1.1); }
+        .nav-item span { position: relative; z-index: 2; font-size: 1.6rem; font-weight: bold; text-transform: uppercase; text-shadow: 2px 2px 15px rgba(0,0,0,1); letter-spacing: 2px; }
+
+        /* --- SEKTIONEN --- */
+        section { padding: 80px 20px; min-height: 80vh; display: flex; flex-direction: column; align-items: center; }
+        .section-container { width: 100%; max-width: 1000px; }
+        h2 { font-size: 2.8rem; text-transform: uppercase; margin-bottom: 40px; letter-spacing: 3px; text-align: center; }
+
+        #tackle { background: linear-gradient(180deg, var(--thunder-dark), var(--thunder-blue)); }
+        #u10 { background: linear-gradient(180deg, var(--thunder-dark), var(--color-u10)); }
+        #u13 { background: linear-gradient(180deg, var(--thunder-dark), var(--color-u13)); }
+        #u16 { background: linear-gradient(180deg, var(--thunder-dark), var(--color-u16)); }
+
+        /* --- SPIELPLAN CARDS --- */
+        .card {
+            background: rgba(28, 58, 125, 0.15);
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 12px;
+            border: 1px solid rgba(28, 58, 125, 0.3);
+            display: flex;
+            align-items: center;
+            transition: 0.3s;
+        }
+        .card:hover { background: rgba(28, 58, 125, 0.35); border-color: var(--thunder-light); }
+        .card-text { flex: 2; font-weight: 500; min-width: 200px; }
+        .score-area, .score { flex: 1; display: flex; justify-content: center; font-family: 'Courier New', monospace; font-weight: bold; font-size: 1.5rem; color: white; text-shadow: 0 0 10px rgba(74, 144, 226, 0.5); }
+        .badge-right { flex: 1; display: flex; justify-content: flex-end; gap: 10px; }
+        .badge { font-weight: bold; text-transform: uppercase; font-size: 0.75rem; padding: 6px 14px; border-radius: 4px; letter-spacing: 1px; display: inline-block; white-space: nowrap; }
+        .badge-home { background: var(--thunder-light); color: black; }
+        .badge-away { background: #facc15; color: black; }
+        .badge-won { border: 2px solid var(--color-won); color: var(--color-won); background: rgba(34, 197, 94, 0.1); }
+        .badge-lost { border: 2px solid var(--color-lost); color: var(--color-lost); background: rgba(239, 68, 68, 0.1); }
+        .card.home { border-left: 6px solid var(--thunder-light); }
+        .card.away { border-left: 6px solid #facc15; }
+        .tournament-teams { display: block; font-size: 0.9rem; color: var(--thunder-silver); margin-top: 5px; font-style: italic; }
+
+        footer { text-align: center; padding: 60px; color: var(--thunder-silver); border-top: 1px solid rgba(28, 58, 125, 0.5); }
+
+        .easter-egg { 
+            position: fixed; 
+            bottom: 10px; 
+            left: 10px; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            opacity: 0; 
+            transition: 0.5s ease; 
+            z-index: 2000; 
+            background: rgba(10, 17, 40, 0.8); 
+            padding: 5px 10px; 
+            border-radius: 5px; 
+        }
+        .easter-egg:hover { opacity: 1; }
+        .easter-egg img { height: 30px; filter: drop-shadow(0 0 5px var(--thunder-light)); }
+        .easter-egg span { font-size: 0.7rem; color: var(--thunder-silver); text-transform: uppercase; letter-spacing: 1px; }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            header a.logo-link { margin-left: 0; }
+            .hero-nav { grid-template-columns: repeat(2, 1fr); height: 50vh; }
+            .card { flex-direction: column; text-align: center; gap: 15px; }
+            .card-text, .score-area, .score, .badge-right { text-align: center; justify-content: center; flex: none; width: 100%; }
+            
+            .menu-toggle { display: block; }
+            nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(10, 17, 40, 0.98);
+                border-bottom: 2px solid var(--thunder-blue);
+                padding: 20px 0;
+                gap: 15px;
+            }
+            nav.active { display: flex; }
+            .dropdown-content { position: static; box-shadow: none; border: none; min-width: 100%; text-align: center; }
+            .social-nav { border-left: none; padding-left: 0; margin-left: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo-link">
+            <img src="Bilder/logo.jpg" alt="Berlin Thunderbirds Logo"> 
+            <span class="logo-hover-text">Home</span>
+        </a>
+
+        <!-- Hamburger Icon für Mobilgeräte -->
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <nav>
+            <div class="dropdown">
+                <div class="nav-link">Teams <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i></div>
+                <div class="dropdown-content">
+                    <a href="tackle.html">Tackle</a>
+                    <a href="u16.html">U16 Flag</a>
+                    <a href="u13.html">U13 Flag</a>
+                    <a href="u10.html">U10 Flag</a>
+                </div>
+            </div>
+
+            <a href="training.html" class="nav-link">Training</a>
+            <a href="#tackle" class="nav-link">Spiele</a>
+            
+            <div class="dropdown">
+                <div class="nav-link">Thunderbirds <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i></div>
+                <div class="dropdown-content">
+                    <a href="ueber-uns.html">Über uns</a>
+                    <a href="kontakt.html">Kontakt</a>
+                    <a href="download.html">Download</a>
+                </div>
+            </div>
+
+            <div class="social-nav">
+                <a href="https://berlin-thunderbirds.myteamshop.de/" target="_blank" title="Fanshop"><i class="fa-solid fa-cart-shopping"></i></a>
+                <a href="https://www.instagram.com/berlinthunderbirds/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.facebook.com/thbev/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="hero-nav" id="tackle">
+        <a href="#tackle" class="nav-item"><img src="Bilder/Tackle.jpg" alt="Tackle Football"><span>Tackle</span></a>
+        <a href="#u10" class="nav-item"><img src="Bilder/U10.jpg" alt="U10 Flag"><span>U10 Flag</span></a>
+        <a href="#u13" class="nav-item"><img src="Bilder/Flag.jpg" alt="U13 Flag"><span>U13 Flag</span></a>
+        <a href="#u16" class="nav-item"><img src="Bilder/U16.jpg" alt="U16 Flag"><span>U16 Flag</span></a>
+    </div>
+
+    <section>
+        <div class="section-container">
+            <h2 style="color: var(--thunder-light);">Tackle Football</h2>
+            <div class="spielplan-lade-zone"></div>
+        </div>
+    </section>
+
+    <section id="u10">
+        <div class="section-container">
+            <h2 style="color: #60a5fa;">U10 Flag Turniere</h2>
+            <div class="spielu10"></div>
+        </div>
+    </section>
+
+    <section id="u13">
+        <div class="section-container">
+            <h2 style="color: #4ade80;">U13 Flag Turniere</h2>
+            <div class="spielu13"></div>
+        </div>
+    </section>
+
+    <section id="u16">
+        <div class="section-container">
+            <h2 style="color: #f87171;">U16 Flag Turniere</h2>
+            <div class="spielu16"></div>
+        </div>
+    </section>
+
+    <footer>
+        © 2026 BERLIN THUNDERBIRDS
+    </footer>
+    
+    <div class="easter-egg">
+        <img src="Bilder/Ankh.jpg" alt="Ankh Logo">
+        <span>Webdesign by Ankhzunamun</span>
+    </div>
+
+    <script src="spielplan.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Mobile Menu Toggle
+            const menuToggle = document.getElementById('mobile-menu');
+            const nav = document.querySelector('nav');
+
+            if (menuToggle && nav) {
+                menuToggle.addEventListener('click', () => {
+                    nav.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

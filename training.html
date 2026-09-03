@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Training - Berlin Thunderbirds</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* FARBVARIABLEN */
+        :root {
+            --thunder-dark: #0a1128; 
+            --thunder-blue: #1c3a7d; 
+            --thunder-light: #4a90e2; 
+            --thunder-silver: #d1d1d1; 
+            --nav-height: 88px; 
+        }
+
+        /* SAISON-STEUERUNG */
+        .season-winter .summer-only { display: none; } 
+        .season-summer .winter-only { display: none; } 
+
+        body { 
+            margin: 0; 
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            background: var(--thunder-dark); 
+            color: white; 
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* --- NAVIGATION --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 17, 40, 0.98);
+            padding: 10px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 9999;
+            box-sizing: border-box;
+            border-bottom: 2px solid var(--thunder-blue);
+        }
+
+        /* Flexibler Logo-Abstand */
+        header a.logo-link { display: flex; align-items: center; margin-left: 0; text-decoration: none; position: relative; }
+        header img { height: 66px; transition: 0.3s ease; z-index: 2; }
+        
+        .logo-hover-text { position: absolute; left: 20px; color: var(--thunder-light); font-weight: bold; text-transform: uppercase; font-size: 1.2rem; opacity: 0; transition: all 0.4s ease; pointer-events: none; white-space: nowrap; z-index: 1; }
+        header a.logo-link:hover img { opacity: 0.2; filter: grayscale(100%); }
+        header a.logo-link:hover .logo-hover-text { opacity: 1; left: 80px; }
+
+        nav { display: flex; align-items: center; gap: 20px; }
+
+        .dropdown { position: relative; display: inline-block; }
+        .nav-item { 
+            color: white; text-decoration: none; font-size: 14px; font-weight: bold; 
+            text-transform: uppercase; transition: 0.2s; cursor: pointer;
+            display: flex; align-items: center; gap: 5px; padding: 15px 0;
+        }
+        .nav-item:hover { color: var(--thunder-light); }
+
+        .dropdown-content {
+            display: none; position: absolute; background-color: rgba(10, 17, 40, 0.98);
+            min-width: 200px; box-shadow: 0px 8px 16px rgba(0,0,0,0.8);
+            border: 1px solid var(--thunder-blue); border-radius: 4px; top: 100%; left: 0; z-index: 10000;
+        }
+        .dropdown:hover .dropdown-content { display: block; }
+        .dropdown-content a {
+            color: white; padding: 12px 16px; text-decoration: none; display: block;
+            font-size: 13px; text-transform: uppercase; font-weight: bold;
+            border-bottom: 1px solid rgba(255,255,255,0.05); transition: 0.2s;
+        }
+        .dropdown-content a:hover { background-color: var(--thunder-blue); color: var(--thunder-light); padding-left: 20px; }
+
+        .social-nav { display: flex; gap: 15px; margin-left: 10px; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 20px; }
+        .social-nav a { font-size: 1.2rem; transition: 0.2s; color: white; }
+        .social-nav a:hover { transform: scale(1.2); color: var(--thunder-light); }
+
+        /* HAMBURGER MENU TOGGLE ICON */
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* HERO BEREICH */
+        .hero-split {
+            margin-top: 88px; 
+            display: flex; 
+            height: 60vh; 
+            width: 100%; 
+            background: var(--thunder-dark); 
+            border-bottom: 4px solid var(--thunder-blue); 
+            overflow: hidden; 
+        }
+
+        .hero-left { flex: 1; position: relative; background: #000; } 
+        .hero-left img { width: 100%; height: 100%; object-fit: cover; transition: opacity 0.5s ease-in-out; } 
+
+        .hero-right {
+            flex: 1; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            text-align: center; 
+            padding: 0 20px; 
+            background: linear-gradient(135deg, var(--thunder-dark), #162447); 
+        }
+
+        .hero-right h1 { font-size: 3.5rem; margin: 0; text-transform: uppercase; line-height: 1.1; } 
+
+        .status-badge { display: inline-block; margin-top: 15px; padding: 8px 15px; border-radius: 5px; font-weight: bold; text-transform: uppercase; } 
+        .summer-only.status-badge { background: #22c55e; color: #000; } 
+        .winter-only.status-badge { background: var(--thunder-light); color: white; } 
+
+        /* TRAININGS-LAYOUT */
+        section { padding: 50px 20px; max-width: 1100px; margin: auto; } 
+
+        .training-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; } 
+
+        .training-card {
+            background: rgba(28, 58, 125, 0.2); 
+            padding: 30px; 
+            border-radius: 15px; 
+            border: 1px solid var(--thunder-blue); 
+            border-top: 5px solid var(--thunder-light); 
+        }
+
+        .team-title { font-size: 1.8rem; margin-bottom: 20px; color: var(--thunder-light); text-transform: uppercase; } 
+        .info-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1); } 
+        
+        .day { font-weight: bold; color: #ffffff !important; } 
+
+        .address { font-size: 0.85rem; margin-top: 15px; color: var(--thunder-silver); } 
+        .maps-link { text-decoration: none; color: inherit; display: block; transition: 0.3s; } 
+        .maps-link:hover { color: var(--thunder-light); } 
+        .maps-link i { margin-right: 5px; color: var(--thunder-light); } 
+
+        section h2 { text-align: center; font-size: 2.5rem; margin-bottom: 40px; text-transform: uppercase; } 
+        
+        .contact-card {
+            background: rgba(28, 58, 125, 0.2); 
+            padding: 30px; 
+            margin: 40px 0; 
+            border-radius: 12px; 
+            border: 1px solid var(--thunder-blue); 
+            border-left: 6px solid var(--thunder-silver); 
+        }
+
+        .contact-item {
+            margin-top: 20px; 
+            padding: 15px 0; 
+            border-top: 1px solid rgba(255,255,255,0.1); 
+            display: flex; 
+            flex-direction: column; 
+            gap: 4px; 
+        }
+
+        .contact-label { font-weight: bold; text-transform: uppercase; font-size: 1.4rem; letter-spacing: 1px; } 
+
+        .contact-email a {
+            color: #ffffff !important; 
+            text-decoration: none; 
+            font-size: 1.1rem; 
+            font-weight: bold; 
+            transition: all 0.3s ease; 
+        }
+
+        .tackle-link:hover { color: var(--thunder-light) !important; } 
+        .flag-link:hover { color: #facc15 !important; } 
+
+        footer { text-align: center; padding: 40px; color: var(--thunder-silver); border-top: 1px solid var(--thunder-blue); } 
+
+        .easter-egg { 
+            position: fixed; 
+            bottom: 10px; 
+            left: 10px; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            opacity: 0; 
+            transition: 0.5s ease; 
+            z-index: 2000; 
+            background: rgba(10, 17, 40, 0.8); 
+            padding: 5px 10px; 
+            border-radius: 5px; 
+        }
+        .easter-egg:hover { opacity: 1; }
+        .easter-egg img { height: 30px; filter: drop-shadow(0 0 5px var(--thunder-light)); }
+        .easter-egg span { font-size: 0.7rem; color: var(--thunder-silver); text-transform: uppercase; letter-spacing: 1px; }
+
+        /* RESPONSIVE & MOBILES MENÜ */
+        @media (max-width: 768px) {
+            .hero-split { flex-direction: column; height: auto; } 
+            .hero-left { height: 300px; } 
+            .hero-right { padding: 40px 20px; } 
+            header a.logo-link { margin-left: 0; } 
+            
+            .menu-toggle { display: block; }
+            nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(10, 17, 40, 0.98);
+                border-bottom: 2px solid var(--thunder-blue);
+                padding: 20px 0;
+                gap: 15px;
+            }
+            nav.active { display: flex; }
+            .dropdown-content { position: static; box-shadow: none; border: none; min-width: 100%; text-align: center; }
+            .social-nav { border-left: none; padding-left: 0; margin-left: 0; }
+        }
+    </style>
+</head>
+
+<body class="season-summer"> 
+
+    <header>
+        <a href="index.html" class="logo-link">
+            <img src="Bilder/logo.jpg" alt="Berlin Thunderbirds Logo"> 
+            <span class="logo-hover-text">Home</span>
+        </a>
+
+        <!-- Hamburger Icon für Mobilgeräte -->
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <nav>
+            <div class="dropdown">
+                <div class="nav-item">Teams <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i></div>
+                <div class="dropdown-content">
+                    <a href="tackle.html">Tackle</a>
+                    <a href="u16.html">U16 Flag</a>
+                    <a href="u13.html">U13 Flag</a>
+                    <a href="u10.html">U10 Flag</a>
+                </div>
+            </div>
+
+            <a href="training.html" class="nav-item">Training</a>
+            <a href="spiele.html" class="nav-item">Spiele</a>
+            
+            <div class="dropdown">
+                <div class="nav-item">Thunderbirds <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i></div>
+                <div class="dropdown-content">
+                    <a href="ueber-uns.html">Über uns</a>
+                    <a href="kontakt.html">Kontakt</a>
+                    <a href="download.html">Download</a>
+                </div>
+            </div>
+
+            <div class="social-nav">
+                <a href="https://berlin-thunderbirds.myteamshop.de/" target="_blank" title="Fanshop"><i class="fa-solid fa-cart-shopping"></i></a>
+                <a href="https://www.instagram.com/berlinthunderbirds/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.facebook.com/thbev/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="hero-split" id="top">
+        <div class="hero-left">
+            <img id="sliding-image" src="Bilder/diashow1.jpg" alt="Training Action"> 
+        </div>
+        <div class="hero-right">
+            <h1>Trainings<br>zeiten</h1> 
+            <div class="summer-only status-badge">Sommerplan (Outdoor)</div> 
+            <div class="winter-only status-badge">Winterplan (Halle)</div> 
+        </div>
+    </div>
+
+    <section>
+        <h2>Trainingszeiten</h2> 
+
+        <div class="training-grid"> 
+            <div class="training-card" id="tackle">
+                <div class="team-title">Tackle Football</div> 
+                
+                <div class="summer-only"> 
+                    <div class="info-row"><span class="day">Montag</span><span class="time">20:00 - 21:30</span></div>
+                    <div class="info-row"><span class="day">Donnerstag</span><span class="time">20:00 - 21:30</span></div>
+                    <div class="address">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Stadion+Britz+Süd+Buckower+Damm+13+12349+Berlin" target="_blank" class="maps-link">
+                            <i class="fa-solid fa-location-dot"></i> Stadion Britz Süd (Kunstrasen)<br>Buckower Damm 13, 12349 Berlin
+                        </a>
+                    </div>
+                </div>
+
+                <div class="winter-only"> 
+                    <div class="info-row"><span class="day">Dienstag</span><span class="time">19:30 - 21:00</span></div>
+                    <div class="info-row"><span class="day">Donnerstag</span><span class="time">20:00 - 21:30</span></div>
+                    <div class="address">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Wetzlar-Schule+Tischlerzeile+34+12351+Berlin" target="_blank" class="maps-link">
+                            <i class="fa-solid fa-location-dot"></i> Wetzlar-Schule (Halle)<br>Tischlerzeile 34, 12351 Berlin
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="training-card" id="flag" style="border-top-color: #facc15;"> 
+                <div class="team-title" style="color: #facc15;">Flag Football</div> 
+                
+                <div class="summer-only">
+                    <div class="info-row"><span class="day">Montag</span><span class="time">17:30 - 19:00</span></div>
+                    <div class="info-row"><span class="day">Donnerstag</span><span class="time">18:00 - 19:30</span></div>
+                    <div class="address">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Stadion+Britz+Süd+Buckower+Damm+13+12349+Berlin" target="_blank" class="maps-link">
+                            <i class="fa-solid fa-location-dot"></i> Stadion Britz Süd (Kunstrasen)<br>Buckower Damm 13, 12349 Berlin
+                        </a>
+                    </div>
+                </div>
+
+                <div class="winter-only">
+                    <div class="info-row"><span class="day">Dienstag</span><span class="time">17:00 - 18:30</span></div>
+                    <div class="info-row"><span class="day">Freitag</span><span class="time">17:30 - 19:00</span></div>
+                    <div class="address">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Wetzlar-Schule+Tischlerzeile+34+12351+Berlin" target="_blank" class="maps-link">
+                            <i class="fa-solid fa-location-dot"></i> Wetzlar-Schule (Halle)<br>Tischlerzeile 34, 12351 Berlin
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-card" id="kontakt">
+            <div class="team-title" style="color: white; font-size: 2.2rem; margin-bottom: 10px;">Fragen zum Training?</div>
+            
+            <div class="contact-item">
+                <span class="contact-label" style="color: var(--thunder-light);">Tackle Seniors Training</span>
+                <span class="contact-email">
+                    <a href="mailto:coach.gerry@berlinthunderbirds.de" class="tackle-link">coach.gerry@berlinthunderbirds.de</a>
+                </span>
+            </div>
+
+            <div class="contact-item">
+                <span class="contact-label" style="color: #facc15;">Flag- / Junioren Training</span>
+                <span class="contact-email">
+                    <a href="mailto:coach.alex@berlinthunderbirds.de" class="flag-link">coach.alex@berlinthunderbirds.de</a>
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        © 2026 BERLIN THUNDERBIRDS 
+    </footer>
+
+    <div class="easter-egg">
+        <img src="Bilder/Ankh.jpg" alt="Ankh Logo">
+        <span>Webdesign by Ankhzunamun</span>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Mobile Menu Toggle
+            const menuToggle = document.getElementById('mobile-menu');
+            const nav = document.querySelector('nav');
+
+            if (menuToggle && nav) {
+                menuToggle.addEventListener('click', () => {
+                    nav.classList.toggle('active');
+                });
+            }
+
+            // Image Slideshow
+            const heroImage = document.getElementById('sliding-image');
+            const images = ['Bilder/diashow1.jpg', 'Bilder/diashow2.jpg', 'Bilder/diashow3.jpg', 'Bilder/diashow4.jpg', 'Bilder/Tackle.jpg', 'Bilder/Flag.jpg'];
+            let currentIndex = 0;
+            
+            function changeBackground() {
+                currentIndex = (currentIndex + 1) % images.length;
+                if(heroImage) heroImage.src = images[currentIndex];
+            }
+            setInterval(changeBackground, 3000);
+        });
+    </script>
+</body>
+</html>
