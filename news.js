@@ -1,92 +1,105 @@
+// ==========================================
+// DATEN FÜR DIE VEREINS-NEWS
+// ==========================================
 const newsData = [
     {
-        date: "20. Mai 2026",
-        title: "News 8: Ein Meilenstein für die Thunderbirds",
-        // Kurztext für die Karte
-        shortText: "Ein historischer Tag! Wir werfen einen Blick auf die Zukunft unserer Spielstätte und was das für den gesamten Verein bedeutet...",
-        // Der sehr lange Text für das Popup
+        date: "30. August 2026",
+        title: "Thunderbirds @ Vorpommern Vandals",
+        shortText: "Auswärtsspiel der Seniors",
         fullText: `
-            <p>Es ist offiziell: Die Verträge für die umfassende Modernisierung des Stadion Britz Süd wurden gestern Abend im Rathaus unterzeichnet. Dies ist nicht nur ein Sieg für unseren Verein, sondern für den gesamten Sportstandort Neukölln.</p>
-            <p>Was bedeutet das konkret? Ab kommendem Herbst werden die Bagger rollen. Der marode Rasen wird durch einen hochmodernen Kunstrasen der neuesten Generation ersetzt, der ganzjährig bespielbar ist. Das Flutlicht wird auf stromsparende LED-Technik umgerüstet, was uns endlich ermöglicht, auch Abendspiele in Tackle-Qualität auszutragen.</p>
-            <h3>Neue Tribüne und Kabinen</h3>
-            <p>Das Highlight für unsere Fans: Eine neue, überdachte Tribüne mit 500 Sitzplätzen wird errichtet. Zudem werden die Umkleidekabinen komplett saniert und erweitert, um den Anforderungen unserer wachsenden Jugendabteilung gerecht zu werden.</p>
-            <p>Wir möchten uns bei allen Mitgliedern bedanken, die unermüdlich für dieses Projekt gekämpft haben. Besonderer Dank gilt auch der Bezirksverordnetenversammlung für ihr Vertrauen. "Das ist der Startschuss in eine neue Ära für die Thunderbirds", sagte unser 1. Vorsitzender sichtlich bewegt.</p>
-            <p>Der Spielbetrieb der kommenden Saison ist gesichert, wir haben bereits Ausweichplätze für die Bauphase organisiert. Details dazu folgen in Kürze. Wir halten euch auf dem Laufenden! #ThunderFuture #GoBirds</p>
+            <p><strong>🦅⚡ FINAL SCORE | ROAD WIN! 🏈🔥</strong></p>
+            <p>Wir holen uns den Sieg in Greifswald!</p>
+            <p>Nach vier Vierteln steht es:<br>
+            <strong>Vorpommern Vandals 14 – 27 Berlin Thunderbirds 🦅</strong></p>
+
+            <p>Aber genauso wichtig: Es war ein starker und respektvoller Football-Tag. 🤝</p>
+            <p>Im Vergleich zum letzten Jahr war die Atmosphäre deutlich fairer – genau so soll Football sein: hart auf dem Feld, respektvoll danach.</p>
+
+            <p>Danke an die Vandals für das Game und an alle mitgereisten Thunderbirds-Fans für den Support! 📣</p>
         `,
-        image: "Bilder/Bild1.jpg"
-    },
-    {
-        date: "10. Mai 2026",
-        title: "Saisonauftakt geglückt!",
-        shortText: "Unsere Seniors gewinnen das erste Heimspiel der Saison souverän mit 28:07. Ein riesiges Danke an alle Fans!",
-        fullText: "<p>Ein grandioser Auftakt für unsere Seniors! Vor über 300 Zuschauern dominierten wir die Gäste von der ersten Minute an. Die Defense stand wie eine Mauer, und unsere Offense zeigte ein variables Lauf- und Passspiel. Besonders Quarterback Tom Schmidt überzeugte mit drei Touchdown-Pässen. Ein perfekter Start in die neue Spielzeit.</p>",
-        image: "Bilder/Bild2.jpg"
-    },
-    {
-        date: "08. Mai 2026",
-        title: "Neues Equipment eingetroffen",
-        shortText: "Dank unseres Sponsors konnten wir 20 neue Helme für die Jugendabteilung anschaffen. Sicherheit geht vor!",
-        fullText: "<p>Sicherheit hat oberste Priorität. Wir freuen uns riesig, dass wir dank der großzügigen Unterstützung der Allianz-Generalvertretung Müller 20 brandneue Riddell SpeedFlex Helme für unsere U16 Tackle-Mannschaft anschaffen konnten. Diese Investition stärkt unsere Jugendarbeit und schützt unsere Nachwuchs-Vögel.</p>",
-        image: "Bilder/Flag.jpg"
-    },
-    {
-        date: "01. Mai 2026",
-        title: "U13 Flag-Turnier in Berlin",
-        shortText: "Am kommenden Wochenende findet das große Einladungsturnier auf dem Kunstrasen Britz Süd statt.",
-        fullText: "<p>Die kleinsten Thunderbirds laden ein! Zum ersten Mal richten wir den 'Thunder-Flag-Bowl' aus. Fünf Gastmannschaften aus dem gesamten Bundesgebiet reisen an, um sich im kontaktlosen Flag Football zu messen. Für Verpflegung ist gesorgt (Grillstation & Kuchenbuffet). Kommt vorbei und feuert unseren Nachwuchs an!</p>",
-        image: "Bilder/Tackle.jpg"
-    },
-    {
-        date: "25. April 2026",
-        title: "Tryouts für Seniors",
-        shortText: "Du bist groß, stark oder schnell? Komm vorbei und werde Teil der Thunderbirds-Familie.",
-        fullText: "<p>Wir suchen Verstärkung! Unsere Seniors (Tackle Football) halten ein offenes Tryout ab. Egal ob du bereits Football-Erfahrung hast oder ein Quereinsteiger aus dem Rugby, Handball oder der Leichtathletik bist – wir finden die richtige Position für dich. Mitzubringen sind normale Sportsachen und Kunstrasenschuhe.</p>",
-        image: "Bilder/Bild3.jpg"
-    },
-    {
-        date: "20. April 2026",
-        title: "Trainingslager erfolgreich",
-        shortText: "Drei Tage intensives Coaching in der Sportschule haben das Team noch enger zusammengeschweißt.",
-        fullText: "<p>Das diesjährige Trainingslager in Lindow war ein voller Erfolg. Der Fokus lag auf Teambuilding und dem Installieren des neuen Playbooks. 'Die Jungs haben hart gearbeitet und sind als Einheit zusammengewachsen', resümierte Headcoach Gerry. Wir sind bereit für die Saison.</p>",
-        image: "Bilder/Bild4.jpg"
+        image: "Bilder/News/300826_2.jpg"
     },
 	
 	{
-        date: "06. April 2026",
-        title: "Test",
-        shortText: "TEST",
-        fullText: "<p>Supertest</p>",
-        image: "Bilder/Team_Flag.jpg"
+        date: "30. August 2026",
+        title: "Hometurnier U13",
+        shortText: "Unsere U13-Flagmannschaft hatte ihr Heimturnier. 🏈⚡",
+        fullText: `
+            <p><strong>🏈 ES IST GAMEDAY!! 🏈</strong></p>
+            <p>Bei unserer U13 stand das Heimturnier an, während die Männer auswärts im Einsatz waren. Vom Wetter her war bestes Football-Wetter prognostiziert – und das hielt sich tatsächlich über das gesamte Turnier.</p>
+            
+            <p>Voller Motivation starteten unsere 11 Helden und Heldinnen in den Turniertag. Doch schon kurz nach dem Anpfiff mussten wir die ersten Verletzungen und damit auch die ersten Ausfälle hinnehmen. Am Ende waren nur noch 7 Spielerinnen und Spieler einsatzfähig.</p>
+
+            <p>Auch wenn wir uns – und natürlich auch euch – andere Ergebnisse gewünscht hätten, konnten wir unser Potenzial heute leider nicht auf dem Platz umsetzen.</p>
+
+            <p><strong>Was uns aber mächtig stolz gemacht hat:</strong> Selbst mit nur 7 Spielerinnen und Spielern habt ihr bis zur letzten Sekunde gekämpft und niemals aufgegeben! 💪🏈</p>
+
+            <p>Das ist Ehrgeiz, wie er im Buche steht! 🔥</p>
+
+            <p>Zum Abschluss möchten wir uns noch einmal ganz herzlich für die tolle Organisation des Turniers bedanken! 🏈</p>
+
+            <p>Ein ebenso großes Dankeschön geht an unsere Coaches und Betreuer, die unsere Kids mit viel Engagement begleiten und unterstützen. 💪</p>
+
+            <p>Und natürlich dürfen unsere Eltern nicht fehlen: Danke, dass ihr eure Kinder bei den Turnieren immer so fleißig unterstützt, anfeuert und ihnen den Rücken stärkt! ❤️</p>
+
+            <p>Ohne euch wäre das alles nicht möglich!</p>
+
+            <p><strong>⚡ LET'S GO THUNDERBIRDS! ⚡</strong></p>
+        `,
+		image: "Bilder/News/300826_1.jpg"
     },
-	
+	{
+        date: "01. August 2026",
+        title: "Flag Coach gesucht!",
+        shortText: "Werde Teil unserer Football-Familie: Wir suchen dich als Coach.",
+        fullText: `
+            <p><strong>Werde Teil unserer Football-Familie: Wir suchen dich als Coach (w/m/d)!</strong></p>
+            <p>Du hast Leidenschaft für den Sport, Freude an der Arbeit mit jungen Talenten und möchtest Teil eines starken Teams werden? Die Berlin Thunderbirds suchen motivierte Verstärkung für unsere Flag-Football-Jugendteams (U10, U13, U16)!</p>
+            
+            <p><strong>Warum du bei uns coachen solltest:</strong></p>
+            <ul>
+                <li><strong>Unterstützung:</strong> Wir begleiten dich aktiv bei deiner persönlichen Entwicklung als Coach.</li>
+                <li><strong>Starkes Team:</strong> Gemeinsam wachsen wir, lernen voneinander und feiern unsere Erfolge.</li>
+                <li><strong>Spass:</strong> Die Freude am Sport und die Begeisterung unserer Spieler stehen bei uns im Mittelpunkt.</li>
+                <li><strong>Football is Family:</strong> Werde Teil einer großen Football-Familie, in der Zusammenhalt großgeschrieben wird.</li>
+            </ul>
+
+            <p><strong>Interesse geweckt?</strong><br>
+            Komm in unser Team am Standort <strong>Stadion Britz-Süd (Buckower Damm 13, 12349 Berlin)</strong>.</p>
+
+            <p>Melde dich einfach direkt bei uns:<br>
+            <strong>E-Mail:</strong> coach.alex@berlinthunderbirds.de</p>
+
+            <p><strong>Bewirb dich jetzt und gestalte die Zukunft unserer jungen Talente aktiv mit!</strong></p>
+        `,         
+        image: "Bilder/News/010826.jpg"
+    },
     {
-        date: "15. April 2026",
-        title: "Mitgliederversammlung",
-        shortText: "Wichtige Neuigkeiten zur Platzsanierung wurden am gestrigen Abend im Vereinsheim beschlossen.",
-        fullText: "<p>Die gestrige Mitgliederversammlung war gut besucht. Neben den Berichten der Vorstände stand das Thema Stadionmodernisierung im Mittelpunkt. Die Mitglieder stimmten einstimmig für den vorgelegten Finanzierungsplan. Zudem wurde der Vorstand für die kommende Amtszeit entlastet. Das Protokoll ist im Download-Bereich verfügbar.</p>",
-        image: "Bilder/Ankh.jpg",
-        specialStyle: "object-fit: contain; padding: 20px; background: rgba(255,255,255,0.1);" // Für das Logo-Bild
+        date: "26. April 2026",
+        title: "Saisonauftakt geglückt!",
+        shortText: "Unsere Seniors gewinnen das erste Heimspiel der Saison souverän mit 37:00. Ein riesiges Danke an alle Fans!",
+        fullText: "<p>Ein grandioser Auftakt für unsere Seniors! Vor einigen Zuschauern dominierten wir die Gäste von der ersten Minute an. Die Defense stand wie eine Mauer, und unsere Offense zeigte ein variables Lauf- und Passspiel. Ein perfekter Start in die neue Season.</p>",
+        image: "Bilder/News/260426.jpg"
     }
-	
-	
 ];
 
 let currentPage = 1;
 const postsPerPage = 3;
 
-// Funktion zum Erstellen der News-Karten
+// ==========================================
+// FUNKTION ZUM ERSTELLEN DER NEWS-KARTEN (PAGINIERUNG)
+// ==========================================
 function renderNews() {
     const wrapper = document.getElementById('news-wrapper');
     if (!wrapper) return;
 
-    wrapper.innerHTML = ""; // Container leeren
+    wrapper.innerHTML = "";
 
     const start = (currentPage - 1) * postsPerPage;
     const end = start + postsPerPage;
     const paginatedItems = newsData.slice(start, end);
 
     paginatedItems.forEach((item, index) => {
-        // Die ID berechnen wir, damit wir wissen, welche News geklickt wurde
         const absoluteIndex = start + index;
         const style = item.specialStyle ? `style="${item.specialStyle}"` : "";
         
@@ -103,7 +116,6 @@ function renderNews() {
         wrapper.innerHTML += card;
     });
 
-    // Pagination Info & Buttons updaten
     const totalPages = Math.ceil(newsData.length / postsPerPage);
     const pageInfo = document.getElementById('page-info');
     if(pageInfo) {
@@ -116,7 +128,7 @@ function renderNews() {
     if(nextBtn) nextBtn.disabled = (currentPage === totalPages);
 }
 
-// Funktion zum Umschalten der Seiten
+// Funktion zum Umschalten der Seiten per Button
 function changePage(direction) {
     currentPage += direction;
     renderNews();
@@ -125,35 +137,51 @@ function changePage(direction) {
 }
 
 
-// --- MODAL LOGIK ---
+// ==========================================
+// MODAL LOGIK MIT SMARTPHONE-ZURÜCK-FUNKTION
+// ==========================================
 
 function openNewsModal(newsIndex) {
     const newsItem = newsData[newsIndex];
     if (!newsItem) return;
 
-    // Modal-Felder befüllen
     document.getElementById('modalImage').src = newsItem.image;
     document.getElementById('modalDate').innerText = newsItem.date;
     document.getElementById('modalTitle').innerText = newsItem.title;
-    document.getElementById('modalText').innerHTML = newsItem.fullText; // Setzt den langen HTML-Text
+    document.getElementById('modalText').innerHTML = newsItem.fullText;
 
-    // Sonderstyling für das Logo-Bild im Modal übernehmen
     const modalImage = document.getElementById('modalImage');
     if(newsItem.specialStyle) {
         modalImage.style = newsItem.specialStyle;
     } else {
-        modalImage.style = ""; // Reset
+        modalImage.style = "";
     }
 
-    // Modal aktivieren
     document.getElementById('newsModal').classList.add('active');
-    document.body.style.overflow = 'hidden'; // Verhindert das Scrollen im Hintergrund
+    document.body.style.overflow = 'hidden';
+
+    // Eintrag im Browser-Verlauf erstellen
+    history.pushState({ newsModalOpen: true }, '');
 }
 
-function closeNewsModal() {
-    document.getElementById('newsModal').classList.remove('active');
-    document.body.style.overflow = ''; // Scrollen im Hintergrund wieder erlauben
+function closeNewsModal(fromHistory = false) {
+    const modal = document.getElementById('newsModal');
+    if (modal && modal.classList.contains('active')) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+
+        // Falls manuell über das X oder den Hintergrund geschlossen wird,
+        // entfernen wir den hinzugefügten Verlaufs-Eintrag wieder
+        if (!fromHistory && history.state && history.state.newsModalOpen) {
+            history.back();
+        }
+    }
 }
+
+// Reagiert auf Smartphone Zurück-Geste / Zurück-Taste
+window.addEventListener('popstate', function(e) {
+    closeNewsModal(true);
+});
 
 // Schließen des Modals durch Klick auf den Hintergrund
 window.addEventListener('click', (e) => {
@@ -169,7 +197,6 @@ window.addEventListener('keydown', (e) => {
         closeNewsModal();
     }
 });
-
 
 // Starten, wenn die Seite geladen ist
 window.addEventListener('DOMContentLoaded', renderNews);

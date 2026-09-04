@@ -3,15 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Berlin Thunderbirds!</title>
+    <title>Berlin Thunderbirds</title>
+    <!-- FontAwesome für Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
+    <!-- Verknüpfung zur zentralen style.css -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- ==========================================
+       JAVASCRIPT (BLITZ-EFFEKTE, MENÜ & COOKIES)
+       ========================================== -->
     <script>
         window.onload = () => {
             const flash = document.getElementById("flash");
             const lightningContainer = document.getElementById("lightning-container");
             const logo = document.getElementById("logo");
 
+            // Funktion für den Blitz-Effekt beim Laden der Startseite
             function triggerLightning() {
                 if(flash && lightningContainer) {
                     flash.classList.add("active");
@@ -22,7 +29,7 @@
                     }, 400);
                 }
             }
-            
+           
             setTimeout(triggerLightning, 300);
 
             // Das Logo erscheint kurz nach dem ersten Blitz
@@ -32,7 +39,7 @@
                 }, 700);
             }
         };
-        
+       
         document.addEventListener("DOMContentLoaded", function() {
             // Hamburger Menü Toggle Initialisierung
             const menuToggle = document.getElementById('mobile-menu');
@@ -44,7 +51,7 @@
                 });
             }
 
-            // Cookie Banner Prüfung
+            // Cookie Banner Prüfung beim Seitenaufruf
             if (!localStorage.getItem("cookiesAkzeptiert")) {
                 setTimeout(() => {
                     const banner = document.getElementById("cookie-banner");
@@ -55,6 +62,7 @@
             }
         });
 
+        // Funktion zum Bestätigen der Cookies
         function acceptCookies() {
             localStorage.setItem("cookiesAkzeptiert", "true");
             const banner = document.getElementById("cookie-banner");
@@ -63,385 +71,13 @@
             }
         }
     </script>
-        
-    <style>
-        :root {
-            --thunder-dark: #0a1128;
-            --thunder-blue: #1c3a7d;
-            --thunder-light: #4a90e2;
-            --thunder-silver: #d1d1d1;
-            --success-green: #22c55e;
-            --fail-red: #ef4444;
-        }
-
-        body { 
-            margin: 0; 
-            font-family: 'Segoe UI', Arial, sans-serif; 
-            background: var(--thunder-dark); 
-            color: white; 
-            scroll-behavior: smooth;
-            overflow-x: hidden;
-        }
-
-        /* --- NAVIGATION --- */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(10, 17, 40, 0.98);
-            padding: 10px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 9999;
-            box-sizing: border-box;
-            border-bottom: 2px solid var(--thunder-blue);
-        }
-
-        /* FIX: Entfernen von starrem margin-left: 150px für bessere Flexibilität */
-        header a.logo-link { display: flex; align-items: center; text-decoration: none; position: relative; }
-        header img { height: 66px; transition: 0.3s ease; z-index: 2; }
-        
-        .logo-hover-text { position: absolute; left: 20px; color: var(--thunder-light); font-weight: bold; text-transform: uppercase; font-size: 1.2rem; opacity: 0; transition: all 0.4s ease; pointer-events: none; white-space: nowrap; z-index: 1; }
-        header a.logo-link:hover img { opacity: 0.2; filter: grayscale(100%); }
-        header a.logo-link:hover .logo-hover-text { opacity: 1; left: 80px; }
-
-        nav { display: flex; align-items: center; gap: 20px; }
-
-        /* Dropdown Logik */
-        .dropdown { position: relative; display: inline-block; }
-        .nav-item { 
-            color: white; text-decoration: none; font-size: 14px; font-weight: bold; 
-            text-transform: uppercase; transition: 0.2s; cursor: pointer;
-            display: flex; align-items: center; gap: 5px; padding: 15px 0;
-        }
-        .nav-item:hover { color: var(--thunder-light); }
-
-        .dropdown-content {
-            display: none; position: absolute; background-color: rgba(10, 17, 40, 0.98);
-            min-width: 200px; box-shadow: 0px 8px 16px rgba(0,0,0,0.8);
-            border: 1px solid var(--thunder-blue); border-radius: 4px; top: 100%; left: 0; z-index: 10000;
-        }
-        .dropdown:hover .dropdown-content { display: block; }
-        .dropdown-content a {
-            color: white; padding: 12px 16px; text-decoration: none; display: block;
-            font-size: 13px; text-transform: uppercase; font-weight: bold;
-            border-bottom: 1px solid rgba(255,255,255,0.05); transition: 0.2s;
-        }
-        .dropdown-content a:hover { background-color: var(--thunder-blue); color: var(--thunder-light); padding-left: 20px; }
-
-        .social-nav { display: flex; gap: 15px; margin-left: 10px; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 20px; }
-        .social-nav a { font-size: 1.2rem; transition: 0.2s; color: white; }
-        .social-nav a:hover { transform: scale(1.2); color: var(--thunder-light); }
-
-        /* Hamburger Menu Icon (Standardmäßig unsichtbar) */
-        .menu-toggle {
-            display: none;
-            font-size: 1.8rem;
-            color: white;
-            cursor: pointer;
-        }
-
-        /* --- HERO --- */
-        .hero { 
-            min-height: 85vh; display: flex; flex-direction: column; justify-content: center; 
-            align-items: center; text-align: center; position: relative; overflow: hidden; padding-top: 80px; 
-            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('Bilder/Team.jpg'); 
-            background-size: cover; background-position: center; background-attachment: fixed; 
-        }
-        .welcome-text { font-size: 2.2rem; margin-bottom: 20px; font-weight: bold; text-shadow: 0 0 20px rgba(0,0,0,0.8); z-index: 10; }
-        .flash { position: absolute; inset: 0; background: white; opacity: 0; pointer-events: none; z-index: 5; }
-        .flash.active { animation: thunder-flash 0.4s ease-out; }
-        @keyframes thunder-flash { 0% { opacity: 0; } 10% { opacity: 0.4; } 20% { opacity: 0.5; } 100% { opacity: 0; } }
-        #lightning-container { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 4; opacity: 0; }
-        #lightning-container.active { opacity: 1; transition: 0.1s; }
-        .bolt-path { stroke: #fff; stroke-width: 3; fill: none; filter: drop-shadow(0 0 10px var(--thunder-light)); }
-        
-        /* LOGO ANIMATION */
-        .logo-main { 
-            width: 480px; 
-            max-width: 85%; 
-            opacity: 0; 
-            transform: scale(0.8); 
-            z-index: 10; 
-            filter: drop-shadow(0 0 30px rgba(74, 144, 226, 0.3)); 
-            transition: all 0.8s cubic-bezier(0.17, 0.67, 0.83, 0.67); 
-        }
-
-        .logo-main.show { 
-            opacity: 1; 
-            transform: scale(1); 
-        }
-        .sub-text { margin-top: 20px; font-size: 1.3rem; z-index: 10; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; }
-
-        /* --- SPIELPLAN ABSCHNITT --- */
-        section#games { padding: 80px 20px; max-width: 1000px; margin: auto; }
-        .spielplan-lade-zone { width: 100%; display: flex; flex-direction: column; gap: 10px; }
-
-        .card { 
-            background: rgba(28, 58, 125, 0.15) !important; 
-            padding: 20px !important; 
-            margin: 15px 0 !important; 
-            border-radius: 12px !important; 
-            border: 1px solid rgba(28, 58, 125, 0.4) !important; 
-            display: flex !important; 
-            align-items: center !important; 
-            justify-content: space-between !important; 
-            transition: 0.3s !important;
-            box-sizing: border-box !important;
-        }
-        .card:hover { background: rgba(28, 58, 125, 0.35) !important; border-color: var(--thunder-light) !important; }
-        
-        .card-text { flex: 2 !important; font-weight: 500 !important; min-width: 150px !important; text-align: left !important; color: white !important; }
-        .badge-center { flex: 1 !important; display: flex !important; justify-content: center !important; }
-        .score-area { flex: 1 !important; display: flex !important; justify-content: flex-end !important; font-family: 'Courier New', monospace !important; font-weight: bold !important; font-size: 1.2rem !important; padding-right: 15px !important; color: white !important; }
-        .badge-right { flex: 0.5 !important; display: flex !important; justify-content: flex-end !important; }
-
-        .badge { font-weight: bold !important; text-transform: uppercase !important; font-size: 0.7rem !important; padding: 5px 12px !important; border-radius: 4px !important; letter-spacing: 1px !important; white-space: nowrap !important; display: inline-block !important; }
-        .badge-home { background: var(--thunder-light) !important; color: black !important; }
-        .badge-away { background: #facc15 !important; color: black !important; }
-        
-        .badge-won { border: 1px solid var(--success-green) !important; color: var(--success-green) !important; background: transparent !important; }
-        .badge-lost { border: 1px solid var(--fail-red) !important; color: var(--fail-red) !important; background: transparent !important; }
-
-        .card.home { border-left: 6px solid var(--thunder-light) !important; }
-        .card.away { border-left: 6px solid #facc15 !important; }
-
-        /* --- TEAM SEKTION --- */
-        .team-section { background: rgba(0,0,0,0.3); width: 100%; max-width: none; padding-bottom: 80px; }
-        .team-container { max-width: 1000px; margin: auto; padding: 0 20px; }
-        .team { display: flex; gap: 30px; flex-wrap: wrap; justify-content: center; margin-top: 40px; }
-        .player { position: relative; width: 240px; height: 320px; border-radius: 15px; border: 2px solid rgba(74, 144, 226, 0.3); overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; transition: 0.4s; background-size: cover; background-position: center; text-decoration: none; color: inherit; }
-        .player-name { background: linear-gradient(transparent, rgba(10, 17, 40, 0.95)); padding: 20px 10px; text-align: center; font-weight: bold; font-size: 1.2rem; text-transform: uppercase; }
-        .player:hover { transform: translateY(-12px); border-color: var(--thunder-light); box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
-        .player-overlay { position: absolute; inset: 0; background: rgba(10, 17, 40, 0.9); display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 15px; opacity: 0; transition: 0.3s ease; z-index: 5; }
-        .player:hover .player-overlay { opacity: 1; }
-        .player-overlay a { color: white; text-decoration: none; font-weight: bold; font-size: 1.3rem; text-transform: uppercase; transition: 0.2s; }
-        .player-overlay a:hover { color: var(--thunder-light); transform: scale(1.1); }
-
-        /* --- NEWS SEKTION --- */
-        .news-section { padding: 60px 20px; max-width: 1200px; margin: auto; }
-        .news-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 30px; 
-            min-height: 400px; 
-        }
-
-        .news-card {
-            background: rgba(28, 58, 125, 0.1);
-            border: 1px solid var(--thunder-blue);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: 0.3s;
-            display: flex;
-            flex-direction: column;
-            cursor: pointer;
-            position: relative;
-        }
-        .news-card:hover { transform: translateY(-5px); border-color: var(--thunder-light); background: rgba(28, 58, 125, 0.2); }
-
-        .news-image { width: 100%; height: 200px; object-fit: cover; border-bottom: 3px solid var(--thunder-light); }
-        .news-content { padding: 20px; flex-grow: 1; }
-        .news-date { color: var(--thunder-light); font-size: 0.8rem; font-weight: bold; text-transform: uppercase; }
-        .news-title { margin: 10px 0; font-size: 1.4rem; color: white; }
-        .news-text { color: var(--thunder-silver); font-size: 0.95rem; line-height: 1.5; }
-
-        .news-card::after {
-            content: 'Mehr lesen +';
-            position: absolute;
-            bottom: 10px;
-            right: 15px;
-            font-size: 0.8rem;
-            color: var(--thunder-light);
-            font-weight: bold;
-            opacity: 0;
-            transition: 0.3s;
-        }
-        .news-card:hover::after { opacity: 1; }
-
-        /* --- NEWS MODAL --- */
-        .news-modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 10000;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            backdrop-filter: blur(5px);
-            padding: 20px;
-        }
-
-        .news-modal.active { display: flex; opacity: 1; }
-
-        .modal-content {
-            background: #0d1a3a;
-            width: 100%;
-            max-width: 800px;
-            max-height: 85vh;
-            border-radius: 15px;
-            border: 2px solid var(--thunder-blue);
-            box-shadow: 0 0 50px rgba(74, 144, 226, 0.2);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            transform: scale(0.9);
-            transition: transform 0.4s ease;
-        }
-        .news-modal.active .modal-content { transform: scale(1); }
-
-        .modal-header {
-            position: relative;
-            width: 100%;
-            height: 250px;
-            min-height: 250px;
-            overflow: hidden;
-        }
-        .modal-header img { width: 100%; height: 100%; object-fit: cover; }
-        
-        .modal-close {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 2.5rem;
-            color: white;
-            cursor: pointer;
-            z-index: 10;
-            text-shadow: 0 0 10px rgba(0,0,0,0.8);
-            transition: 0.3s;
-        }
-        .modal-close:hover { color: var(--thunder-light); transform: scale(1.1); }
-
-        .modal-body {
-            padding: 30px;
-            overflow-y: auto;
-            color: var(--thunder-silver);
-            line-height: 1.8;
-            font-size: 1.1rem;
-        }
-        
-        .modal-body .news-date { font-size: 0.9rem; color: var(--thunder-light); margin-bottom: 5px; font-weight: bold; }
-        .modal-body h2 { color: white; margin-top: 0; font-size: 2rem; text-transform: uppercase; margin-bottom: 20px;}
-
-        .modal-body::-webkit-scrollbar { width: 10px; }
-        .modal-body::-webkit-scrollbar-track { background: rgba(28, 58, 125, 0.1); border-radius: 10px; }
-        .modal-body::-webkit-scrollbar-thumb { background: var(--thunder-blue); border-radius: 10px; border: 2px solid #0d1a3a; }
-        .modal-body::-webkit-scrollbar-thumb:hover { background: var(--thunder-light); }
-
-        /* --- PAGINATION --- */
-        .pagination { 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            gap: 15px; 
-            margin-top: 40px; 
-        }
-        .page-btn {
-            background: var(--thunder-blue);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-        .page-btn:hover:not(:disabled) { background: var(--thunder-light); }
-        .page-btn:disabled { opacity: 0.3; cursor: not-allowed; }
-        #page-info { font-weight: bold; color: var(--thunder-silver); }
-
-        footer { text-align: center; padding: 50px; color: var(--thunder-silver); border-top: 1px solid rgba(28, 58, 125, 0.5); font-size: 0.9rem; }
-
-        .easter-egg { position: fixed; bottom: 10px; left: 10px; display: flex; align-items: center; gap: 10px; opacity: 0; transition: 0.5s ease; z-index: 2000; background: rgba(10, 17, 40, 0.8); padding: 5px 10px; border-radius: 5px; }
-        .easter-egg:hover { opacity: 1; }
-        .easter-egg img { height: 30px; filter: drop-shadow(0 0 5px var(--thunder-light)); }
-        .easter-egg span { font-size: 0.7rem; color: var(--thunder-silver); text-transform: uppercase; letter-spacing: 1px; }
-
-        /* --- COOKIE BANNER FIX --- */
-        .cookie-banner {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translate(-50%, 150%);
-            opacity: 0;
-            pointer-events: none;
-            width: 90%;
-            max-width: 800px;
-            background: rgba(10, 17, 40, 0.98);
-            border: 2px solid var(--thunder-blue);
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.8);
-            z-index: 999999;
-            transition: all 0.5s cubic-bezier(0.17, 0.67, 0.83, 0.67);
-            box-sizing: border-box;
-        }
-
-        .cookie-banner.cookie-active {
-            transform: translate(-50%, 0) !important;
-            opacity: 1 !important;
-            pointer-events: auto !important;
-        }
-
-        .cookie-content { display: flex; align-items: center; gap: 25px; flex-wrap: wrap; }
-        .cookie-icon { font-size: 2.5rem; color: var(--thunder-light); }
-        .cookie-text { flex: 1; min-width: 250px; }
-        .cookie-text h3 { margin: 0 0 5px 0; text-transform: uppercase; color: var(--thunder-light); font-size: 1.1rem; letter-spacing: 1px; }
-        .cookie-text p { margin: 0; font-size: 0.9rem; color: var(--thunder-silver); line-height: 1.4; }
-        .cookie-text a { color: var(--thunder-light); text-decoration: underline; }
-        .cookie-buttons { display: flex; gap: 10px; }
-        .btn-accept { background: var(--thunder-light); color: white; border: none; padding: 12px 24px; font-weight: bold; text-transform: uppercase; border-radius: 6px; cursor: pointer; transition: 0.2s; letter-spacing: 1px; }
-        .btn-accept:hover { background: white; color: var(--thunder-dark); transform: scale(1.05); }
-
-        /* --- MEDIA QUERIES (RESPONSIVE FIXES) --- */
-        @media (max-width: 768px) {
-            header a.logo-link { margin-left: 0; }
-            .card { flex-direction: column; text-align: center; gap: 10px; }
-            .score-area { justify-content: center !important; padding-right: 0 !important; }
-            
-            .modal-content { max-height: 90vh; }
-            .modal-header { height: 150px; min-height: 150px; }
-            .modal-body { padding: 20px; }
-            .modal-body h2 { font-size: 1.5rem; }
-            .modal-close { top: 10px; right: 15px; font-size: 2rem; }
-
-            /* FIX: Zeigt das Overlay auf Touchscreens direkt an */
-            .player-overlay {
-                opacity: 1 !important;
-                background: rgba(10, 17, 40, 0.85);
-            }
-
-            /* Mobiles Menü Styling */
-            .menu-toggle { display: block; }
-            nav {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: rgba(10, 17, 40, 0.98);
-                border-bottom: 2px solid var(--thunder-blue);
-                padding: 20px 0;
-                gap: 15px;
-            }
-            nav.active { display: flex; }
-            .dropdown-content { position: static; box-shadow: none; border: none; min-width: 100%; text-align: center; }
-            .social-nav { border-left: none; padding-left: 0; margin-left: 0; }
-        }
-
-        @media (max-width: 600px) {
-            .cookie-content { flex-direction: column; text-align: center; gap: 15px; }
-            .cookie-buttons { width: 100%; justify-content: center; }
-        }
-    </style>
 </head>
 
 <body>
+
+    <!-- ==========================================
+       HEADER & NAVIGATION
+       ========================================== -->
     <header>
         <a href="#top" class="logo-link">
             <img src="Bilder/logo.jpg" alt="Berlin Thunderbirds Logo"> 
@@ -466,7 +102,7 @@
 
             <a href="training.html" class="nav-item">Training</a>
             <a href="spiele.html" class="nav-item">Spiele</a>
-            
+           
             <div class="dropdown">
                 <div class="nav-item">Thunderbirds <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i></div>
                 <div class="dropdown-content">
@@ -480,10 +116,15 @@
                 <a href="https://berlin-thunderbirds.myteamshop.de/" target="_blank" title="Fanshop"><i class="fa-solid fa-cart-shopping"></i></a>
                 <a href="https://www.instagram.com/berlinthunderbirds/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
                 <a href="https://www.facebook.com/thbev/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+				<a href="https://www.tiktok.com/@thunderbirds.berlin" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+				
             </div>
         </nav>
     </header>
 
+    <!-- ==========================================
+       HERO-BEREICH (WILLKOMMEN & BLITZ-ANIMATION)
+       ========================================== -->
     <div class="hero" id="top">
         <div class="flash" id="flash"></div>
         <svg id="lightning-container" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -496,20 +137,50 @@
         <p class="sub-text">American Football aus Berlin</p>
     </div>
 
-    <section id="games">
-        <h2 style="color: var(--thunder-light); text-transform: uppercase; letter-spacing: 2px;">Spielplan</h2>
-        <div class="spielplan-lade-zone"></div>
-        <script src="spielplan.js"></script>
+    <!-- ==========================================
+       ÜBER UNS / VEREINSPROFIL SEKTION
+       ========================================== -->
+    <section id="games" style="padding: 60px 20px; max-width: 1000px; margin: 0 auto;">
+        <h2 style="color: var(--thunder-light); text-transform: uppercase; letter-spacing: 2px; text-align: center; margin-bottom: 20px;">Über die Berlin Thunderbirds</h2>
+        <div class="text-box">
+            <p style="margin-top: 0;">Die <span style="color: var(--thunder-light); font-weight: bold;">Berlin Thunderbirds</span> sind eine feste Größe im Berliner American-Football-Geschehen und stehen für Leidenschaft, Teamgeist und harte Arbeit auf und abseits des Feldes. Als traditionsreicher Verein bieten wir Sportlern aller Altersklassen ein sportliches Zuhause.</p>
+            <p>Unser Stolz im Erwachsenenbereich ist das <span style="color: var(--thunder-light); font-weight: bold;">Seniors Tackle-Team</span>, in dem physische Härte, taktische Finesse und unbedingter Zusammenhalt aufeinandertreffen. Hier wird American Football in seiner ursprünglichen und spannendsten Form gelebt.</p>
+            <p>Auch die Jugendarbeit wird bei uns großgeschrieben – denn die Stars von morgen fangen früh an. In unseren drei Flag-Football-Mannschaften werden die Grundlagen für Schnelligkeit, Ballgefühl und Teamwork gelegt:</p>
+            
+			<table style="width: 100%; border-collapse: collapse; margin: 15px 0; color: var(--thunder-light);">
+                <tr style="vertical-align: top;">
+                    <td style="width: 100px; font-weight: bold; padding-bottom: 8px; white-space: nowrap;">U16 Flag:</td>
+                    <td style="text-align: left; padding-bottom: 8px;">Der perfekte Übergang zum Leistungssport, bei dem taktisches Verständnis und Schnelligkeit im Vordergrund stehen.</td>
+                </tr>
+                <tr style="vertical-align: top;">
+                    <td style="width: 100px; font-weight: bold; padding-bottom: 8px; white-space: nowrap;">U13 Flag:</td>
+                    <td style="text-align: left;padding-bottom: 8px;">Hier lernen die Jugendlichen spielerisch und kontaktarm alle wichtigen Facetten des Flag-Footballs.</td>
+                </tr>
+                <tr style="vertical-align: top;">
+                    <td style="width: 100px; font-weight: bold; white-space: nowrap;">U10 Flag:</td>
+                    <td style="text-align: left;padding-bottom: 8px;">Unsere Jüngsten, die mit riesigem Spaß und Entdeckerdrang an den Sport herangeführt werden.</td>
+                </tr>
+            </table>
+           
+		  
+		   
+		   <p style="margin-bottom: 0;">Egal ob erfahrener Spieler oder Neueinsteiger – bei den Thunderbirds ist jeder willkommen, der Teil unserer Football-Familie werden möchte!</p>
+        </div>
     </section>
 
+    <!-- ==========================================
+       TEAM-ÜBERSICHT (TACKLE & FLAG)
+       ========================================== -->
     <section id="team" class="team-section">
         <div class="team-container">
             <h2 style="color: var(--thunder-light); text-transform: uppercase; letter-spacing: 2px;">Unsere Teams</h2>
             <div class="team">
+                <!-- Tackle Team Kachel -->
                 <a href="tackle.html" class="player" style="background-image: url('Bilder/Tackle.jpg');">
                     <span class="player-name">Tackle</span>
                 </a>
 
+                <!-- Flag Team Kachel mit Untergruppen (U16, U13, U10) -->
                 <div class="player" style="background-image: url('Bilder/Team_Flag.jpg');">
                     <span class="player-name">Flag</span>
                     <div class="player-overlay">
@@ -522,6 +193,9 @@
         </div>
     </section>
 
+    <!-- ==========================================
+       NEWS-SEKTION & PAGINIERUNG
+       ========================================== -->
     <section class="news-section">
         <h2 style="text-align: center; text-transform: uppercase; font-size: 2.5rem; margin-bottom: 40px;">Thunderbirds-News</h2>
         <div class="news-grid" id="news-wrapper"></div>
@@ -533,11 +207,13 @@
         </div>
     </section>
 
-    <!-- NEWS MODAL -->
+    <!-- ==========================================
+       NEWS MODAL (DETAILANSICHT FÜR ARTIKEL)
+       ========================================== -->
     <div class="news-modal" id="newsModal">
-        <div class="modal-content">
+        <div class="news-modal-content">
+            <span class="modal-close" onclick="closeNewsModal()">&times;</span>
             <div class="modal-header">
-                <span class="modal-close" onclick="closeNewsModal()">&times;</span>
                 <img id="modalImage" src="" alt="News">
             </div>
             <div class="modal-body">
@@ -546,8 +222,11 @@
                 <div class="news-text-full" id="modalText"></div>
             </div>
         </div>
-    </div>    
+    </div>   
 
+    <!-- ==========================================
+       FOOTER & EASTER EGG
+       ========================================== -->
     <footer>
         © 2026 BERLIN THUNDERBIRDS
     </footer>
@@ -557,7 +236,9 @@
         <span>Webdesign by Ankhzunamun</span>
     </div>
 
-    <!-- COOKIE BANNER -->
+    <!-- ==========================================
+       COOKIE BANNER
+       ========================================== -->
     <div id="cookie-banner" class="cookie-banner">
         <div class="cookie-content">
             <i class="fa-solid fa-cookie-bite cookie-icon"></i>
@@ -571,6 +252,7 @@
         </div>
     </div>
 
+    <!-- Externes Script für die News-Steuerung -->
     <script src="news.js"></script>
 </body>
 </html>

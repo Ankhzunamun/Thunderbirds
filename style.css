@@ -1,0 +1,966 @@
+:root {
+    --thunder-dark: #1b2845;    
+    --thunder-blue: #1d4ed8;    /* Etwas dunkleres, kräftiges Blau statt dem hellen 3b82f6 */
+    --thunder-light: #7dd3fc;   
+    --thunder-silver: #f1f5f9;  
+    --success-green: #22c55e;
+    --fail-red: #ef4444;
+    --color-u10: #052c54;
+    --color-u13: #2d5a27;
+    --color-u16: #8b0000;
+}
+
+body { 
+    margin: 0; 
+    font-family: 'Segoe UI', Arial, sans-serif; 
+    background: var(--thunder-dark); 
+    color: white; 
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+/* ==========================================
+   HEADER & NAVIGATION
+   ========================================== */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(27, 40, 69, 0.95);
+    padding: 10px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 9999;
+    box-sizing: border-box;
+    border-bottom: 2px solid var(--thunder-light);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+header a.logo-link { display: flex; align-items: center; text-decoration: none; position: relative; }
+header img { height: 66px; transition: 0.3s ease; z-index: 2; }
+
+.logo-hover-text { position: absolute; left: 20px; color: var(--thunder-light); font-weight: bold; text-transform: uppercase; font-size: 1.2rem; opacity: 0; transition: all 0.4s ease; pointer-events: none; white-space: nowrap; z-index: 1; }
+header a.logo-link:hover img { opacity: 0.2; filter: grayscale(100%); }
+header a.logo-link:hover .logo-hover-text { opacity: 1; left: 80px; }
+
+nav { display: flex; align-items: center; gap: 20px; }
+
+/* Dropdown Logik */
+.dropdown { position: relative; display: inline-block; }
+.nav-item { 
+    color: white; text-decoration: none; font-size: 14px; font-weight: bold; 
+    text-transform: uppercase; transition: 0.2s; cursor: pointer;
+    display: flex; align-items: center; gap: 5px; padding: 15px 0;
+}
+.nav-item:hover { color: var(--thunder-light); }
+
+.dropdown-content {
+    display: none; position: absolute; background-color: #24345d;
+    min-width: 200px; box-shadow: 0px 8px 20px rgba(0,0,0,0.5);
+    border: 1px solid var(--thunder-light); border-radius: 6px; top: 100%; left: 0; z-index: 10000;
+}
+.dropdown:hover .dropdown-content { display: block; }
+.dropdown-content a {
+    color: white; padding: 12px 16px; text-decoration: none; display: block;
+    font-size: 13px; text-transform: uppercase; font-weight: bold;
+    border-bottom: 1px solid rgba(255,255,255,0.08); transition: 0.2s;
+}
+.dropdown-content a:hover { background-color: var(--thunder-blue); color: #ffffff; padding-left: 20px; }
+
+.social-nav { display: flex; gap: 15px; margin-left: 10px; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 20px; }
+.social-nav a { font-size: 1.2rem; transition: 0.2s; color: white; }
+.social-nav a:hover { transform: scale(1.2); color: var(--thunder-light); }
+
+.menu-toggle {
+    display: none;
+    font-size: 1.8rem;
+    color: white;
+    cursor: pointer;
+}
+
+/* ==========================================
+   HERO-BEREICH & ANIMATIONEN
+   ========================================== */
+.hero { 
+    min-height: 85vh; display: flex; flex-direction: column; justify-content: center; 
+    align-items: center; text-align: center; position: relative; overflow: hidden; padding-top: 80px; 
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('Bilder/Team.jpg'); 
+    background-size: cover; background-position: center; background-attachment: fixed; 
+}
+.welcome-text { font-size: 2.2rem; margin-bottom: 20px; font-weight: bold; text-shadow: 0 0 20px rgba(0,0,0,0.8); z-index: 10; }
+.flash { position: absolute; inset: 0; background: white; opacity: 0; pointer-events: none; z-index: 5; }
+.flash.active { animation: thunder-flash 0.4s ease-out; }
+@keyframes thunder-flash { 0% { opacity: 0; } 10% { opacity: 0.4; } 20% { opacity: 0.5; } 100% { opacity: 0; } }
+#lightning-container { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 4; opacity: 0; }
+#lightning-container.active { opacity: 1; transition: 0.1s; }
+.bolt-path { stroke: #fff; stroke-width: 3; fill: none; filter: drop-shadow(0 0 10px var(--thunder-light)); }
+
+/* LOGO ANIMATION */
+.logo-main { 
+    width: 480px; 
+    max-width: 85%; 
+    opacity: 0; 
+    transform: scale(0.8); 
+    z-index: 10; 
+    filter: drop-shadow(0 0 30px rgba(125, 211, 252, 0.4)); 
+    transition: all 0.8s cubic-bezier(0.17, 0.67, 0.83, 0.67); 
+}
+
+.logo-main.show { 
+    opacity: 1; 
+    transform: scale(1); 
+}
+.sub-text { margin-top: 20px; font-size: 1.3rem; z-index: 10; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; }
+
+/* ==========================================
+   HERO NAVIGATION (TEAM-SCHNELLSPRUNG)
+   ========================================== */
+.hero-nav {
+    margin-top: 88px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    height: 35vh;
+    width: 100%;
+    border-bottom: 4px solid var(--thunder-blue);
+}
+
+.hero-nav .nav-item { 
+    position: relative; 
+    text-decoration: none; 
+    color: white; 
+    overflow: hidden; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    border-right: 1px solid rgba(255,255,255,0.1); 
+}
+.hero-nav .nav-item img { 
+    position: absolute; 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    filter: brightness(0.4) grayscale(0.6); 
+    transition: 0.6s; 
+}
+.hero-nav .nav-item:hover img { 
+    filter: brightness(0.8) grayscale(0); 
+    transform: scale(1.1); 
+}
+.hero-nav .nav-item span { 
+    position: relative; 
+    z-index: 2; 
+    font-size: 1.6rem; 
+    font-weight: bold; 
+    text-transform: uppercase; 
+    text-shadow: 2px 2px 15px rgba(0,0,0,1); 
+    letter-spacing: 2px; 
+}
+
+/* ==========================================
+   SPIELPLAN SEKTIONEN & CARDS
+   ========================================== */
+section#tackle-games, 
+section[style*="var(--thunder-blue)"] { 
+    background: linear-gradient(180deg, var(--thunder-dark), #0f172a) !important; 
+}
+
+section#u10-games { background: linear-gradient(180deg, var(--thunder-dark), var(--color-u10)); }
+section#u13-games { background: linear-gradient(180deg, var(--thunder-dark), var(--color-u13)); }
+section#u16-games { background: linear-gradient(180deg, var(--thunder-dark), var(--color-u16)); }
+
+.spielplan-lade-zone { width: 100%; display: flex; flex-direction: column; gap: 10px; }
+
+.card { 
+    background: rgba(29, 78, 216, 0.2) !important; 
+    padding: 20px !important; 
+    margin: 15px 0 !important; 
+    border-radius: 12px !important; 
+    border: 1px solid rgba(125, 211, 252, 0.2) !important; 
+    display: flex !important; 
+    align-items: center !important; 
+    justify-content: space-between !important; 
+    transition: 0.3s !important;
+    box-sizing: border-box !important;
+}
+.card:hover { background: rgba(29, 78, 216, 0.4) !important; border-color: var(--thunder-light) !important; }
+
+.card-text { flex: 2 !important; font-weight: 500 !important; min-width: 150px !important; text-align: left !important; color: white !important; }
+.badge-center { flex: 1 !important; display: flex !important; justify-content: center !important; }
+.score-area { flex: 1 !important; display: flex !important; justify-content: flex-end !important; font-family: 'Courier New', monospace !important; font-weight: bold !important; font-size: 1.2rem !important; padding-right: 15px !important; color: white !important; }
+.badge-right { flex: 0.5 !important; display: flex !important; justify-content: flex-end !important; gap: 10px; }
+
+.badge { font-weight: bold !important; text-transform: uppercase !important; font-size: 0.7rem !important; padding: 5px 12px !important; border-radius: 4px !important; letter-spacing: 1px !important; white-space: nowrap !important; display: inline-block !important; }
+.badge-home { background: var(--thunder-light) !important; color: black !important; }
+.badge-away { background: #facc15 !important; color: black !important; }
+
+.badge-won { border: 1px solid var(--success-green) !important; color: var(--success-green) !important; background: transparent !important; }
+.badge-lost { border: 1px solid var(--fail-red) !important; color: var(--fail-red) !important; background: transparent !important; }
+
+.card.home { border-left: 6px solid var(--thunder-light) !important; }
+.card.away { border-left: 6px solid #facc15 !important; }
+.tournament-teams { display: block; font-size: 0.9rem; color: var(--thunder-silver); margin-top: 5px; font-style: italic; }
+
+/* ==========================================
+   TEAM SEKTION & SPIELER-ELEMENTE
+   ========================================== */
+.team-section { background: rgba(0,0,0,0.15); width: 100%; max-width: none; padding-bottom: 80px; }
+.team-container { max-width: 1000px; margin: auto; padding: 0 20px; }
+.team { display: flex; gap: 30px; flex-wrap: wrap; justify-content: center; margin-top: 40px; }
+.player { position: relative; width: 240px; height: 320px; border-radius: 15px; border: 2px solid rgba(125, 211, 252, 0.3); overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; transition: 0.4s; background-size: cover; background-position: center; text-decoration: none; color: inherit; }
+.player-name { background: linear-gradient(transparent, rgba(27, 40, 69, 0.95)); padding: 20px 10px; text-align: center; font-weight: bold; font-size: 1.2rem; text-transform: uppercase; }
+.player:hover { transform: translateY(-12px); border-color: var(--thunder-light); box-shadow: 0 15px 30px rgba(0,0,0,0.4); }
+.player-overlay { position: absolute; inset: 0; background: rgba(27, 40, 69, 0.9); display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 15px; opacity: 0; transition: 0.3s ease; z-index: 5; }
+.player:hover .player-overlay { opacity: 1; }
+.player-overlay a { color: white; text-decoration: none; font-weight: bold; font-size: 1.3rem; text-transform: uppercase; transition: 0.2s; }
+.player-overlay a:hover { color: var(--thunder-light); transform: scale(1.1); }
+
+/* ==========================================
+   NEWS SEKTION & KARTEN
+   ========================================== */
+.news-section { padding: 60px 20px; max-width: 1200px; margin: auto; }
+.news-grid { 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 30px; 
+    justify-content: center;
+    min-height: 400px; 
+}
+
+.news-card {
+    flex: 1 1 350px;
+    max-width: 380px;
+    background: rgba(29, 78, 216, 0.15);
+    border: 1px solid rgba(125, 211, 252, 0.3);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    position: relative;
+}
+.news-card:hover { transform: translateY(-5px); border-color: var(--thunder-light); background: rgba(29, 78, 216, 0.3); }
+
+.news-image { width: 100%; height: 200px; object-fit: cover; border-bottom: 3px solid var(--thunder-light); }
+.news-content { padding: 20px; flex-grow: 1; }
+.news-date { color: var(--thunder-light); font-size: 0.8rem; font-weight: bold; text-transform: uppercase; }
+.news-title { margin: 10px 0; font-size: 1.4rem; color: white; }
+.news-text { color: var(--thunder-silver); font-size: 0.95rem; line-height: 1.5; }
+
+.news-card::after {
+    content: 'Mehr lesen +';
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    font-size: 0.8rem;
+    color: var(--thunder-light);
+    font-weight: bold;
+    opacity: 0;
+    transition: 0.3s;
+}
+.news-card:hover::after { opacity: 1; }
+
+/* ==========================================
+   NEWS MODAL / POPUP
+   ========================================== */
+.news-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    backdrop-filter: blur(5px);
+    padding: 20px;
+}
+
+.news-modal.active { display: flex; opacity: 1; }
+
+.news-modal-content {
+    background: #1e2c4f;
+    width: 100%;
+    max-width: 800px;
+    max-height: 85vh;
+    border-radius: 15px;
+    border: 2px solid var(--thunder-light);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transform: scale(0.9);
+    transition: transform 0.4s ease;
+}
+
+.news-modal.active .news-modal-content { transform: scale(1); }
+
+.modal-header {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    min-height: 250px;
+}
+
+.modal-header img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+}
+
+/* NEWS MODAL SCHLIESSEN-KREUZ */
+.modal-close {
+    position: absolute !important;
+    top: 15px !important;
+    right: 15px !important;
+    font-size: 1.5rem !important;
+    line-height: 1 !important;
+    color: #ef4444 !important;
+    cursor: pointer !important;
+    z-index: 999 !important;
+    width: 38px !important;
+    height: 38px !important;
+    background-color: rgba(27, 40, 69, 0.85) !important;
+    border: 2px solid #ef4444 !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.2s ease !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6) !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+}
+
+.modal-close:hover {
+    color: #ffffff !important;
+    background-color: #ef4444 !important;
+    border-color: #ef4444 !important;
+    transform: scale(1.1) !important;
+}
+
+.modal-body {
+    padding: 30px;
+    overflow-y: auto;
+    color: var(--thunder-silver);
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+.modal-body .news-date { font-size: 0.9rem; color: var(--thunder-light); margin-bottom: 5px; font-weight: bold; }
+.modal-body h2 { color: white; margin-top: 0; font-size: 2rem; text-transform: uppercase; margin-bottom: 20px;}
+
+.modal-body::-webkit-scrollbar { width: 10px; }
+.modal-body::-webkit-scrollbar-track { background: rgba(59, 130, 246, 0.1); border-radius: 10px; }
+.modal-body::-webkit-scrollbar-thumb { background: var(--thunder-blue); border-radius: 10px; border: 2px solid #1e2c4f; }
+.modal-body::-webkit-scrollbar-thumb:hover { background: var(--thunder-light); }
+
+/* ==========================================
+   PAGINATION
+   ========================================== */
+.pagination { 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 15px; 
+    margin-top: 40px; 
+}
+
+.page-btn {
+    background: var(--thunder-blue);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+    line-height: normal;
+    box-sizing: border-box;
+}
+.page-btn:hover:not(:disabled) { background: var(--thunder-light); color: var(--thunder-dark); }
+.page-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+#page-info { font-weight: bold; color: var(--thunder-silver); font-size: 0.95rem; }
+
+footer { text-align: center; padding: 50px; color: var(--thunder-silver); border-top: 1px solid rgba(59, 130, 246, 0.3); font-size: 0.9rem; }
+
+.easter-egg { position: fixed; bottom: 10px; left: 10px; display: flex; align-items: center; gap: 10px; opacity: 0; transition: 0.5s ease; z-index: 2000; background: rgba(27, 40, 69, 0.85); padding: 5px 10px; border-radius: 5px; }
+.easter-egg:hover { opacity: 1; }
+.easter-egg img { height: 30px; filter: drop-shadow(0 0 5px var(--thunder-light)); }
+.easter-egg span { font-size: 0.7rem; color: var(--thunder-silver); text-transform: uppercase; letter-spacing: 1px; }
+
+/* ==========================================
+   COOKIE BANNER
+   ========================================== */
+.cookie-banner {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translate(-50%, 150%);
+    opacity: 0;
+    pointer-events: none;
+    width: 90%;
+    max-width: 800px;
+    background: rgba(27, 40, 69, 0.98);
+    border: 2px solid var(--thunder-light);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
+    z-index: 999999;
+    transition: all 0.5s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+    box-sizing: border-box;
+}
+
+.cookie-banner.cookie-active {
+    transform: translate(-50%, 0) !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+.cookie-content { display: flex; align-items: center; gap: 25px; flex-wrap: wrap; }
+.cookie-icon { font-size: 2.5rem; color: var(--thunder-light); }
+.cookie-text { flex: 1; min-width: 250px; }
+.cookie-text h3 { margin: 0 0 5px 0; text-transform: uppercase; color: var(--thunder-light); font-size: 1.1rem; letter-spacing: 1px; }
+.cookie-text p { margin: 0; font-size: 0.9rem; color: var(--thunder-silver); line-height: 1.4; }
+.cookie-text a { color: var(--thunder-light); text-decoration: underline; }
+.cookie-buttons { display: flex; gap: 10px; }
+.btn-accept { background: var(--thunder-light); color: var(--thunder-dark); border: none; padding: 12px 24px; font-weight: bold; text-transform: uppercase; border-radius: 6px; cursor: pointer; transition: 0.2s; letter-spacing: 1px; }
+.btn-accept:hover { background: white; color: var(--thunder-dark); transform: scale(1.05); }
+
+/* ==========================================
+   TACKLE / ROSTER SEKTION
+   ========================================== */
+.tackle-top-image {
+    width: 100%;
+    height: 500px;
+    margin-top: 88px; 
+    background: url('Bilder/Tackle/Tackle_team.jpg') no-repeat center center;
+    background-size: cover;
+    border-bottom: 4px solid var(--thunder-light);
+}
+
+.content-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.content-container h1 {
+    color: var(--thunder-light);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+.text-box {
+    background: rgba(29, 78, 216, 0.15);
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid rgba(125, 211, 252, 0.3);
+    line-height: 1.8;
+    font-size: 1.1rem;
+    color: var(--thunder-silver);
+    text-align: center;
+}
+
+.roster-section {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.roster-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.player-card {
+    background: #1e2c4f;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 2px solid rgba(125, 211, 252, 0.2);
+    transition: 0.4s;
+    cursor: pointer;
+    position: relative;
+}
+
+.player-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--thunder-light);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+.player-card img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+}
+
+.player-card .info {
+    padding: 15px;
+    text-align: center;
+    background: linear-gradient(180deg, rgba(30, 44, 79, 0.8) 0%, rgba(27, 40, 69, 1) 100%);
+}
+
+.player-card .player-number {    
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--thunder-light);
+    margin-bottom: 2px;
+}
+
+.player-card .player-name-card {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+}
+
+.player-card .player-position {
+    font-size: 0.85rem;
+    color: var(--thunder-silver);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 4px;
+}
+
+/* ==========================================
+   SPIELER MODAL / POPUP
+   ========================================== */
+.player-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(5px);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.player-modal.active {
+    display: flex !important;
+}
+
+.player-modal .modal-content {
+    background: #1e2c4f;
+    border: 2px solid var(--thunder-light);
+    border-radius: 15px;
+    max-width: 450px;
+    width: 90%;
+    max-height: 85vh;
+    padding: 25px;
+    position: relative;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+    text-align: center;
+    animation: modalFadeIn 0.3s ease-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    overflow: hidden;
+}
+
+.player-modal .modal-content img {
+    width: 100%;
+    max-height: 380px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.close-modal {
+    position: absolute !important;
+    top: 15px !important;
+    right: 15px !important;
+    font-size: 1.5rem !important;
+    line-height: 1 !important;
+    color: #ef4444 !important;
+    cursor: pointer !important;
+    z-index: 999 !important;
+    width: 38px !important;
+    height: 38px !important;
+    background-color: rgba(27, 40, 69, 0.85) !important;
+    border: 2px solid #ef4444 !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.2s ease !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6) !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+}
+
+.close-modal:hover {
+    color: #ffffff !important;
+    background-color: #ef4444 !important;
+    border-color: #ef4444 !important;
+    transform: scale(1.1) !important;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ==========================================
+   LIGHTBOX
+   ========================================== */
+.lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 100000;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.lightbox.active {
+    display: flex !important;
+}
+
+.lightbox-content {
+    position: relative !important;
+    display: inline-block;
+    max-width: 90vw;
+    max-height: 85vh;
+}
+
+.lightbox-content img {
+    max-width: 90vw;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 12px;
+    border: 2px solid var(--thunder-light);
+    box-shadow: 0 0 30px rgba(125, 211, 252, 0.3);
+    display: block;
+}
+
+.lightbox .close-btn {
+    position: absolute !important;
+    top: 15px !important;
+    right: 15px !important;
+    font-size: 1.5rem !important;
+    line-height: 1 !important;
+    color: #ef4444 !important;
+    cursor: pointer !important;
+    z-index: 100001 !important;
+    width: 38px !important;
+    height: 38px !important;
+    background-color: rgba(27, 40, 69, 0.85) !important;
+    border: 2px solid #ef4444 !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.2s ease !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6) !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+}
+
+.lightbox .close-btn:hover {
+    color: #ffffff !important;
+    background-color: #ef4444 !important;
+    border-color: #ef4444 !important;
+    transform: scale(1.1) !important;
+}
+
+/* ==========================================
+   U16 / U13 / U10 SEKTIONEN (TOP-BILDER)
+   ========================================== */
+.u16-top-image {
+    width: 100%;
+    height: 500px;
+    margin-top: 88px; 
+    background: url('Bilder/U16.jpg') no-repeat center center;
+    background-size: cover;
+    border-bottom: 4px solid var(--thunder-light);
+}
+
+.u13-top-image {
+    width: 100%;
+    height: 500px;
+    margin-top: 88px; 
+    background: url('Bilder/U13.jpg') no-repeat center center;
+    background-size: cover;
+    border-bottom: 4px solid var(--thunder-light);
+}
+
+.u10-top-image {
+    width: 100%;
+    height: 500px;
+    margin-top: 88px; 
+    background: url('Bilder/U10.jpg') no-repeat center center;
+    background-size: cover;
+    border-bottom: 4px solid var(--thunder-light);
+}
+
+/* ==========================================
+   TRAINING & SEITEN-SPLIT
+   ========================================== */
+.season-winter .summer-only { display: none !important; } 
+.season-summer .winter-only { display: none !important; } 
+
+.hero-split {
+    margin-top: 88px; 
+    display: flex; 
+    height: 60vh; 
+    width: 100%; 
+    background: var(--thunder-dark); 
+    border-bottom: 4px solid var(--thunder-blue); 
+    overflow: hidden; 
+}
+
+.hero-left { 
+    flex: 1; 
+    position: relative; 
+    background: #000; 
+} 
+
+.hero-left img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    transition: opacity 0.5s ease-in-out; 
+} 
+
+.hero-right {
+    flex: 1; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
+    padding: 0 20px; 
+    background: linear-gradient(135deg, var(--thunder-dark), #162447); 
+}
+
+.hero-right h1 { 
+    font-size: 3.5rem; 
+    margin: 0; 
+    text-transform: uppercase; 
+    line-height: 1.1; 
+    color: var(--thunder-white); 
+} 
+
+.status-badge { 
+    display: inline-block; 
+    margin-top: 15px; 
+    padding: 8px 15px; 
+    border-radius: 5px; 
+    font-weight: bold; 
+    text-transform: uppercase; 
+    font-size: 0.85rem;
+} 
+
+.summer-only.status-badge { background: #22c55e; color: #000; } 
+.winter-only.status-badge { background: var(--thunder-light); color: var(--thunder-white); } 
+
+.training-main-section { 
+    padding: 50px 20px; 
+    max-width: 1100px; 
+    margin: auto; 
+} 
+
+.training-main-section h2 { 
+    text-align: center; 
+    font-size: 2.5rem; 
+    margin-bottom: 40px; 
+    text-transform: uppercase; 
+    color: var(--thunder-white); 
+}
+
+.training-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 30px; 
+} 
+
+.training-card {
+    background: rgba(28, 58, 125, 0.2); 
+    padding: 30px; 
+    border-radius: 15px; 
+    border: 1px solid var(--thunder-blue); 
+    border-top: 5px solid var(--thunder-light); 
+}
+
+.training-card.flag-card { 
+    border-top-color: #facc15; 
+}
+
+.training-card .team-title { 
+    font-size: 1.8rem; 
+    margin-bottom: 20px; 
+    color: var(--thunder-light); 
+    text-transform: uppercase; 
+} 
+
+.training-card .flag-title { 
+    color: #facc15 !important; 
+}
+
+.training-card .info-row { 
+    display: flex; 
+    justify-content: space-between; 
+    padding: 12px 0; 
+    border-bottom: 1px solid rgba(255,255,255,0.1); 
+} 
+
+.training-card .day { 
+    font-weight: bold; 
+    color: var(--thunder-white); 
+} 
+
+.training-card .address { 
+    font-size: 0.85rem; 
+    margin-top: 15px; 
+    color: var(--thunder-silver); 
+} 
+
+.training-card .maps-link { 
+    text-decoration: none; 
+    color: inherit; 
+    display: block; 
+    transition: 0.3s; 
+} 
+
+.training-card .maps-link:hover { 
+    color: var(--thunder-light); 
+} 
+
+.training-card .maps-link i { 
+    margin-right: 5px; 
+    color: var(--thunder-light); 
+} 
+
+.training-main-section .contact-card {
+    background: rgba(28, 58, 125, 0.2); 
+    padding: 30px; 
+    margin: 40px 0; 
+    border-radius: 12px; 
+    border: 1px solid var(--thunder-blue); 
+    border-left: 6px solid var(--thunder-silver); 
+}
+
+.training-main-section .contact-card-title { 
+    color: var(--thunder-white); 
+    font-size: 2.2rem; 
+    margin-bottom: 10px; 
+}
+
+.training-main-section .contact-item {
+    margin-top: 20px; 
+    padding: 15px 0; 
+    border-top: 1px solid rgba(255,255,255,0.1); 
+    display: flex; 
+    flex-direction: column; 
+    gap: 4px; 
+}
+
+.training-main-section .contact-label { 
+    font-weight: bold; 
+    text-transform: uppercase; 
+    font-size: 1.4rem; 
+    letter-spacing: 1px; 
+} 
+
+.training-main-section .tackle-label { color: var(--thunder-light); }
+.training-main-section .flag-label { color: #facc15; }
+
+.training-main-section .contact-email a {
+    color: var(--thunder-white) !important; 
+    text-decoration: none; 
+    font-size: 1.1rem; 
+    font-weight: bold; 
+    transition: all 0.3s ease; 
+}
+
+.training-main-section .tackle-link:hover { color: var(--thunder-light) !important; } 
+.training-main-section .flag-link:hover { color: #facc15 !important; } 
+
+/* ==========================================
+   MEDIA QUERIES (RESPONSIVES DESIGN)
+   ========================================== */
+@media (max-width: 768px) {
+    header a.logo-link { margin-left: 0; }
+    .hero-nav { grid-template-columns: repeat(2, 1fr); height: 50vh; }
+    .card { flex-direction: column; text-align: center; gap: 10px; }
+    .score-area { justify-content: center !important; padding-right: 0 !important; }
+    
+    .news-modal-content { max-height: 90vh; }
+    .modal-header { height: 150px; min-height: 150px; }
+    .modal-body { padding: 20px; }
+    .modal-body h2 { font-size: 1.5rem; }
+
+    .player-overlay {
+        opacity: 1 !important;
+        background: rgba(27, 40, 69, 0.85);
+    }
+
+    .u16-top-image, .u13-top-image, .u10-top-image { 
+        height: 300px; 
+    }
+
+    .menu-toggle { display: block; }
+    nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(27, 40, 69, 0.98);
+        border-bottom: 2px solid var(--thunder-light);
+        padding: 20px 0;
+        gap: 15px;
+    }
+    nav.active { display: flex; }
+    .dropdown-content { position: static; box-shadow: none; border: none; min-width: 100%; text-align: center; background: transparent; }
+    .social-nav { border-left: none; padding-left: 0; margin-left: 0; }
+
+    .hero-split { 
+        flex-direction: column; 
+        height: auto; 
+    } 
+    .hero-left { 
+        height: 300px; 
+    } 
+    .hero-right { 
+        padding: 40px 20px; 
+    } 
+    .hero-right h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .cookie-content { flex-direction: column; text-align: center; gap: 15px; }
+    .cookie-buttons { width: 100%; justify-content: center; }
+}

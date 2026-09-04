@@ -4,268 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>U13 Flag Football - Berlin Thunderbirds</title>
+    <!-- FontAwesome für Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root {
-            --thunder-dark: #0a1128;
-            --thunder-blue: #1c3a7d;
-            --thunder-light: #4a90e2;
-            --thunder-silver: #d1d1d1;
-        }
-
-        body { 
-            margin: 0; 
-            font-family: 'Segoe UI', Arial, sans-serif; 
-            background: var(--thunder-dark); 
-            color: white; 
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
-
-        /* --- NAVIGATION --- */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(10, 17, 40, 0.98);
-            padding: 10px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 9999;
-            box-sizing: border-box;
-            border-bottom: 2px solid var(--thunder-blue);
-        }
-
-        /* Flexibler Logo-Abstand */
-        header a.logo-link { display: flex; align-items: center; margin-left: 0; text-decoration: none; position: relative; }
-        header img { height: 66px; transition: 0.3s ease; z-index: 2; }
-        .logo-hover-text { position: absolute; left: 20px; color: var(--thunder-light); font-weight: bold; text-transform: uppercase; font-size: 1.2rem; opacity: 0; transition: all 0.4s ease; pointer-events: none; white-space: nowrap; z-index: 1; }
-        header a.logo-link:hover img { opacity: 0.2; filter: grayscale(100%); }
-        header a.logo-link:hover .logo-hover-text { opacity: 1; left: 80px; }
-
-        nav { display: flex; align-items: center; gap: 20px; }
-
-        .dropdown { position: relative; display: inline-block; }
-        .nav-item { 
-            color: white; text-decoration: none; font-size: 14px; font-weight: bold; 
-            text-transform: uppercase; transition: 0.2s; cursor: pointer;
-            display: flex; align-items: center; gap: 5px; padding: 15px 0;
-        }
-        .nav-item:hover { color: var(--thunder-light); }
-
-        .dropdown-content {
-            display: none; position: absolute; background-color: rgba(10, 17, 40, 0.98);
-            min-width: 180px; box-shadow: 0px 8px 16px rgba(0,0,0,0.8);
-            border: 1px solid var(--thunder-blue); border-radius: 4px; top: 100%; left: 0; z-index: 10000;
-        }
-        .dropdown:hover .dropdown-content { display: block; }
-        .dropdown-content a {
-            color: white; padding: 12px 16px; text-decoration: none; display: block;
-            font-size: 13px; text-transform: uppercase; font-weight: bold;
-            border-bottom: 1px solid rgba(255,255,255,0.05); transition: 0.2s;
-        }
-        .dropdown-content a:hover { background-color: var(--thunder-blue); color: var(--thunder-light); }
-
-        .social-nav { display: flex; gap: 15px; margin-left: 10px; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 20px; }
-        .social-nav a { font-size: 1.2rem; transition: 0.2s; color: white; }
-        .social-nav a:hover { transform: scale(1.2); color: var(--thunder-light); }
-
-        /* HAMBURGER MENU TOGGLE ICON */
-        .menu-toggle {
-            display: none;
-            font-size: 1.8rem;
-            color: white;
-            cursor: pointer;
-        }
-
-        /* HEADER BILD */
-        .u13-top-image {
-            width: 100%;
-            height: 500px;
-            margin-top: 88px; 
-            background: url('Bilder/Flag.jpg') no-repeat center center;
-            background-size: cover;
-            border-bottom: 4px solid var(--thunder-blue);
-        }
-
-        /* TEXT CONTENT */
-        .content-container {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        .content-container h1 {
-            color: var(--thunder-light);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-            font-size: 2.5rem;
-            text-align: center;
-        }
-
-        .text-box {
-            background: rgba(28, 58, 125, 0.15);
-            padding: 30px;
-            border-radius: 12px;
-            border: 1px solid rgba(28, 58, 125, 0.3);
-            line-height: 1.8;
-            font-size: 1.1rem;
-            color: var(--thunder-silver);
-            text-align: center;
-        }
-
-        /* ROSTER GRID */
-        .roster-section {
-            max-width: 1200px;
-            margin: 60px auto;
-            padding: 0 20px;
-        }
-
-        .roster-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
-
-        .player-card {
-            background: #0d1a3a;
-            border-radius: 15px;
-            overflow: hidden;
-            border: 2px solid rgba(74, 144, 226, 0.2);
-            transition: 0.4s;
-            cursor: pointer;
-            position: relative;
-        }
-
-        .player-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--thunder-light);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
-        }
-
-        .player-card img {
-            width: 100%;
-            height: 320px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .player-card .info {
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: linear-gradient(to top, var(--thunder-dark), rgba(10, 17, 40, 0.8));
-        }
-
-        .info-detail {
-            font-size: 0.75rem;
-            color: var(--thunder-silver);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 4px;
-        }
-
-        .info-name {
-            font-size: 1rem;
-            color: var(--thunder-light);
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* LIGHTBOX */
-        .lightbox {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.95);
-            z-index: 99999;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .lightbox.active { display: flex; }
-        
-        .lightbox img { 
-            max-width: 800px;
-            width: 90%;      
-            max-height: 80vh; 
-            border: 3px solid var(--thunder-light); 
-            box-shadow: 0 0 30px rgba(74, 144, 226, 0.3);
-            object-fit: contain;
-            position: relative;
-            z-index: 1;
-        }
-
-        .close-btn { 
-            position: fixed; 
-            top: 30px; 
-            right: 30px; 
-            width: 50px;
-            height: 50px;
-            line-height: 50px;
-            text-align: center;
-            font-size: 60px; 
-            color: #ff4d4d;
-            font-weight: bold;
-            cursor: pointer; 
-            z-index: 100000;
-            text-shadow: 0 0 15px black;
-        }
-
-        footer { text-align: center; padding: 50px; border-top: 1px solid rgba(28, 58, 125, 0.5); color: var(--thunder-silver); }
-
-        /* EASTER EGG STYLE */
-        .easter-egg { 
-            position: fixed; 
-            bottom: 10px; 
-            left: 10px; 
-            display: flex; 
-            align-items: center; 
-            gap: 10px; 
-            opacity: 0; 
-            transition: 0.5s ease; 
-            z-index: 2000; 
-            background: rgba(10, 17, 40, 0.8); 
-            padding: 5px 10px; 
-            border-radius: 5px; 
-        }
-        .easter-egg:hover { opacity: 1; }
-        .easter-egg img { height: 30px; filter: drop-shadow(0 0 5px var(--thunder-light)); }
-        .easter-egg span { font-size: 0.7rem; color: var(--thunder-silver); text-transform: uppercase; letter-spacing: 1px; }
-
-        /* RESPONSIVE & MOBILES MENÜ */
-        @media (max-width: 768px) {
-            header a.logo-link { margin-left: 0; }
-            .u13-top-image { height: 300px; }
-            .roster-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
-            .close-btn { right: 20px; font-size: 40px; }
-
-            .menu-toggle { display: block; }
-            nav {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: rgba(10, 17, 40, 0.98);
-                border-bottom: 2px solid var(--thunder-blue);
-                padding: 20px 0;
-                gap: 15px;
-            }
-            nav.active { display: flex; }
-            .dropdown-content { position: static; box-shadow: none; border: none; min-width: 100%; text-align: center; }
-            .social-nav { border-left: none; padding-left: 0; margin-left: 0; }
-        }
-    </style>
+    <!-- Verknüpfung zur zentralen style.css -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <!-- ==========================================
+       HEADER & NAVIGATION
+       ========================================== -->
     <header>
         <a href="index.html" class="logo-link">
             <img src="Bilder/logo.jpg" alt="Berlin Thunderbirds Logo"> 
@@ -304,45 +52,62 @@
                 <a href="https://berlin-thunderbirds.myteamshop.de/" target="_blank" title="Fanshop"><i class="fa-solid fa-cart-shopping"></i></a>
                 <a href="https://www.instagram.com/berlinthunderbirds/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
                 <a href="https://www.facebook.com/thbev/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+				<a href="https://www.tiktok.com/@thunderbirds.berlin" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+				
             </div>
         </nav>
     </header>
 
+    <!-- ==========================================
+       TOP-BILD / HERO-BEREICH FÜR U13
+       ========================================== -->
     <div class="u13-top-image"></div>
 
+    <!-- ==========================================
+       HAUPTTEXT / BESCHREIBUNG U13 TEAM
+       ========================================== -->
     <div class="content-container">
         <h1>U13 Flag Football</h1>
         <div class="text-box">
             <p>
-                Unsere U13 ist das Herzstück unserer Jugendarbeit im Flag Football. Hier lernen Mädchen und Jungen ab 10 Jahren die Grundlagen des American Football: Fangen, Werfen und taktisches Zusammenspiel. Ohne Ausrüstung und harten Kontakt steht bei uns der Spielspaß und die sportliche Entwicklung an erster Stelle. Erlebe echten Teamgeist bei den kleinsten Thunderbirds!
+                Unsere U13 ist das Herzstück unserer Jugendarbeit im Flag Football[cite: 16]. Hier lernen Mädchen und Jungen ab 10 Jahren die Grundlagen des American Football: Fangen, Werfen und taktisches Zusammenspiel[cite: 16]. Ohne Ausrüstung und harten Kontakt steht bei uns der Spielspaß und die sportliche Entwicklung an erster Stelle[cite: 16]. Erlebe echten Teamgeist bei den kleinsten Thunderbirds![cite: 16]
             </p>
         </div>
     </div>
 
+    <!-- ==========================================
+       TEAM ROSTER (TRAINER & SPIELER-ÜBERSICHT)
+       ========================================== -->
     <div class="roster-section">
         <h2 style="color: var(--thunder-light); text-transform: uppercase; letter-spacing: 2px; text-align: center; margin-bottom: 40px;">Team Roster U13</h2>
         <div class="roster-grid">
 
-            <!-- Platzhalter für U13 Spieler -->
+            <!-- Trainer 1 -->
             <div class="player-card" onclick="openLightbox('logo.jpg', true)">
-                <img src="Bilder/logo.jpg" alt="Nachwuchsspieler" style="background: #0a1128; object-fit: contain; padding: 20px; box-sizing: border-box;">
+                <img src="Bilder/logo.jpg" alt="Nachwuchsspieler" style="background: #1b2845; object-fit: contain; padding: 5px; box-sizing: border-box;">
                 <div class="info">
-                    <span class="info-detail">#00 | Position</span>
-                    <span class="info-name">Vorname Nachname</span>
+                    <span class="info-detail">Coach</span>
+                    <br>
+                    <span class="info-name">Alex</span>
                 </div>
             </div>
 
+            <!-- Trainer 2 -->
             <div class="player-card" onclick="openLightbox('logo.jpg', true)">
-                <img src="Bilder/logo.jpg" alt="Nachwuchsspieler" style="background: #0a1128; object-fit: contain; padding: 20px; box-sizing: border-box;">
+                <img src="Bilder/logo.jpg" alt="Nachwuchsspieler" style="background: #1b2845; object-fit: contain; padding: 5px; box-sizing: border-box;">
                 <div class="info">
-                    <span class="info-detail">#00 | Position</span>
-                    <span class="info-name">Vorname Nachname</span>
+                    <span class="info-detail">Coach</span>
+                    <br>
+                    <span class="info-name">Dirk</span>
                 </div>
             </div>
 
         </div>
     </div>
 
+    <!-- ==========================================
+       FOOTER & EASTER EGG
+       ========================================== -->
     <footer>© 2026 BERLIN THUNDERBIRDS</footer>
 
     <div class="easter-egg">
@@ -350,11 +115,19 @@
         <span>Webdesign by Ankhzunamun</span>
     </div>
 
+    <!-- ==========================================
+       LIGHTBOX (BILD-GROSSANSICHT)
+       ========================================== -->
     <div class="lightbox" id="lb">
-        <span class="close-btn" onclick="closeLightbox()">&times;</span>
-        <img id="lb-img" src="">
+        <div class="lightbox-content">
+            <span class="close-btn" onclick="closeLightbox()">&times;</span>
+            <img id="lb-img" src="" alt="Grossansicht">
+        </div>
     </div>
 
+    <!-- ==========================================
+       JAVASCRIPT (MENÜ & LIGHTBOX LOGIK)
+       ========================================== -->
     <script>
         // Hamburger Menü Toggle
         document.addEventListener("DOMContentLoaded", function() {
@@ -368,7 +141,7 @@
             }
         });
 
-        // Lightbox Logik
+        // Lightbox Logik mit Browser-Verlauf-Unterstützung
         function openLightbox(imgName, isLogo = false) {
             const imgElement = document.getElementById('lb-img');
             if (isLogo) {
@@ -377,11 +150,22 @@
                 imgElement.src = 'Bilder/U13/' + imgName;
             }
             document.getElementById('lb').classList.add('active');
+            history.pushState({ lightboxOpen: true }, '');
         }
 
-        function closeLightbox() {
-            document.getElementById('lb').classList.remove('active');
+        function closeLightbox(fromHistory = false) {
+            const lb = document.getElementById('lb');
+            if (lb.classList.contains('active')) {
+                lb.classList.remove('active');
+                if (!fromHistory && history.state && history.state.lightboxOpen) {
+                    history.back();
+                }
+            }
         }
+
+        window.addEventListener('popstate', function(e) {
+            closeLightbox(true);
+        });
 
         // Schließen mit ESC-Taste
         document.addEventListener('keydown', (e) => { 

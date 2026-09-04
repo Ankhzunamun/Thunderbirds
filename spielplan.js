@@ -59,8 +59,8 @@ const tackleHTML = `
     <div class="card away">
         <span class="card-text">30.08 @ Vorpommern Vandals</span>
         <div class="badge-center"><span class="badge badge-away">Away</span></div>
-        <div class="score-area">--:--</div>
-        <div class="badge-right"></div>
+        <div class="score-area">14:27</div>
+        <div class="badge-right"><span class="badge badge-won">Won</span></div>
     </div>
 	
     <div class="card away">
@@ -240,33 +240,25 @@ const u16HTML = `
     </div>
 `;
 
-// --- AUSFÜHRUNG ---
-// Wir warten, bis das Dokument geladen ist
+// ==========================================
+// HAUPT-INITIALISIERUNG FÜR DEN SPIELPLAN
+// ==========================================
 document.addEventListener("DOMContentLoaded", function() {
     
-    // Tackle einfügen
+    // Tackle-Daten in die Ladezone einfügen
     const tackleZone = document.querySelector('.spielplan-lade-zone');
     if(tackleZone) tackleZone.innerHTML = tackleHTML;
 
-    // U10 einfügen
+    // U10-Daten einfügen
     const u10Zone = document.querySelector('.spielu10');
     if(u10Zone) u10Zone.innerHTML = u10HTML;
 	
-	// U13 einfügen
+    // U13-Daten einfügen
     const u13Zone = document.querySelector('.spielu13');
     if(u13Zone) u13Zone.innerHTML = u13HTML;
     
-	// U16 einfügen
+    // U16-Daten einfügen
     const u16Zone = document.querySelector('.spielu16');
     if(u16Zone) u16Zone.innerHTML = u16HTML;
 	
 });
-
-
-
-
-
-
-
-
-
