@@ -80,31 +80,7 @@ const newsData = [
         shortText: "Unsere Seniors gewinnen das erste Heimspiel der Saison souverän mit 37:00. Ein riesiges Danke an alle Fans!",
         fullText: "<p>Ein grandioser Auftakt für unsere Seniors! Vor einigen Zuschauern dominierten wir die Gäste von der ersten Minute an. Die Defense stand wie eine Mauer, und unsere Offense zeigte ein variables Lauf- und Passspiel. Ein perfekter Start in die neue Season.</p>",
         image: "Bilder/News/260426.png"
-    },
-	{
-        date: "01. August 2026",
-        title: "Flag Coach gesucht!",
-        shortText: "Werde Teil unserer Football-Familie: Wir suchen dich als Coach.",
-        fullText: `
-            <p><strong>Werde Teil unserer Football-Familie: Wir suchen dich als Coach (w/m/d)!</strong></p>
-            <p>Du hast Leidenschaft für den Sport, Freude an der Arbeit mit jungen Talenten und möchtest Teil eines starken Teams werden? Die Berlin Thunderbirds suchen motivierte Verstärkung für unsere Flag-Football-Jugendteams (U10, U13, U16)!</p>
-            
-            <p><strong>Warum du bei uns coachen solltest:</strong></p>
-            <ul>
-                <li><strong>Unterstützung:</strong> Wir begleiten dich aktiv bei deiner persönlichen Entwicklung als Coach.</li>
-                <li><strong>Starkes Team:</strong> Gemeinsam wachsen wir, lernen voneinander und feiern unsere Erfolge.</li>
-                <li><strong>Spass:</strong> Die Freude am Sport und die Begeisterung unserer Spieler stehen bei uns im Mittelpunkt.</li>
-                <li><strong>Football is Family:</strong> Werde Teil einer großen Football-Familie, in der Zusammenhalt großgeschrieben wird.</li>
-            </ul>
-
-            <p><strong>Interesse geweckt?</strong><br>
-            Komm in unser Team am Standort <strong>Stadion Britz-Süd (Buckower Damm 13, 12349 Berlin)</strong>.</p>
-
-            <p>Melde dich einfach direkt bei uns:<br>
-            <strong>E-Mail:</strong> coach.alex@berlinthunderbirds.de</p>
-
-            <p><strong>Bewirb dich jetzt und gestalte die Zukunft unserer jungen Talente aktiv mit!</strong></p>
-        `, image: "Bilder/News/010826.jpg"}
+    }
 ];
 
 let currentPage = 1;
