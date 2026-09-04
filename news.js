@@ -79,7 +79,7 @@ const newsData = [
         title: "Saisonauftakt geglückt!",
         shortText: "Unsere Seniors gewinnen das erste Heimspiel der Saison souverän mit 37:00. Ein riesiges Danke an alle Fans!",
         fullText: "<p>Ein grandioser Auftakt für unsere Seniors! Vor einigen Zuschauern dominierten wir die Gäste von der ersten Minute an. Die Defense stand wie eine Mauer, und unsere Offense zeigte ein variables Lauf- und Passspiel. Ein perfekter Start in die neue Season.</p>",
-        image: "Bilder/News/260426.jpg"
+        image: "Bilder/News/260426.JPG"
     }
 ];
 
