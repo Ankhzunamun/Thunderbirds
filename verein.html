@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Über uns & Verein - Berlin Thunderbirds</title>
+    <!-- FontAwesome für Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Verknüpfung zur zentralen style.css -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- ==========================================
+       JAVASCRIPT (MENÜ & COOKIES)
+       ========================================== -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Hamburger Menü Toggle Initialisierung
+            const menuToggle = document.getElementById('mobile-menu');
+            const nav = document.querySelector('nav');
+
+            if (menuToggle && nav) {
+                menuToggle.addEventListener('click', () => {
+                    nav.classList.toggle('active');
+                });
+            }
+
+            // Cookie Banner Prüfung beim Seitenaufruf
+            if (!localStorage.getItem("cookiesAkzeptiert")) {
+                setTimeout(() => {
+                    const banner = document.getElementById("cookie-banner");
+                    if (banner) {
+                        banner.classList.add("cookie-active");
+                    }
+                }, 1000);
+            }
+        });
+
+        // Funktion zum Bestätigen der Cookies
+        function acceptCookies() {
+            localStorage.setItem("cookiesAkzeptiert", "true");
+            const banner = document.getElementById("cookie-banner");
+            if (banner) {
+                banner.classList.remove("cookie-active");
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+     <!-- ==========================================
+       HEADER & NAVIGATION
+       ========================================== -->
+    <div id="main-header"></div>
+
+    <!-- ==========================================
+       HAUPTINHALT (VEREIN / IMPRESSUM / DOWNLOAD)
+       ========================================== -->
+    <main style="padding: 140px 20px 60px 20px; max-width: 1000px; margin: 0 auto; color: var(--thunder-light);">
+
+       
+        <!-- ANKERPUNKT: VEREIN / ÜBER UNS -->
+        <section id="verein" style="margin-bottom: 60px;">
+            <h2 style="text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; border-bottom: 2px solid rgba(125, 211, 252, 0.3); padding-bottom: 10px; text-align: center;">Über uns</h2>
+            <div class="text-box">
+                <p style="margin-top: 0;">Die <span style="color: var(--thunder-light); font-weight: bold;">Berlin Thunderbirds e.V.</span> wurden 1992 gegründet und setzen sich aus folgendem Vorstand zusammen:</p>
+
+                <table style="width: 100%; border-collapse: collapse; margin: 15px 0;">
+                    <tr style="vertical-align: top;">
+                        <td style="width: 220px; font-weight: bold; color: #ffffff; text-align: left; padding-bottom: 8px;">Derek Low</td>
+                        <td style="text-align: left; color: var(--thunder-light); padding-bottom: 8px;">Vorsitzender</td>
+                    </tr>
+                    <tr style="vertical-align: top;">
+                        <td style="font-weight: bold; color: #ffffff; text-align: left; padding-bottom: 8px;">Fabian-Stephan Branig</td>
+                        <td style="text-align: left; color: var(--thunder-light); padding-bottom: 8px;">????</td>
+                    </tr>
+                    <tr style="vertical-align: top;">
+                        <td style="font-weight: bold; color: #ffffff; text-align: left; padding-bottom: 8px;">Alexander Steinert</td>
+                        <td style="text-align: left; color: var(--thunder-light); padding-bottom: 8px;">Jugendwart</td>
+                    </tr>
+                    <tr style="vertical-align: top;">
+                        <td style="font-weight: bold; color: #ffffff; text-align: left; padding-bottom: 8px;">Katarina Dukovski</td>
+                        <td style="text-align: left; color: var(--thunder-light); padding-bottom: 8px;">Kassenwärtin</td>
+                    </tr>
+                    <tr style="vertical-align: top;">
+                        <td style="font-weight: bold; color: #ffffff; text-align: left; padding-bottom: 8px;">Luisa Winkelsesser</td>
+                        <td style="text-align: left; color: var(--thunder-light); padding-bottom: 8px;">?????</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+        <!-- ANKERPUNKT: IMPRESSUM -->
+        <section id="impressum" style="margin-bottom: 60px;">
+            <h2 style="text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; border-bottom: 2px solid rgba(125, 211, 252, 0.3); padding-bottom: 10px; text-align: center;">Impressum</h2>
+            <div class="text-box">
+                <p style="margin-top: 0;"><strong>Angaben gemäß § 5 DDG:</strong></p>
+                <p>Berlin Thunderbirds e.V.<br>
+                Fontanestraße 3 B<br>
+                14193 Berlin</p>
+                 
+                <p><strong>Registereintrag:</strong><br>
+                Vereinsregister: VR 30862 B<br>
+                Registergericht: Amtsgericht Berlin-Charlottenburg</p>
+                 
+                <p><strong>Vertreten durch:</strong><br>
+                Derek Low</p>
+
+                <p><strong>Kontakt:</strong><br>
+                E-Mail: <a href="mailto:info@berlin-thunderbirds.de" style="color: var(--thunder-light); text-decoration: underline;">info@berlin-thunderbirds.de</a></p>
+            </div>
+        </section>
+
+        <!-- ANKERPUNKT: DOWNLOAD -->
+        <section id="download" style="margin-bottom: 40px;">
+            <h2 style="text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; border-bottom: 2px solid rgba(125, 211, 252, 0.3); padding-bottom: 10px; text-align: center;">Download</h2>
+            <div class="text-box">
+                <p style="margin-top: 0;">Hier findest du wichtige Dokumente, Aufnahmeanträge und Formulare rund um den Verein:</p>
+                <ul style="line-height: 2; padding-left: 20px; text-align: left; display: inline-block;">
+                    <li><a href="#" style="color: var(--thunder-light); text-decoration: underline;">Mitgliedsantrag Berlin Thunderbirds e.V. (PDF)</a></li>
+                    <li><a href="#" style="color: var(--thunder-light); text-decoration: underline;">Sportärztliche Untersuchung / Attest-Vorlag (PDF)</a></li>
+                    <li><a href="#" style="color: var(--thunder-light); text-decoration: underline;">Satzung des Vereins (PDF)</a></li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==========================================
+       FOOTER & EASTER EGG
+       ========================================== -->
+    <div id="main-footer"></div>
+
+    <script src="leisten.js"></script>
+	
+
+</body>
+</html>

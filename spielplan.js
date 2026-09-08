@@ -66,8 +66,8 @@ const tackleHTML = `
     <div class="card away">
         <span class="card-text">06.09 @ Spandau Bulldogs</span>
         <div class="badge-center"><span class="badge badge-away">Away</span></div>
-        <div class="score-area">--:--</div>
-        <div class="badge-right"></div>
+        <div class="score-area">00:46</div>
+        <div class="badge-right"><span class="badge badge-won">Won</span></div>
     </div>
 `;
 

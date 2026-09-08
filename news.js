@@ -3,6 +3,32 @@
 // ==========================================
 const newsData = [
     {
+        date: "06. September 2026",
+        title: "Thunderbirds @ Spandau Bulldogs",
+        shortText: "Unsere Männer dominieren in Spandau",
+        fullText: `<p>Dominanter Auswärtssieg bei den Spandau Bulldogs</p>
+    
+					<p>
+					Unsere Seniorenmannschaft war am vergangenen Spieltag zu Gast bei den Spandau Bulldogs. Bei bestem Wetter und pünktlichem Kick-off um 15:00 Uhr bot sich den Fans eine großartige Kulisse – laut Stadionsprecher war das Spiel nahezu ausverkauft. Die Bulldogs traten allerdings mit einem etwas geschwächten Kader an.
+					</p>
+
+					<p>
+					Von der ersten Minute an hatten die Thunderbirds das Geschehen fest im Griff und dominierten die Partie nach Belieben. Bereits zur Halbzeit spiegelte sich diese Überlegenheit in einer komfortablen 00:21-Führung wider. 
+					</p>
+
+					<p>
+					In der zweiten Halbzeit lag der Fokus vor allem auf der Frage, ob die Defense den Zu-Null-Sieg festhalten konnte. Die Verteidigung hielt dem Druck stand: Selbst ein Field-Goal-Versuch der Hausherren wurde erfolgreich geblockt. Am Ende feierten die Thunderbirds einen hochverdienten 00:46-Kantersieg.
+					</p>
+					
+					<p>
+					Schlüsselmomente waren unter anderem ein spektakulärer Pick-Six von Tim sowie ein Fumble der Bulldogs nahe der eigenen Endzone, den unsere Offense prompt in einen Touchdown ummünzte.
+					</p>
+					
+					<p><strong>Eine überragende Teamleistung – Let's go Thunderbirds!</strong></p>`,
+					image: "Bilder/News/060926.jpg"
+    },
+	
+	{
         date: "30. August 2026",
         title: "Thunderbirds @ Vorpommern Vandals",
         shortText: "Auswärtsspiel der Seniors",
@@ -73,13 +99,6 @@ const newsData = [
             <p><strong>Bewirb dich jetzt und gestalte die Zukunft unserer jungen Talente aktiv mit!</strong></p>
         `,         
         image: "Bilder/News/010826.jpg"
-    },
-    {
-        date: "26. April 2026",
-        title: "Saisonauftakt geglückt!",
-        shortText: "Unsere Seniors gewinnen das erste Heimspiel der Saison souverän mit 37:00. Ein riesiges Danke an alle Fans!",
-        fullText: "<p>Ein grandioser Auftakt für unsere Seniors! Vor einigen Zuschauern dominierten wir die Gäste von der ersten Minute an. Die Defense stand wie eine Mauer, und unsere Offense zeigte ein variables Lauf- und Passspiel. Ein perfekter Start in die neue Season.</p>",
-        image: "Bilder/News/260426.png"
     }
 ];
 
