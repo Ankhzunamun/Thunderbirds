@@ -1,6 +1,6 @@
 :root {
     --thunder-dark: #1b2845;    
-    --thunder-blue: #1d4ed8;    /* Etwas dunkleres, kräftiges Blau statt dem hellen 3b82f6 */
+    --thunder-blue: #1d4ed8;    
     --thunder-light: #7dd3fc;   
     --thunder-silver: #f1f5f9;  
     --success-green: #22c55e;
@@ -532,6 +532,64 @@ footer { text-align: center; padding: 50px; color: var(--thunder-silver); border
     letter-spacing: 1px;
     margin-top: 4px;
 }
+/* ==========================================
+   MOBILE MAXX 5 KARTEN PRO REIHE (UMBRUCH)
+   ========================================== */
+@media (max-width: 768px) {
+    .roster-grid {
+        display: grid !important;
+        /* Begrenzt das Grid auf dem Handy auf maximal 5 Spalten nebeneinander, 
+           danach bricht es automatisch in die nächste Zeile um */
+        grid-template-columns: repeat(5, minmax(160px, 1fr)) !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory !important;
+        gap: 15px !important;
+        padding-bottom: 15px !important;
+        scrollbar-width: thin;
+        scrollbar-color: var(--thunder-light) rgba(29, 78, 216, 0.1);
+    }
+
+    .roster-grid::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    .roster-grid::-webkit-scrollbar-track {
+        background: rgba(29, 78, 216, 0.1);
+        border-radius: 10px;
+    }
+
+    .roster-grid::-webkit-scrollbar-thumb {
+        background: var(--thunder-light);
+        border-radius: 10px;
+    }
+
+    .player-card {
+        flex: none !important;
+        width: 160px !important;
+        max-width: 160px !important;
+        scroll-snap-align: start !important;
+    }
+
+    .player-card img {
+        height: 200px !important;
+    }
+
+    .player-card .info {
+        padding: 10px !important;
+    }
+
+    .player-card .player-number {
+        font-size: 1.2rem !important;
+    }
+
+    .player-card .player-name-card {
+        font-size: 0.9rem !important;
+    }
+
+    .player-card .player-position {
+        font-size: 0.75rem !important;
+    }
+}
 
 /* ==========================================
    SPIELER MODAL / POPUP
@@ -624,7 +682,7 @@ footer { text-align: center; padding: 50px; color: var(--thunder-silver); border
 }
 
 /* ==========================================
-   LIGHTBOX
+   LIGHTBOX & PFEILE
    ========================================== */
 .lightbox {
     display: none;
@@ -690,6 +748,44 @@ footer { text-align: center; padding: 50px; color: var(--thunder-silver); border
     background-color: #ef4444 !important;
     border-color: #ef4444 !important;
     transform: scale(1.1) !important;
+}
+
+.lightbox-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(27, 40, 69, 0.85);
+    color: white;
+    border: 2px solid var(--thunder-light);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 100002;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.lightbox-arrow:hover {
+    background-color: var(--thunder-blue);
+    transform: translateY(-50%) scale(1.15);
+}
+
+.prev-btn {
+    left: -25px;
+}
+
+.next-btn {
+    right: -25px;
+}
+
+@media (max-width: 768px) {
+    .prev-btn { left: 10px; }
+    .next-btn { right: 10px; }
 }
 
 /* ==========================================
@@ -965,7 +1061,160 @@ footer { text-align: center; padding: 50px; color: var(--thunder-silver); border
     .cookie-buttons { width: 100%; justify-content: center; }
 }
 
-/* Lässt alle Elemente mit einer ID beim Anspringen automatisch etwas weiter unten enden, damit sie nicht hinter der fixierten Navigation verschwinden */
 html {
     scroll-padding-top: 100px; 
+}
+
+/* ==========================================
+   GALERIE SEITE & ORDNER STYLING
+   ========================================== */
+.gallery-page-section {
+    padding: 120px 20px 60px 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.gallery-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.gallery-header-container h1 {
+    color: var(--thunder-light);
+    text-transform: uppercase;
+    font-size: 2.2rem;
+    margin: 0;
+}
+
+.gallery-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+    gap: 25px !important;
+    width: 100% !important;
+}
+
+.gallery-item {
+    position: relative !important;
+    height: 240px !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    border: 2px solid rgba(125, 211, 252, 0.3) !important;
+    cursor: pointer !important;
+    transition: 0.3s ease !important;
+    background: #1e2c4f !important;
+}
+
+.gallery-item img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+    transition: transform 0.4s ease !important;
+}
+
+.gallery-item:hover {
+    border-color: var(--thunder-light) !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5) !important;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.08) !important;
+}
+
+.folder-card {
+    position: relative;
+    cursor: pointer;
+}
+
+.folder-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(27,40,69,0.2) 0%, rgba(27,40,69,0.95) 80%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+.folder-card:hover .folder-overlay {
+    background: linear-gradient(180deg, rgba(29,78,216,0.3) 0%, rgba(27,40,69,0.98) 90%);
+}
+
+.folder-icon {
+    font-size: 2.5rem;
+    color: var(--thunder-light);
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+}
+
+.folder-card:hover .folder-icon {
+    transform: scale(1.2);
+}
+
+.folder-overlay h3 {
+    margin: 0 0 5px 0;
+    color: white;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+}
+
+.folder-count {
+    font-size: 0.85rem;
+    color: var(--thunder-silver);
+}
+
+/* ==========================================
+   SPONSOREN SEKTION
+   ========================================== */
+.sponsors-section {
+    padding: 30px 15px 50px 15px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.sponsors-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.sponsor-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Der Rahmen sitzt jetzt direkt als Box um das Bild und passt sich an */
+.sponsor-img {
+    max-height: 65px; /* Maximale Höhe des Logos */
+    width: auto;      /* Breite passt sich automatisch an das Bild an */
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(125, 211, 252, 0.2);
+    border-radius: 6px;
+    padding: 6px;     /* Kleiner Innenabstand zwischen Bild und Rahmen */
+    display: block;
+    transition: 0.3s;
+}
+
+.sponsor-card:hover .sponsor-img {
+    border-color: var(--thunder-light);
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.sponsor-name {
+    margin-top: 6px;
+    font-size: 0.75rem;
+    color: var(--thunder-silver);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
 }

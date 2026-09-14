@@ -32,8 +32,11 @@ document.addEventListener("DOMContentLoaded", function() {
                     <a href="verein.html#verein">Verein</a>
                     <a href="verein.html#impressum">Impressum</a>
                     <a href="verein.html#download">Download</a>
-                </div>
+					<a href="verein.html#datenschutz">Datenschutz</a>
+				</div>
             </div>
+			
+			<a href="galerie.html" class="nav-item">Galerie</a>
 
             <div class="social-nav">
                 <a href="https://berlin-thunderbirds.myteamshop.de/" target="_blank" title="Fanshop"><i class="fa-solid fa-cart-shopping"></i></a>
@@ -45,15 +48,37 @@ document.addEventListener("DOMContentLoaded", function() {
     </header>
     `;
 
-    // 2. FOOTER & EASTER EGG EINFÜGEN
+    // 2. FOOTER, IMPRESSUM, DATENSCHUTZ & COOKIE BANNER EINFÜGEN
     const footerHTML = `
     <footer>
+        <div style="margin-bottom: 10px;">
+            <a href="verein.html#impressum" style="color: var(--thunder-light); text-decoration: none; margin: 0 15px; font-weight: bold; text-transform: uppercase; font-size: 0.85rem;">Impressum</a>
+            <span style="color: rgba(255,255,255,0.3);">|</span>
+            <a href="verein.html#datenschutz" style="color: var(--thunder-light); text-decoration: none; margin: 0 15px; font-weight: bold; text-transform: uppercase; font-size: 0.85rem;">Datenschutz</a>
+            <span style="color: rgba(255,255,255,0.3);">|</span>
+            <a href="#" onclick="openCookieBanner(event)" style="color: var(--thunder-light); text-decoration: none; margin: 0 15px; font-weight: bold; text-transform: uppercase; font-size: 0.85rem;">Cookies</a>
+        </div>
         © 2026 BERLIN THUNDERBIRDS e.V.
     </footer>
 
     <div class="easter-egg">
         <img src="Bilder/Ankh.jpg" alt="Ankh Logo">
         <span>Webdesign by Ankhzunamun</span>
+    </div>
+
+    <!-- COOKIE BANNER -->
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-content">
+            <i class="fa-solid fa-cookie-bite cookie-icon"></i>
+            <div class="cookie-text">
+                <h3>Cookie-Einstellungen</h3>
+                <p>Wir nutzen Cookies und Analysetools (wie Google Analytics), um unsere Website zu verbessern. Weitere Infos findest du in unserer <a href="verein.html#datenschutz">Datenschutzerklärung</a>.</p>
+            </div>
+            <div class="cookie-buttons">
+                <button onclick="acceptCookies()" class="btn-accept">Alle akzeptieren</button>
+                <button onclick="rejectCookies()" class="btn-reject" style="background: transparent; color: white; border: 1px solid var(--thunder-light); padding: 12px 20px; font-weight: bold; text-transform: uppercase; border-radius: 6px; cursor: pointer;">Nur essenzielle</button>
+            </div>
+        </div>
     </div>
     `;
 
@@ -68,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function() {
         footerPlaceholder.innerHTML = footerHTML;
     }
 
-    // Hamburger Menü Event-Listener erst NACH dem Einfügen aktivieren
+    // Hamburger Menü Event-Listener
     const menuToggle = document.getElementById('mobile-menu');
     const nav = document.querySelector('nav');
 
@@ -77,4 +102,76 @@ document.addEventListener("DOMContentLoaded", function() {
             nav.classList.toggle('active');
         });
     }
+
+    // Cookie Banner Status beim Laden prüfen
+    const status = localStorage.getItem("cookieStatus");
+    const banner = document.getElementById("cookie-banner");
+
+    if (status === "accepted") {
+        // Wenn akzeptiert, Analytics laden und Banner geschlossen halten
+        if (banner) {
+            banner.classList.remove("cookie-active");
+        }
+        loadGoogleAnalytics();
+    } else if (status === "essentials") {
+        // Wenn nur essenzielle gewählt wurden: Banner bleibt zu, Analytics bleibt AUS
+        if (banner) {
+            banner.classList.remove("cookie-active");
+        }
+    } else {
+        // Erster Besuch (kein Status hinterlegt) -> Banner nach 1 Sekunde einblenden
+        setTimeout(() => {
+            if (banner) {
+                banner.classList.add("cookie-active");
+            }
+        }, 1000);
+    }
 });
+
+// GLOBALE COOKIE FUNKTIONEN
+function acceptCookies() {
+    localStorage.setItem("cookieStatus", "accepted");
+    const banner = document.getElementById("cookie-banner");
+    if (banner) {
+        banner.classList.remove("cookie-active");
+    }
+    loadGoogleAnalytics();
+}
+
+function rejectCookies() {
+    // Merkt sich, dass "Nur essenzielle" gewählt wurde (frägt also beim nächsten Mal nicht mehr ungefragt nach)
+    localStorage.setItem("cookieStatus", "essentials");
+    const banner = document.getElementById("cookie-banner");
+    if (banner) {
+        banner.classList.remove("cookie-active");
+    }
+    // Google Analytics bleibt explizit aus!
+}
+
+// Funktion, um das Banner über den Footer-Link manuell wieder zu öffnen
+function openCookieBanner(event) {
+    if (event) event.preventDefault();
+    const banner = document.getElementById("cookie-banner");
+    if (banner) {
+        banner.classList.add("cookie-active");
+    }
+}
+
+// GOOGLE ANALYTICS LADEN
+function loadGoogleAnalytics() {
+    if (window.gaLoaded) return;
+    window.gaLoaded = true;
+
+    // Trage hier später deine echte Measurement-ID ein (z.B. G-XXXXXXXXXX)
+    var measurementId = 'DEINE-MEASUREMENT-ID'; 
+
+    var script1 = document.createElement('script');
+    script1.async = true;
+    script1.src = 'https://www.googletagmanager.com/gtag/js?id=' + measurementId;
+    document.head.appendChild(script1);
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', measurementId);
+}

@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Über uns & Verein - Berlin Thunderbirds</title>
-    <!-- FontAwesome für Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- FontAwesome für Icons (über CDN eingebunden) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"[cite: 4]>
     <!-- Verknüpfung zur zentralen style.css -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"[cite: 4]>
     
     <!-- ==========================================
        JAVASCRIPT (MENÜ & COOKIES)
@@ -54,41 +54,55 @@
     <div id="main-header"></div>
 
     <!-- ==========================================
-       HAUPTINHALT (VEREIN / IMPRESSUM / DOWNLOAD)
+       HAUPTINHALT (VEREIN / IMPRESSUM / DOWNLOAD / DATENSCHUTZ)
        ========================================== -->
     <main style="padding: 140px 20px 60px 20px; max-width: 1000px; margin: 0 auto; color: var(--thunder-light);">
 
        
+    
         <!-- ANKERPUNKT: VEREIN / ÜBER UNS -->
-        <section id="verein" style="margin-bottom: 60px;">
-            <h2 style="text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; border-bottom: 2px solid rgba(125, 211, 252, 0.3); padding-bottom: 10px; text-align: center;">Über uns</h2>
-            <div class="text-box">
-                <p style="margin-top: 0;">Die <span style="color: var(--thunder-light); font-weight: bold;">Berlin Thunderbirds e.V.</span> wurden 1992 gegründet und setzen sich aus folgendem Vorstand zusammen:</p>
+    <section id="verein" style="margin-bottom: 60px;">
+        <h2 style="text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; border-bottom: 2px solid rgba(125, 211, 252, 0.3); padding-bottom: 10px; text-align: center;">Über uns</h2>
+        <div class="text-box">
+            <p style="margin-top: 0;">Die <span style="color: var(--thunder-light); font-weight: bold;">Berlin Thunderbirds e.V.</span> wurden 1992 gegründet und setzen sich aus folgendem Vorstand zusammen:</p>
 
-                <table style="width: 100%; border-collapse: collapse; margin: 15px 0;">
-                    <tr style="vertical-align: top;">
-                        <td style="width: 220px; font-weight: bold; color: #ffffff; text-align: left; padding-bottom: 8px;">Derek Low</td>
-                        <td style="text-align: left; color: var(--thunder-light); padding-bottom: 8px;">1. Vorsitzender</td>
-                    </tr>
-                    <tr style="vertical-align: top;">
-                        <td style="font-weight: bold; color: #ffffff; text-align: left; padding-bottom: 8px;">Fabian-Stephan Branig</td>
-                        <td style="text-align: left; color: var(--thunder-light); padding-bottom: 8px;">2. Vorsitzender</td>
-                    </tr>
-                    <tr style="vertical-align: top;">
-                        <td style="font-weight: bold; color: #ffffff; text-align: left; padding-bottom: 8px;">Alexander Steinert</td>
-                        <td style="text-align: left; color: var(--thunder-light); padding-bottom: 8px;">Jugendwart</td>
-                    </tr>
-                    <tr style="vertical-align: top;">
-                        <td style="font-weight: bold; color: #ffffff; text-align: left; padding-bottom: 8px;">Katarina Dukovski</td>
-                        <td style="text-align: left; color: var(--thunder-light); padding-bottom: 8px;">Kassenwartin</td>
-                    </tr>
-                    <tr style="vertical-align: top;">
-                        <td style="font-weight: bold; color: #ffffff; text-align: left; padding-bottom: 8px;">Luisa Winkelsesser</td>
-                        <td style="text-align: left; color: var(--thunder-light); padding-bottom: 8px;">Sportwartin</td>
-                    </tr>
-                </table>
-            </div>
-        </section>
+            <table style="width: 100%; border-collapse: collapse; margin: 15px 0;">
+                <tr style="vertical-align: top;">
+                    <td style="width: 220px; font-weight: bold; color: #ffffff; text-align: left; padding-bottom: 8px;">Derek Low</td>
+                    <td style="text-align: left; color: var(--thunder-light); padding-bottom: 8px;">1. Vorsitzender</td>
+                </tr>
+                <tr style="vertical-align: top;">
+                    <td style="font-weight: bold; color: #ffffff; text-align: left; padding-bottom: 8px;">Fabian-Stephan Branig</td>
+                    <td style="text-align: left; color: var(--thunder-light); padding-bottom: 8px;">2. Vorsitzender</td>
+                </tr>
+                <tr style="vertical-align: top;">
+                    <td style="font-weight: bold; color: #ffffff; text-align: left; padding-bottom: 8px;">Alexander Steinert</td>
+                    <td style="text-align: left; color: var(--thunder-light); padding-bottom: 8px;">Jugendwart</td>
+                </tr>
+                <tr style="vertical-align: top;">
+                    <td style="font-weight: bold; color: #ffffff; text-align: left; padding-bottom: 8px;">Katarina Dukovski</td>
+                    <td style="text-align: left; color: var(--thunder-light); padding-bottom: 8px;">Kassenwartin</td>
+                </tr>
+                <tr style="vertical-align: top;">
+                    <td style="font-weight: bold; color: #ffffff; text-align: left; padding-bottom: 8px;">Luisa Winkelsesser</td>
+                    <td style="text-align: left; color: var(--thunder-light); padding-bottom: 8px;">Sportwartin</td>
+                </tr>
+            </table>
+            
+            <p style="margin-top: 30px; margin-bottom: 10px;">Nicht im Vorstand, aber unverzichtbar:</p>
+            <table style="width: 100%; border-collapse: collapse; margin: 15px 0;">
+                <tr style="vertical-align: top;">
+                    <td style="width: 220px; font-weight: bold; color: #ffffff; text-align: left; padding-bottom: 8px;">Vivian Neumann</td>
+                    <td style="text-align: left; color: var(--thunder-light); padding-bottom: 8px;">Kinderschutzbeauftragte</td>
+                </tr>
+                <tr style="vertical-align: top;">
+                    <td style="font-weight: bold; color: #ffffff; text-align: left; padding-bottom: 8px;">Magdalena Steinert</td>
+                    <td style="text-align: left; color: var(--thunder-light); padding-bottom: 8px;">Kinderschutzbeauftragte</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
         <!-- ANKERPUNKT: IMPRESSUM -->
         <section id="impressum" style="margin-bottom: 60px;">
             <h2 style="text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; border-bottom: 2px solid rgba(125, 211, 252, 0.3); padding-bottom: 10px; text-align: center;">Impressum</h2>
@@ -104,22 +118,98 @@
                  
                 <p><strong>Vertreten durch:</strong><br>
                 Derek Low</p>
-
+				Telefon: 017681606711<br>
+				
                 <p><strong>Kontakt:</strong><br>
                 E-Mail: <a href="mailto:info@berlin-thunderbirds.de" style="color: var(--thunder-light); text-decoration: underline;">info@berlin-thunderbirds.de</a></p>
             </div>
         </section>
 
         <!-- ANKERPUNKT: DOWNLOAD -->
-        <section id="download" style="margin-bottom: 40px;">
+        <section id="download" style="margin-bottom: 60px;">
             <h2 style="text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; border-bottom: 2px solid rgba(125, 211, 252, 0.3); padding-bottom: 10px; text-align: center;">Download</h2>
             <div class="text-box">
                 <p style="margin-top: 0;">Hier findest du wichtige Dokumente, Aufnahmeanträge und Formulare rund um den Verein:</p>
                 <ul style="line-height: 2; padding-left: 20px; text-align: left; display: inline-block;">
-                    <li><a href="#" style="color: var(--thunder-light); text-decoration: underline;">Mitgliedsantrag Berlin Thunderbirds e.V. (PDF)</a></li>
-                    <li><a href="#" style="color: var(--thunder-light); text-decoration: underline;">Sportärztliche Untersuchung / Attest-Vorlag (PDF)</a></li>
-                    <li><a href="#" style="color: var(--thunder-light); text-decoration: underline;">Satzung des Vereins (PDF)</a></li>
+                    <li><a href="Dokumente/Satzung.pdf" target="_blank" style="color: var(--thunder-light); text-decoration: underline;">Satzung (PDF)</a></li>
+                    <li><a href="Dokumente/Beitragsordnung.pdf" target="_blank" style="color: var(--thunder-light); text-decoration: underline;">Beitragsordnung (PDF)</a></li>
+                    <li><a href="Dokumente/Pflichtstundenordnung.pdf" target="_blank" style="color: var(--thunder-light); text-decoration: underline;">Pflichtstundenordnung (PDF)</a></li>
+                    <li><a href="Dokumente/SEPA.pdf" target="_blank" style="color: var(--thunder-light); text-decoration: underline;">SEPA-Lastschriftmandat (PDF)</a></li>
+                    <li><a href="Dokumente/Mitgliedsantrag.pdf" target="_blank" style="color: var(--thunder-light); text-decoration: underline;">Mitgliedsantrag (PDF)</a></li>
                 </ul>
+            </div>
+        </section>
+
+        <!-- ANKERPUNKT: DATENSCHUTZ -->
+        <section id="datenschutz" style="margin-bottom: 40px;">
+            <h2 style="text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; border-bottom: 2px solid rgba(125, 211, 252, 0.3); padding-bottom: 10px; text-align: center;">Datenschutzerklärung</h2>
+            <div class="text-box" style="text-align: left;">
+                
+                <h3>1. Datenschutz auf einen Blick</h3>
+                <p><strong>Allgemeine Hinweise</strong><br>
+                Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können. Ausführliche Informationen zum Thema Datenschutz entnehmen Sie unserer unter diesem Text aufgeführten Datenschutzerklärung.</p>
+
+                <p><strong>Datenerfassung auf dieser Website</strong><br>
+                <em>Wer ist verantwortlich für die Datenerfassung auf dieser Website?</em><br>
+                Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Abschnitt „Hinweis zur verantwortlichen Stelle“ in dieser Datenschutzerklärung entnehmen.</p>
+
+                <p><em>Wie erfassen wir Ihre Daten?</em><br>
+                Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen (z. B. Daten, die Sie per E-Mail senden). Andere Daten werden automatisch oder nach Ihrer Einwilligung beim Besuch der Website durch unsere IT-Systeme erfasst. Das sind vor allem technische Daten (z. B. Internetbrowser, Betriebssystem oder Uhrzeit des Seitenaufrufs). Die Erfassung dieser Daten erfolgt automatisch, sobald Sie diese Website betreten.</p>
+
+                <p><em>Wofür nutzen wir Ihre Daten?</em><br>
+                Ein Teil der Daten wird erhoben, um eine fehlerfreie Bereitstellung der Website zu gewährleisten. Andere Daten können zur Analyse Ihres Nutzerverhaltens (z. B. über Analyseprogramme) verwendet werden.</p>
+
+                <p><em>Welche Rechte haben Sie bezüglich Ihrer Daten?</em><br>
+                Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht, die Berichtigung oder Löschung dieser Daten zu verlangen. Wenn Sie eine Einwilligung zur Datenverarbeitung erteilt haben, können Sie diese Einwilligung jederzeit für die Zukunft widerrufen. Außerdem haben Sie das Recht, unter bestimmten Umständen die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen. Des Weiteren steht Ihnen ein Beschwerderecht bei der zuständigen Aufsichtsbehörde zu.<br>
+                Hierzu sowie zu weiteren Fragen zum Thema Datenschutz können Sie sich jederzeit an uns wenden.</p>
+
+                <p><strong>Analyse-Tools und Tools von Drittanbietern</strong><br>
+                Beim Besuch dieser Website kann Ihr Surf-Verhalten statistisch ausgewertet werden. Das geschieht vor allem mit sogenannten Analyseprogrammen. Detaillierte Informationen zu diesen Analyseprogrammen finden Sie in der folgenden Datenschutzerklärung.</p>
+
+                <h3>2. Hosting</h3>
+                <p>Wir hosten die Inhalte unserer Website bei folgendem Anbieter:</p>
+                <p><strong>IONOS</strong><br>
+                Anbieter ist die IONOS SE, Elgendorfer Str. 57, 56410 Montabaur (nachfolgend IONOS). Wenn Sie unsere Website besuchen, erfasst IONOS verschiedene Logfiles inklusive Ihrer IP-Adressen. Details entnehmen Sie der Datenschutzerklärung von IONOS: <a href="https://www.ionos.de/terms-gtc/terms-privacy" target="_blank" style="color: var(--thunder-light); text-decoration: underline;">https://www.ionos.de/terms-gtc/terms-privacy</a>.</p>
+                <p>Die Verwendung von IONOS erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Wir haben ein berechtigtes Interesse an einer möglichst zuverlässigen Darstellung unserer Website. Sofern eine entsprechende Einwilligung abgefragt wurde, erfolgt die Verarbeitung ausschließlich auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG, soweit die Einwilligung die Speicherung von Cookies oder den Zugriff auf Informationen im Endgerät des Nutzers im Sinne des TDDDG umfasst. Die Einwilligung ist jederzeit widerrufbar.</p>
+                <p><strong>Auftragsverarbeitung:</strong> Wir haben einen Vertrag über Auftragsverarbeitung (AVV) zur Nutzung des oben genannten Dienstes geschlossen. Hierbei handelt es sich um einen datenschutzrechtlich vorgeschriebenen Vertrag, der gewährleistet, dass dieser die personenbezogenen Daten unserer Websitebesucher nur nach unseren Weisungen und unter Einhaltung der DSGVO verarbeitet.</p>
+
+                <h3>3. Allgemeine Hinweise und Pflichtinformationen</h3>
+                <p><strong>Datenschutz</strong><br>
+                Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
+
+                <p><strong>Hinweis zur verantwortlichen Stelle</strong><br>
+                Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:<br>
+                Berlin Thunderbirds e.V.<br>
+                Fontanestraße 3 b<br>
+                14193 Berlin<br>
+                Vertreten durch: Derek Low<br>
+                Telefon: 017681606711<br>
+                E-Mail: <a href="mailto:info@berlin-thunderbirds.de" style="color: var(--thunder-light); text-decoration: underline;">info@berlin-thunderbirds.de</a></p>
+
+                <p><strong>Speicherdauer</strong><br>
+                Soweit innerhalb dieser Datenschutzerklärung keine speziellere Speicherdauer genannt wurde, verbleiben Ihre personenbezogenen Daten bei uns, bis der Zweck für die Datenverarbeitung entfällt. Wenn Sie ein berechtigtes Löschersuchen geltend machen oder eine Einwilligung zur Datenverarbeitung widerrufen, werden Ihre Daten gelöscht, sofern wir keine anderen rechtlich zulässigen Gründe für die Speicherung haben.</p>
+
+                <p><strong>Widerruf Ihrer Einwilligung zur Datenverarbeitung</strong><br>
+                Viele Datenverarbeitungsvorgänge sind nur mit Ihrer ausdrücklichen Einwilligung möglich. Sie können eine bereits erteilte Einwilligung jederzeit widerrufen. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Datenverarbeitung bleibt vom Widerruf unberührt.</p>
+
+                <p><strong>Beschwerderecht bei der zuständigen Aufsichtsbehörde</strong><br>
+                Im Falle von Verstößen gegen die DSGVO steht den Betroffenen ein Beschwerderecht bei einer Aufsichtsbehörde zu.</p>
+
+                <h3>4. Datenerfassung auf dieser Website</h3>
+                <p><strong>Anfrage per E-Mail, Telefon oder Telefax</strong><br>
+                Wenn Sie uns per E-Mail, Telefon oder Telefax kontaktieren, wird Ihre Anfrage inklusive aller daraus hervorgehenden personenbezogenen Daten (Name, Anfrage) zum Zwecke der Bearbeitung Ihres Anliegens bei uns gespeichert und verarbeitet. Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage mit der Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen erforderlich ist. In allen übrigen Fällen beruht die Verarbeitung auf unserem berechtigten Interesse an der effektiven Bearbeitung der an uns gerichteten Anfragen (Art. 6 Abs. 1 lit. f DSGVO) oder auf Ihrer Einwilligung.</p>
+
+                <p><strong>Google Analytics</strong><br>
+                Diese Website nutzt Funktionen des Webanalysedienstes Google Analytics. Anbieter ist die Google Ireland Limited („Google“), Gordon House, Barrow Street, Dublin 4, Irland.<br>
+                Google Analytics verwendet Cookies, die eine Analyse der Benutzung der Website durch Sie ermöglichen. Die durch den Cookie erzeugten Informationen über Ihre Benutzung dieser Website werden in der Regel an einen Server von Google in den USA übertragen und dort gespeichert.<br>
+                Die Speicherung von Google Analytics-Cookies und die Nutzung dieses Analyse-Tools erfolgen auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG). Sie können Ihre Einwilligung jederzeit für die Zukunft widerrufen.<br>
+                <strong>IP-Anonymisierung:</strong> Wir haben auf dieser Website die Funktion IP-Anonymisierung aktiviert. Dadurch wird Ihre IP-Adresse von Google innerhalb von Mitgliedstaaten der Europäischen Union oder in anderen Vertragsstaaten des Abkommens über den Europäischen Wirtschaftsraum vor der Übermittlung in die USA gekürzt.<br>
+                <strong>Browser Plugin:</strong> Sie können die Erfassung Ihrer Daten durch Google Analytics verhindern, indem Sie das unter dem folgenden Link verfügbare Browser-Plugin herunterladen und installieren: <a href="https://tools.google.com/dlpage/gaoptout?hl=de" target="_blank" style="color: var(--thunder-light); text-decoration: underline;">https://tools.google.com/dlpage/gaoptout?hl=de</a>.</p>
+
+                <h3>5. Plugins und Tools</h3>
+                <p><strong>Font Awesome (Externes CDN)</strong><br>
+                Diese Seite nutzt zur einheitlichen Darstellung von Icons Font Awesome. Anbieter ist Fonticons, Inc., 6 Portage St, Suite 400, Cambridge, MA 02141, USA. Wenn Sie eine Seite aufrufen, lädt Ihr Browser die benötigten Fonts in Ihren Browsercache, um Texte und Icons korrekt anzuzeigen. Zu diesem Zweck muss der von Ihnen verwendete Browser Verbindung zu den Servern von Fonticons, Inc. aufnehmen. Hierdurch erlangt Fonticons, Inc. Kenntnis darüber, dass über Ihre IP-Adresse diese Website aufgerufen wurde. Die Nutzung von Font Awesome erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Wir haben ein berechtigtes Interesse an einer einheitlichen Darstellung unseres Schriftbildes auf unserer Website. Weitere Informationen zu Font Awesome finden Sie in der Datenschutzerklärung von Fonticons, Inc. unter: <a href="https://fontawesome.com/privacy" target="_blank" style="color: var(--thunder-light); text-decoration: underline;">https://fontawesome.com/privacy</a>.</p>
+
             </div>
         </section>
 

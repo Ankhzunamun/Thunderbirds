@@ -3,6 +3,21 @@
 // ==========================================
 const newsData = [
     {
+		date: "12. September 2026",
+        title: "U13 @ Spanndau, U10 @ Cottbus",
+        shortText: "Die letzten Spiele vor dem Summer Bowl",
+        fullText: `<p><strong>U10 glänzt in Cottbus mit Silber</strong></p>
+			<p>
+			Was für ein starker Auftritt unserer U10! Beim Auswärtsturnier in Cottbus zeigte das Team von der ersten Minute an leidenschaftlichen Football, tolle Spielzüge und echten Teamgeist. Nach engagierten und hart umkämpften Partien belohnte sich der Nachwuchs am Ende mit einem hervorragenden 2. Platz. Eine fantastische Leistung, die riesige Vorfreude auf die kommenden Aufgaben macht!
+			</p>
+			<p><strong>U13 beweist Moral und Kampfgeist in Spandau</strong></p>
+			<p>
+			Auch für unsere U13 ging es heiß her: Bei den Spandau Bulldogs stellte sich das Team einer starken Konkurrenz. Auch wenn am Ende der 4. Platz auf dem Papier steht, war der Spieltag alles andere als enttäuschend. Unsere Kids haben auf dem Feld wertvolle Erfahrungen gesammelt, bis zur letzten Sekunde gekämpft und nie den Kopf hängen lassen. Genau dieser Zusammenhalt macht das Team aus – die Entwicklung stimmt, und die nächsten Erfolge lassen garantiert nicht lange auf sich warten!
+			</p>`,
+		image: "Bilder/News/120926.jpg"
+    },
+	
+	{
         date: "06. September 2026",
         title: "Thunderbirds @ Spandau Bulldogs",
         shortText: "Unsere Männer dominieren in Spandau",

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="style.css">
     
     <!-- ==========================================
-       JAVASCRIPT (BLITZ-EFFEKTE, MENÜ & COOKIES)
+       JAVASCRIPT (BLITZ-EFFEKTE & MENÜ)
        ========================================== -->
     <script>
         window.onload = () => {
@@ -50,35 +50,16 @@
                     nav.classList.toggle('active');
                 });
             }
-
-            // Cookie Banner Prüfung beim Seitenaufruf
-            if (!localStorage.getItem("cookiesAkzeptiert")) {
-                setTimeout(() => {
-                    const banner = document.getElementById("cookie-banner");
-                    if (banner) {
-                        banner.classList.add("cookie-active");
-                    }
-                }, 1000);
-            }
         });
-
-        // Funktion zum Bestätigen der Cookies
-        function acceptCookies() {
-            localStorage.setItem("cookiesAkzeptiert", "true");
-            const banner = document.getElementById("cookie-banner");
-            if (banner) {
-                banner.classList.remove("cookie-active");
-            }
-        }
     </script>
 </head>
 
 <body>
 
     <!-- ==========================================
-       HEADER & NAVIGATION
+       HEADER & NAVIGATION (Wird über leisten_2.js geladen)
        ========================================== -->
-   <div id="main-header"></div>
+    <div id="main-header"></div>
 
     <!-- ==========================================
        HERO-BEREICH (WILLKOMMEN & BLITZ-ANIMATION)
@@ -92,7 +73,7 @@
         </svg>
         <div class="welcome-text">Herzlich Willkommen bei den</div>
         <img src="Bilder/logo.jpg" class="logo-main" id="logo" alt="Berlin Thunderbirds">
-        <p class="sub-text">American Football aus Berlin</p>
+        <p class="sub-text">American Football aus Berlin / Britz</p>
     </div>
 
     <!-- ==========================================
@@ -120,8 +101,6 @@
                 </tr>
             </table>
            
-		  
-		   
 		   <p style="margin-bottom: 0;">Egal ob erfahrener Spieler oder Neueinsteiger – bei den Thunderbirds ist jeder willkommen, der Teil unserer Football-Familie werden möchte!</p>
         </div>
     </section>
@@ -181,31 +160,45 @@
             </div>
         </div>
     </div>   
-
-    <!-- ==========================================
-       FOOTER & EASTER EGG
+	
+	
+   <!-- ==========================================
+       SPONSOREN SEKTION
        ========================================== -->
-	   
-    <div id="main-footer"></div>
-
-    <!-- ==========================================
-       COOKIE BANNER
-       ========================================== -->
-    <div id="cookie-banner" class="cookie-banner">
-        <div class="cookie-content">
-            <i class="fa-solid fa-cookie-bite cookie-icon"></i>
-            <div class="cookie-text">
-                <h3>Cookie-Einstellungen</h3>
-                <p>Wir nutzen nur technisch notwendige Cookies, um dir die bestmögliche Erfahrung auf unserer Website zu bieten. Weitere Informationen findest du in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+    <section class="sponsors-section">
+        <h2 style="text-align: center; text-transform: uppercase; font-size: 2rem; margin-bottom: 20px; color: var(--thunder-light);">Unsere Sponsoren</h2>
+        <div class="sponsors-grid">
+            <div class="sponsor-card">
+                <img src="Bilder/Logo.jpg" alt="Sponsor 1" class="sponsor-img">
+                <span class="sponsor-name">Sponsor 1</span>
             </div>
-            <div class="cookie-buttons">
-                <button onclick="acceptCookies()" class="btn-accept">Einverstanden</button>
+            <div class="sponsor-card">
+                <img src="Bilder/Logo.jpg" alt="Sponsor 2" class="sponsor-img">
+                <span class="sponsor-name">Sponsor 2</span>
+            </div>
+            <div class="sponsor-card">
+                <img src="Bilder/Logo.jpg" alt="Sponsor 3" class="sponsor-img">
+                <span class="sponsor-name">Sponsor 3</span>
+            </div>
+            <div class="sponsor-card">
+                <img src="Bilder/Logo.jpg" alt="Sponsor 4" class="sponsor-img">
+                <span class="sponsor-name">Sponsor 4</span>
+            </div>
+            <div class="sponsor-card">
+                <img src="Bilder/Logo.jpg" alt="Sponsor 5" class="sponsor-img">
+                <span class="sponsor-name">Sponsor 5</span>
             </div>
         </div>
-    </div>
+    </section>
+	
 
-	<script src="leisten.js"></script>
-    <!-- Externes Script für die News-Steuerung -->
+    <!-- ==========================================
+       FOOTER, EASTER EGG & COOKIE BANNER PLATZHALTER
+       ========================================== -->
+    <div id="main-footer"></div>
+
+    <!-- Skripte -->
+    <script src="leisten.js"></script>
     <script src="news.js"></script>
 </body>
 </html>

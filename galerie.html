@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerie - Berlin Thunderbirds</title>
+    <!-- FontAwesome für Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Verknüpfung zur zentralen style.css -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header (wird automatisch über leisten_2.js geladen) -->
+    <div id="main-header"></div>
+
+    <!-- Galerie Hauptbereich -->
+    <section class="gallery-page-section">
+        <div class="gallery-header-container">
+            <h1 id="gallery-title">Thunderbirds Galerie</h1>
+            <button id="back-to-folders" class="page-btn" style="display: none;" onclick="showFolders()">
+                <i class="fa-solid fa-arrow-left"></i> Zurück zu den Ordnern
+            </button>
+        </div>
+
+        <!-- Hier landen entweder die Ordner oder die Bilder des gewählten Ordners -->
+        <div id="gallery-container" class="gallery-grid"></div>
+    </section>
+
+    <!-- Lightbox für Bild-Vollansicht -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+        <span class="close-btn" onclick="closeLightbox()">&times;</span>
+        <button class="lightbox-arrow prev-btn" onclick="prevImage(event)">&#10094;</button>
+        <img id="lightbox-img" src="" alt="Vollbild">
+        <button class="lightbox-arrow next-btn" onclick="nextImage(event)">&#10095;</button>
+    </div>
+</div>
+
+    <!-- Footer -->
+    <div id="main-footer"></div>
+
+ 
+	<!-- Skripte -->
+    <script src="leisten.js"></script>
+    <script src="galerie.js"></script>
+    
+</body>
+</html>
+	
+</body>
+</html>

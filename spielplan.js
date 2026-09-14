@@ -115,7 +115,7 @@ const u10HTML = `
 	
 	<div class="card away">
         <div class="card-info">
-            <span class="card-text">26. & 27. September	| Summerbowl</span>
+            <span class="card-text">26. & 27. September	| Summer Bowl</span>
             <span class="tournament-teams">Hier wird die entgültige Platzierung in der Liga entschieden</span>
         </div>
         <div class="badge-right">
@@ -178,7 +178,7 @@ const u13HTML = `
 	
 	<div class="card away">
         <div class="card-info">
-            <span class="card-text">26. & 27. September	| Summerbowl</span>
+            <span class="card-text">26. & 27. September	| Summer Bowl</span>
             <span class="tournament-teams">Hier wird die entgültige Platzierung in der Liga entschieden</span>
         </div>
         <div class="badge-right">
@@ -231,8 +231,18 @@ const u16HTML = `
 	
 	<div class="card away">
         <div class="card-info">
-            <span class="card-text">26. & 27. September | Summerbowl</span>
+            <span class="card-text">26. & 27. September | Summer Bowl</span>
             <span class="tournament-teams">Hier wird die entgültige Platzierung in der Liga entschieden</span>
+        </div>
+        <div class="badge-right">
+            <span class="badge badge-away">Away</span>
+        </div>
+    </div>
+	
+	<div class="card away">
+        <div class="card-info">
+            <span class="card-text">10. Oktober | Berlin Bowl Juniors 2026	</span>
+            <span class="tournament-teams">Die Lichtenberg Lions laden zum ersten Berlin Bowl Juniors</span>
         </div>
         <div class="badge-right">
             <span class="badge badge-away">Away</span>
