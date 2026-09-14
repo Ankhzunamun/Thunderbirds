@@ -682,7 +682,7 @@ footer { text-align: center; padding: 50px; color: var(--thunder-silver); border
 }
 
 /* ==========================================
-   LIGHTBOX & PFEILE
+   LIGHTBOX & PFEILE (POP-UP MODUS)
    ========================================== */
 .lightbox {
     display: none;
@@ -703,35 +703,44 @@ footer { text-align: center; padding: 50px; color: var(--thunder-silver); border
     display: flex !important;
 }
 
+/* Das eigentliche Pop-up-Fenster mit Abstand zum Rand */
 .lightbox-content {
     position: relative !important;
     display: inline-block;
     max-width: 90vw;
     max-height: 85vh;
-}
-
-.lightbox-content img {
-    max-width: 90vw;
-    max-height: 85vh;
-    object-fit: contain;
-    border-radius: 12px;
+    background: #1e2c4f;
     border: 2px solid var(--thunder-light);
-    box-shadow: 0 0 30px rgba(125, 211, 252, 0.3);
-    display: block;
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
 }
 
+/* Bild passt sich in den Pop-up-Rahmen ein und nutzt die Displaygröße optimal aus */
+.lightbox-content img {
+    max-width: calc(90vw - 20px);
+    max-height: calc(85vh - 60px); /* Platz für die Pfeile unten lassen */
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    display: block;
+    cursor: pointer;
+}
+
+/* Schließen-Kreuz oben rechts im Pop-up */
 .lightbox .close-btn {
     position: absolute !important;
-    top: 15px !important;
-    right: 15px !important;
-    font-size: 1.5rem !important;
+    top: -15px !important;
+    right: -15px !important;
+    font-size: 1.4rem !important;
     line-height: 1 !important;
     color: #ef4444 !important;
     cursor: pointer !important;
-    z-index: 100001 !important;
+    z-index: 100005 !important;
     width: 38px !important;
     height: 38px !important;
-    background-color: rgba(27, 40, 69, 0.85) !important;
+    background-color: rgba(27, 40, 69, 0.95) !important;
     border: 2px solid #ef4444 !important;
     border-radius: 50% !important;
     display: flex !important;
@@ -750,17 +759,19 @@ footer { text-align: center; padding: 50px; color: var(--thunder-silver); border
     transform: scale(1.1) !important;
 }
 
+/* Pfeile wandern nach unten (innerhalb/unter das Pop-up-Bild) */
 .lightbox-arrow {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(27, 40, 69, 0.85);
+    bottom: -20px !important; /* Sitzen jetzt unten am Pop-up-Rand */
+    top: auto !important;
+    transform: none !important;
+    background-color: rgba(27, 40, 69, 0.95);
     color: white;
     border: 2px solid var(--thunder-light);
     border-radius: 50%;
-    width: 45px;
-    height: 45px;
-    font-size: 1.4rem;
+    width: 42px;
+    height: 42px;
+    font-size: 1.2rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -768,20 +779,26 @@ footer { text-align: center; padding: 50px; color: var(--thunder-silver); border
     z-index: 100002;
     transition: all 0.3s ease;
     user-select: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
 }
 
 .lightbox-arrow:hover {
     background-color: var(--thunder-blue);
-    transform: translateY(-50%) scale(1.15);
+    transform: scale(1.1) !important;
 }
 
+/* Linker Pfeil unten links */
 .prev-btn {
-    left: -25px;
+    left: 20px !important;
+    right: auto !important;
 }
 
+/* Rechter Pfeil unten rechts */
 .next-btn {
-    right: -25px;
+    right: 20px !important;
+    left: auto !important;
 }
+
 
 @media (max-width: 768px) {
     .prev-btn { left: 10px; }
