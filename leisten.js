@@ -159,7 +159,7 @@ function loadGoogleAnalytics() {
     gtag('config', measurementId);
 }
 
-// GLOBALE EVENT-ÜBERWACHUNG (FÜR DYNAMISCH GELADENE ELEMENTE WIE HAMBURGER-MENÜ)[cite: 4]
+// GLOBALE EVENT-ÜBERWACHUNG (FÜR DYNAMISCH GELADENE ELEMENTE WIE HAMBURGER-MENÜ)
 document.addEventListener("click", function(e) {
     
     // 1. Hamburger-Menü öffnen/schließen (Mobile)
@@ -194,5 +194,19 @@ document.addEventListener("click", function(e) {
                 dropdownContent.style.display = "block";
             }
         }
+        return;
+    }
+
+    // 3. NEU: Menü automatisch schließen, sobald ein normaler Menüpunkt oder Anker geklickt wird (auf Handys)
+    const navLink = e.target.closest("nav a");
+    if (navLink && window.innerWidth <= 768) {
+        const nav = document.querySelector("nav");
+        if (nav) {
+            nav.classList.remove("active");
+        }
+        // Wichtig: Wir verstecken zur Sicherheit auch geöffnete Dropdowns wieder
+        document.querySelectorAll(".dropdown-content").forEach(content => {
+            content.style.display = "none";
+        });
     }
 });
