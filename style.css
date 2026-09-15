@@ -1292,18 +1292,26 @@ html {
     }
 	
 	/* ==========================================
-   MOBILE MENÜ KLICK-SICHERHEIT (FIX)
+   MOBILE MENÜ KLICK-SICHERHEIT (FIXED)
    ========================================== */
-	nav {
-		pointer-events: none; /* Im geschlossenen Zustand Klicks im Hintergrund ignorieren */
-	}
 
-	header {
-		pointer-events: auto; /* Header selbst (Logo, Toggle) bleibt klickbar */
-	}
+/* Standardmäßig blockieren wir keine Klicks auf der Nav, 
+   damit der Burger-Button immer erreichbar bleibt */
+nav {
+    pointer-events: auto;
+}
 
-	nav.active {
-		display: flex !important;
-		pointer-events: auto !important; /* Sobald offen, fängt das Menü alle Klicks ab */
-	}
+/* Auf dem Handy im geschlossenen Zustand: Nav ist unsichtbar und blockiert absolut nichts */
+@media (max-width: 768px) {
+    nav {
+        display: none;
+        pointer-events: auto;
+    }
+    
+    /* Wenn das Menü offen ist, bleibt es klickbar und greift absolut */
+    nav.active {
+        display: flex !important;
+        pointer-events: auto !important;
+    }
+}
 }
