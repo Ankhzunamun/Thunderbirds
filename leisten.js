@@ -32,11 +32,11 @@ document.addEventListener("DOMContentLoaded", function() {
                     <a href="verein.html#verein">Verein</a>
                     <a href="verein.html#impressum">Impressum</a>
                     <a href="verein.html#download">Download</a>
-					<a href="verein.html#datenschutz">Datenschutz</a>
-				</div>
+                    <a href="verein.html#datenschutz">Datenschutz</a>
+                </div>
             </div>
-			
-			<a href="galerie.html" class="nav-item">Galerie</a>
+            
+            <a href="galerie.html" class="nav-item">Galerie</a>
 
             <div class="social-nav">
                 <a href="https://berlin-thunderbirds.myteamshop.de/" target="_blank" title="Fanshop"><i class="fa-solid fa-cart-shopping"></i></a>
@@ -93,33 +93,20 @@ document.addEventListener("DOMContentLoaded", function() {
         footerPlaceholder.innerHTML = footerHTML;
     }
 
-    // Hamburger Menü Event-Listener
-    const menuToggle = document.getElementById('mobile-menu');
-    const nav = document.querySelector('nav');
-
-    if (menuToggle && nav) {
-        menuToggle.addEventListener('click', () => {
-            nav.classList.toggle('active');
-        });
-    }
-
     // Cookie Banner Status beim Laden prüfen
     const status = localStorage.getItem("cookieStatus");
     const banner = document.getElementById("cookie-banner");
 
     if (status === "accepted") {
-        // Wenn akzeptiert, Analytics laden und Banner geschlossen halten
         if (banner) {
             banner.classList.remove("cookie-active");
         }
         loadGoogleAnalytics();
     } else if (status === "essentials") {
-        // Wenn nur essenzielle gewählt wurden: Banner bleibt zu, Analytics bleibt AUS
         if (banner) {
             banner.classList.remove("cookie-active");
         }
     } else {
-        // Erster Besuch (kein Status hinterlegt) -> Banner nach 1 Sekunde einblenden
         setTimeout(() => {
             if (banner) {
                 banner.classList.add("cookie-active");
@@ -139,16 +126,13 @@ function acceptCookies() {
 }
 
 function rejectCookies() {
-    // Merkt sich, dass "Nur essenzielle" gewählt wurde (frägt also beim nächsten Mal nicht mehr ungefragt nach)
     localStorage.setItem("cookieStatus", "essentials");
     const banner = document.getElementById("cookie-banner");
     if (banner) {
         banner.classList.remove("cookie-active");
     }
-    // Google Analytics bleibt explizit aus!
 }
 
-// Funktion, um das Banner über den Footer-Link manuell wieder zu öffnen
 function openCookieBanner(event) {
     if (event) event.preventDefault();
     const banner = document.getElementById("cookie-banner");
@@ -162,7 +146,6 @@ function loadGoogleAnalytics() {
     if (window.gaLoaded) return;
     window.gaLoaded = true;
 
-    // Trage hier später deine echte Measurement-ID ein (z.B. G-XXXXXXXXXX)
     var measurementId = 'DEINE-MEASUREMENT-ID'; 
 
     var script1 = document.createElement('script');
@@ -176,12 +159,13 @@ function loadGoogleAnalytics() {
     gtag('config', measurementId);
 }
 
+// GLOBALE EVENT-ÜBERWACHUNG (FÜR DYNAMISCH GELADENE ELEMENTE WIE HAMBURGER-MENÜ)[cite: 4]
 document.addEventListener("click", function(e) {
     
     // 1. Hamburger-Menü öffnen/schließen (Mobile)
     const menuToggle = e.target.closest(".menu-toggle");
     if (menuToggle) {
-        e.stopPropagation(); // Stoppt das Durchschlagen
+        e.stopPropagation(); 
         const nav = document.querySelector("nav");
         if (nav) {
             nav.classList.toggle("active");
@@ -189,7 +173,7 @@ document.addEventListener("click", function(e) {
         return;
     }
 
-    // 2. Dropdown-Hauptpunkt auf Handys
+    // 2. Dropdown-Hauptpunkt auf Handys (z.B. "Teams" anklicken)
     const navItem = e.target.closest("nav .dropdown > .nav-item");
     if (navItem && window.innerWidth <= 768) {
         const dropdownContent = navItem.nextElementSibling;

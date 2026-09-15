@@ -1290,7 +1290,7 @@ html {
         top: 10px !important;
         right: 10px !important;
     }
-	
+	}
 	/* ==========================================
    MOBILE MENÜ KLICK-SICHERHEIT (FIXED)
    ========================================== */
@@ -1313,5 +1313,4 @@ nav {
         display: flex !important;
         pointer-events: auto !important;
     }
-}
 }
