@@ -175,3 +175,43 @@ function loadGoogleAnalytics() {
     gtag('js', new Date());
     gtag('config', measurementId);
 }
+
+// Globale Event-Überwachung für das dynamisch geladene Menü
+document.addEventListener("click", function(e) {
+    
+    // 1. Hamburger-Menü öffnen/schließen (Mobile)
+    const menuToggle = e.target.closest(".menu-toggle");
+    if (menuToggle) {
+        const nav = document.querySelector("nav");
+        if (nav) {
+            nav.classList.toggle("active");
+        }
+        return;
+    }
+
+    // 2. Dropdown-Hauptpunkt auf Handys (z.B. "Teams" anklicken, ohne weiterzuleiten)
+    const navItem = e.target.closest("nav .dropdown > .nav-item");
+    if (navItem && window.innerWidth <= 768) {
+        const dropdownContent = navItem.nextElementSibling;
+        
+        if (dropdownContent && dropdownContent.classList.contains("dropdown-content")) {
+            // Verhindert das Aufrufen einer falschen Seite und stoppt das Durchschlagen
+            e.preventDefault(); 
+            e.stopPropagation();
+
+            // Alle anderen offenen Dropdowns im Handy-Menü erst schließen
+            document.querySelectorAll(".dropdown-content").forEach(content => {
+                if (content !== dropdownContent) {
+                    content.style.display = "none";
+                }
+            });
+
+            // Geklicktes Dropdown öffnen oder schließen
+            if (dropdownContent.style.display === "block") {
+                dropdownContent.style.display = "none";
+            } else {
+                dropdownContent.style.display = "block";
+            }
+        }
+    }
+});
