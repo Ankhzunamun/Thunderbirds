@@ -172,7 +172,7 @@ function changePage(direction) {
 
 
 // ==========================================
-// MODAL LOGIK MIT SMARTPHONE-ZURÜCK-FUNKTION
+// MODAL LOGIK OHNE SEITENSPRUNG
 // ==========================================
 
 function openNewsModal(newsIndex) {
@@ -192,7 +192,7 @@ function openNewsModal(newsIndex) {
     }
 
     document.getElementById('newsModal').classList.add('active');
-    document.body.style.overflow = 'hidden';
+    // HIER WURDE overflow = 'hidden' GELÖSCHT, DAMIT ES NICHT MEHR NACH OBEN SPRINGT!
 
     // Eintrag im Browser-Verlauf erstellen
     history.pushState({ newsModalOpen: true }, '');
@@ -201,20 +201,30 @@ function openNewsModal(newsIndex) {
 function closeNewsModal(fromHistory = false) {
     const modal = document.getElementById('newsModal');
     if (modal && modal.classList.contains('active')) {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
+        // Aktuelle Position vor dem Schließen merken
+        const currentScrollY = window.scrollY;
 
-        // Falls manuell über das X oder den Hintergrund geschlossen wird,
-        // entfernen wir den hinzugefügten Verlaufs-Eintrag wieder
+        modal.classList.remove('active');
+
         if (!fromHistory && history.state && history.state.newsModalOpen) {
             history.back();
         }
+
+        // Den Sprung verhindern, indem die Position im nächsten Render-Schritt erzwungen wird
+        requestAnimationFrame(() => {
+            window.scrollTo(0, currentScrollY);
+        });
+        setTimeout(() => {
+            window.scrollTo(0, currentScrollY);
+        }, 10);
     }
 }
 
 // Reagiert auf Smartphone Zurück-Geste / Zurück-Taste
 window.addEventListener('popstate', function(e) {
+    const currentScrollY = window.scrollY;
     closeNewsModal(true);
+    window.scrollTo(0, currentScrollY);
 });
 
 // Schließen des Modals durch Klick auf den Hintergrund
