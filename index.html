@@ -18,7 +18,6 @@
             const lightningContainer = document.getElementById("lightning-container");
             const logo = document.getElementById("logo");
 
-            // Funktion für den Blitz-Effekt beim Laden der Startseite
             function triggerLightning() {
                 if(flash && lightningContainer) {
                     flash.classList.add("active");
@@ -32,26 +31,14 @@
            
             setTimeout(triggerLightning, 300);
 
-            // Das Logo erscheint kurz nach dem ersten Blitz
             if(logo) {
                 setTimeout(() => { 
                     logo.classList.add("show"); 
                 }, 700);
             }
         };
-       
-        document.addEventListener("DOMContentLoaded", function() {
-            // Hamburger Menü Toggle Initialisierung
-            const menuToggle = document.getElementById('mobile-menu');
-            const nav = document.querySelector('nav');
-
-            if (menuToggle && nav) {
-                menuToggle.addEventListener('click', () => {
-                    nav.classList.toggle('active');
-                });
-            }
-        });
     </script>
+	
 </head>
 
 <body>
@@ -72,7 +59,7 @@
             <polyline class="bolt-path" style="stroke-width:2;" points="70,-10 65,20 75,40 65,65" />
         </svg>
         <div class="welcome-text">Herzlich Willkommen bei den</div>
-        <img src="Bilder/logo.jpg" class="logo-main" id="logo" alt="Berlin Thunderbirds">
+        <img src="Bilder/logo.webp" class="logo-main" id="logo" alt="Berlin Thunderbirds">
         <p class="sub-text">American Football aus Berlin / Britz</p>
     </div>
 
@@ -113,12 +100,12 @@
             <h2 style="color: var(--thunder-light); text-transform: uppercase; letter-spacing: 2px;">Unsere Teams</h2>
             <div class="team">
                 <!-- Tackle Team Kachel -->
-                <a href="tackle.html" class="player" style="background-image: url('Bilder/Tackle.jpg');">
+                <a href="tackle.html" class="player" style="background-image: url('Bilder/Tackle.webp');">
                     <span class="player-name">Tackle</span>
                 </a>
 
                 <!-- Flag Team Kachel mit Untergruppen (U16, U13, U10) -->
-                <div class="player" style="background-image: url('Bilder/Team_Flag.jpg');">
+                <div class="player" style="background-image: url('Bilder/Team_Flag.webp');">
                     <span class="player-name">Flag</span>
                     <div class="player-overlay">
                         <a href="u16.html">U16</a>
@@ -169,15 +156,15 @@
         <h2 style="text-align: center; text-transform: uppercase; font-size: 2rem; margin-bottom: 20px; color: var(--thunder-light);">Unsere Sponsoren</h2>
         <div class="sponsors-grid">
             <div class="sponsor-card">
-                <img src="Bilder/logo.jpg" alt="Sponsor 1" class="sponsor-img">
+                <img src="Bilder/logo.webp" alt="Sponsor 1" class="sponsor-img">
                 <span class="sponsor-name">Sponsor 1</span>
             </div>
             <div class="sponsor-card">
-                <img src="Bilder/logo.jpg" alt="Sponsor 2" class="sponsor-img">
+                <img src="Bilder/logo.webp" alt="Sponsor 2" class="sponsor-img">
                 <span class="sponsor-name">Sponsor 2</span>
             </div>
             <div class="sponsor-card">
-                <img src="Bilder/logo.jpg" alt="Sponsor 3" class="sponsor-img">
+                <img src="Bilder/logo.webp" alt="Sponsor 3" class="sponsor-img">
                 <span class="sponsor-name">Sponsor 3</span>
             </div>
             

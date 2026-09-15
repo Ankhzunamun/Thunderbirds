@@ -5,22 +5,22 @@ const galleryData = [
     {
         id: "tackle",
         name: "Seniors Tackle",
-        cover: "Bilder/Tackle.jpg",
+        cover: "Bilder/Tackle.webp",
         images: [
-            "Bilder/Auswahl/Bild2.jpg",
-			"Bilder/Auswahl/Bild3.jpg",
-            "Bilder/Auswahl/Bild7.jpg",
+            "Bilder/Auswahl/Bild2.webp",
+			"Bilder/Auswahl/Bild3.webp",
+            "Bilder/Auswahl/Bild7.webp",
         ]
     },
     {
         id: "flag",
         name: "Flag Football (Jugend)",
-        cover: "Bilder/Team_Flag.jpg",
+        cover: "Bilder/Team_Flag.webp",
         images: [
-            "Bilder/Team_Flag.jpg",
-            "Bilder/U16.jpg",
-            "Bilder/U13.jpg",
-            "Bilder/U10.jpg"
+            "Bilder/Team_Flag.webp",
+            "Bilder/U16.webp",
+            "Bilder/U13.webp",
+            "Bilder/U10.webp"
         ]
     }
 ];

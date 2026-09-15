@@ -14,7 +14,7 @@ const newsData = [
 			<p>
 			Auch für unsere U13 ging es heiß her: Bei den Spandau Bulldogs stellte sich das Team einer starken Konkurrenz. Auch wenn am Ende der 4. Platz auf dem Papier steht, war der Spieltag alles andere als enttäuschend. Unsere Kids haben auf dem Feld wertvolle Erfahrungen gesammelt, bis zur letzten Sekunde gekämpft und nie den Kopf hängen lassen. Genau dieser Zusammenhalt macht das Team aus – die Entwicklung stimmt, und die nächsten Erfolge lassen garantiert nicht lange auf sich warten!
 			</p>`,
-		image: "Bilder/News/120926.jpg"
+		image: "Bilder/News/120926.webp"
     },
 	
 	{
@@ -40,7 +40,7 @@ const newsData = [
 					</p>
 					
 					<p><strong>Eine überragende Teamleistung – Let's go Thunderbirds!</strong></p>`,
-					image: "Bilder/News/060926.jpg"
+					image: "Bilder/News/060926.webp"
     },
 	
 	{
@@ -58,7 +58,7 @@ const newsData = [
 
             <p>Danke an die Vandals für das Game und an alle mitgereisten Thunderbirds-Fans für den Support! 📣</p>
         `,
-        image: "Bilder/News/300826_2.jpg"
+        image: "Bilder/News/300826_2.webp"
     },
 	
 	{
@@ -87,7 +87,7 @@ const newsData = [
 
             <p><strong>⚡ LET'S GO THUNDERBIRDS! ⚡</strong></p>
         `,
-		image: "Bilder/News/300826_1.jpg"
+		image: "Bilder/News/300826_1.webp"
     },
 	{
         date: "01. August 2026",
@@ -113,7 +113,7 @@ const newsData = [
 
             <p><strong>Bewirb dich jetzt und gestalte die Zukunft unserer jungen Talente aktiv mit!</strong></p>
         `,         
-        image: "Bilder/News/010826.jpg"
+        image: "Bilder/News/010826.webp"
     }
 ];
 

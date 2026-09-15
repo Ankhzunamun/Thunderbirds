@@ -85,7 +85,7 @@ nav { display: flex; align-items: center; gap: 20px; }
 .hero { 
     min-height: 85vh; display: flex; flex-direction: column; justify-content: center; 
     align-items: center; text-align: center; position: relative; overflow: hidden; padding-top: 80px; 
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('Bilder/Team.jpg'); 
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('Bilder/Team.webp'); 
     background-size: cover; background-position: center; background-attachment: fixed; 
 }
 .welcome-text { font-size: 2.2rem; margin-bottom: 20px; font-weight: bold; text-shadow: 0 0 20px rgba(0,0,0,0.8); z-index: 10; }
@@ -438,7 +438,7 @@ footer { text-align: center; padding: 50px; color: var(--thunder-silver); border
     width: 100%;
     height: 500px;
     margin-top: 88px; 
-    background: url('Bilder/Tackle/Tackle_team.jpg') no-repeat center center;
+    background: url('Bilder/Tackle/Tackle_team.webp') no-repeat center center;
     background-size: cover;
     border-bottom: 4px solid var(--thunder-light);
 }
@@ -812,7 +812,7 @@ footer { text-align: center; padding: 50px; color: var(--thunder-silver); border
     width: 100%;
     height: 500px;
     margin-top: 88px; 
-    background: url('Bilder/U16.jpg') no-repeat center center;
+    background: url('Bilder/U16.webp') no-repeat center center;
     background-size: cover;
     border-bottom: 4px solid var(--thunder-light);
 }
@@ -821,7 +821,7 @@ footer { text-align: center; padding: 50px; color: var(--thunder-silver); border
     width: 100%;
     height: 500px;
     margin-top: 88px; 
-    background: url('Bilder/U13.jpg') no-repeat center center;
+    background: url('Bilder/U13.webp') no-repeat center center;
     background-size: cover;
     border-bottom: 4px solid var(--thunder-light);
 }
@@ -830,7 +830,7 @@ footer { text-align: center; padding: 50px; color: var(--thunder-silver); border
     width: 100%;
     height: 500px;
     margin-top: 88px; 
-    background: url('Bilder/U10.jpg') no-repeat center center;
+    background: url('Bilder/U10.webp') no-repeat center center;
     background-size: cover;
     border-bottom: 4px solid var(--thunder-light);
 }
@@ -1289,5 +1289,29 @@ html {
     .lightbox .close-btn {
         top: 10px !important;
         right: 10px !important;
+    }
+	}
+	
+	/* ==========================================
+   MOBILE MENÜ KLICK-SICHERHEIT (FIXED)
+   ========================================== */
+
+/* Standardmäßig blockieren wir keine Klicks auf der Nav, 
+   damit der Burger-Button immer erreichbar bleibt */
+nav {
+    pointer-events: auto;
+}
+
+/* Auf dem Handy im geschlossenen Zustand: Nav ist unsichtbar und blockiert absolut nichts */
+@media (max-width: 768px) {
+    nav {
+        display: none;
+        pointer-events: auto;
+    }
+    
+    /* Wenn das Menü offen ist, bleibt es klickbar und greift absolut */
+    nav.active {
+        display: flex !important;
+        pointer-events: auto !important;
     }
 }
