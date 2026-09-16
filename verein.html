@@ -9,41 +9,7 @@
     <!-- Verknüpfung zur zentralen style.css -->
     <link rel="stylesheet" href="style.css"[cite: 4]>
     
-    <!-- ==========================================
-       JAVASCRIPT (MENÜ & COOKIES)
-       ========================================== -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Hamburger Menü Toggle Initialisierung
-            const menuToggle = document.getElementById('mobile-menu');
-            const nav = document.querySelector('nav');
-
-            if (menuToggle && nav) {
-                menuToggle.addEventListener('click', () => {
-                    nav.classList.toggle('active');
-                });
-            }
-
-            // Cookie Banner Prüfung beim Seitenaufruf
-            if (!localStorage.getItem("cookiesAkzeptiert")) {
-                setTimeout(() => {
-                    const banner = document.getElementById("cookie-banner");
-                    if (banner) {
-                        banner.classList.add("cookie-active");
-                    }
-                }, 1000);
-            }
-        });
-
-        // Funktion zum Bestätigen der Cookies
-        function acceptCookies() {
-            localStorage.setItem("cookiesAkzeptiert", "true");
-            const banner = document.getElementById("cookie-banner");
-            if (banner) {
-                banner.classList.remove("cookie-active");
-            }
-        }
-    </script>
+    
 </head>
 
 <body>

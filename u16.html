@@ -105,17 +105,7 @@
        JAVASCRIPT (MENÜ & LIGHTBOX LOGIK)
        ========================================== -->
     <script>
-        // Hamburger Menü Toggle
-        document.addEventListener("DOMContentLoaded", function() {
-            const menuToggle = document.getElementById('mobile-menu');
-            const nav = document.querySelector('nav');
-
-            if (menuToggle && nav) {
-                menuToggle.addEventListener('click', () => {
-                    nav.classList.toggle('active');
-                });
-            }
-        });
+        
 
         // Lightbox Logik mit Browser-Verlauf-Unterstützung
         function openLightbox(imgName, isLogo = false) {
