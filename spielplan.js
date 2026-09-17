@@ -106,7 +106,7 @@ const u10HTML = `
 	<div class="card away">
         <div class="card-info">
             <span class="card-text">12. September		| Turnier bei Cottbus Crayfish</span>
-            <span class="tournament-teams">Gegner: Cottbus Crayfish, Thunder Lightnings, Potsdam Royals</span>
+            <span class="tournament-teams">Gegner: Cottbus Crayfish, Erkner Razorbacks, Potsdam Royals</span>
         </div>
         <div class="badge-right">
             <span class="badge badge-away">Away</span>
