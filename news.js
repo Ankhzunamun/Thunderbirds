@@ -2,6 +2,27 @@
 // DATEN FÜR DIE VEREINS-NEWS
 // ==========================================
 const newsData = [
+
+	{
+		date: "26 & 27. September 2026",
+        title: "Summerbowl 2026",
+        shortText: "Unsere Flagmannschaften beim Summerbowl 26",
+        fullText: `	<p>Am 26.09. waren unsere <strong>U13 und U16 beim Summerbowl</strong> im Einsatz, bevor am 27.09. auch unsere <strong>U10</strong> ihr Können unter Beweis stellte.</p>
+
+					<p>Unsere U16 zeigte eine überragende Leistung und konnte alle Spiele deutlich für sich entscheiden. Damit sicherte sich das Team souverän den <strong>1. Platz in seiner Gruppe!</strong> 🏆</p>
+
+					<p>Auch unsere U10 hatte einen erfolgreichen Turniertag. Mit zwei Siegen und einer Niederlage erreichte das Team einen tollen <strong>2. Platz in seiner Gruppe</strong>. Eine starke Leistung, auf die alle Beteiligten stolz sein können!</p>
+
+					<p>Unsere U13 hatte einen anspruchsvollen Turniertag. In einem Spiel wurde es richtig spannend, doch am Ende fehlte nur ein kleines Stück zum Sieg. Die anderen drei Spiele gingen leider deutlich gegen starke Gegner verloren. Trotzdem haben unsere Spielerinnen und Spieler bis zum Schluss alles gegeben und als Team zusammengehalten.</p>
+
+					<p>Wir sind unglaublich stolz auf alle unsere Spielerinnen und Spieler! Egal, ob Sieg oder Niederlage – ihr habt Einsatz, Kampfgeist und Teamzusammenhalt gezeigt und die Berlin Thunderbirds mit viel Herz vertreten. Genau darum geht es im Football: gemeinsam kämpfen, voneinander lernen und als Mannschaft wachsen.</p>
+
+					<p>Ein großes Dankeschön geht natürlich auch an unsere Coaches, Betreuer und Eltern, die unsere Teams jederzeit unterstützen und solche Turniertage möglich machen.</p>
+
+					<p><strong>Go Thunderbirds! ⚡🏈</strong></p>`,
+		image: "Bilder/News/260926.webp"
+    },
+	
     {
 		date: "12. September 2026",
         title: "U13 @ Spanndau, U10 @ Cottbus",

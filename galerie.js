@@ -2,14 +2,45 @@
 // GALERIE DATEN (Hier kannst du deine Ordner verwalten)
 // ==========================================
 const galleryData = [
+	{
+        id: "Summerbowl26",
+        name: "Summerbowl 2026",
+        cover: "Bilder/News/260926.webp",
+        images: [
+            "Bilder/Galerie/Summerbowl26/1.webp",
+			"Bilder/Galerie/Summerbowl26/2.webp",
+			"Bilder/Galerie/Summerbowl26/3.webp",
+			"Bilder/Galerie/Summerbowl26/4.webp",
+			"Bilder/Galerie/Summerbowl26/5.webp",
+			"Bilder/Galerie/Summerbowl26/6.webp",
+			"Bilder/Galerie/Summerbowl26/7.webp",
+			"Bilder/Galerie/Summerbowl26/8.webp",
+			"Bilder/Galerie/Summerbowl26/9.webp",
+			"Bilder/Galerie/Summerbowl26/10.webp",
+			"Bilder/Galerie/Summerbowl26/11.webp",
+			"Bilder/Galerie/Summerbowl26/12.webp",
+			"Bilder/Galerie/Summerbowl26/13.webp",
+			"Bilder/Galerie/Summerbowl26/14.webp",
+			"Bilder/Galerie/Summerbowl26/15.webp",
+			"Bilder/Galerie/Summerbowl26/16.webp",
+			"Bilder/Galerie/Summerbowl26/17.webp",
+			"Bilder/Galerie/Summerbowl26/18.webp",
+			"Bilder/Galerie/Summerbowl26/19.webp",
+			"Bilder/Galerie/Summerbowl26/20.webp",
+			"Bilder/Galerie/Summerbowl26/21.webp",
+			"Bilder/Galerie/Summerbowl26/22.webp",
+			"Bilder/Galerie/Summerbowl26/23.webp",
+			"Bilder/Galerie/Summerbowl26/24.webp"
+        ]
+    },
     {
         id: "tackle",
         name: "Seniors Tackle",
         cover: "Bilder/Tackle.webp",
         images: [
-            "Bilder/Auswahl/Bild2.webp",
-			"Bilder/Auswahl/Bild3.webp",
-            "Bilder/Auswahl/Bild7.webp",
+            "Bilder/Galerie/Tackle/Bild2.webp",
+			"Bilder/Galerie/Tackle/Bild3.webp",
+            "Bilder/Galerie/Tackle/Bild7.webp"
         ]
     },
     {
