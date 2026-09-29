@@ -29,7 +29,8 @@ document.addEventListener("DOMContentLoaded", function() {
             <div class="dropdown">
                 <div class="nav-item">Thunderbirds <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i></div>
                 <div class="dropdown-content">
-                    <a href="verein.html#verein">Verein</a>
+                    <a href="verein.html#verein">Vorstand</a>
+					<a href="support.html#support">Schiedsrichter & Support</a>
                     <a href="verein.html#impressum">Impressum</a>
                     <a href="verein.html#download">Download</a>
                     <a href="verein.html#datenschutz">Datenschutz</a>
