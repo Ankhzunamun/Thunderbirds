@@ -176,7 +176,6 @@ document.addEventListener("keydown", (e) => {
         if (lightboxImg) lightboxImg.src = activeLightboxImages[activeLightboxIndex];
     } else if (e.key === "Escape") {
         closeLightbox();
-        // Falls ein History-State zu viel im Stack ist, kurz anstoßen
         window.history.back();
     }
 });
@@ -202,5 +201,43 @@ function nextImage(e) {
     const lightboxImg = document.getElementById("lightbox-img");
     if (lightboxImg) {
         lightboxImg.src = activeLightboxImages[activeLightboxIndex];
+    }
+}
+
+// ==========================================
+// WISCH-GESTEN (TOUCH / SWIPE) FÜR HANDYS
+// ==========================================
+let touchStartX = 0;
+let touchEndX = 0;
+const minSwipeDistance = 50; // Mindest-Wischweg in Pixeln, damit es als Wischen gewertet wird
+
+document.addEventListener("DOMContentLoaded", () => {
+    const lightbox = document.getElementById("lightbox");
+    if (!lightbox) return;
+
+    // Startpunkt des Fingers merken
+    lightbox.addEventListener("touchstart", (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    // Endpunkt messen und Richtung bestimmen, wenn der Finger losgelassen wird
+    lightbox.addEventListener("touchend", (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipeGesture();
+    }, { passive: true });
+});
+
+function handleSwipeGesture() {
+    const distance = touchEndX - touchStartX;
+
+    // Prüfen, ob die Wischbewegung lang genug war
+    if (Math.abs(distance) < minSwipeDistance) return;
+
+    if (distance > 0) {
+        // Nach RECHTS gewischt -> Vorheriges Bild anzeigen
+        prevImage();
+    } else {
+        // Nach LINKS gewischt -> Nächstes Bild anzeigen
+        nextImage();
     }
 }
