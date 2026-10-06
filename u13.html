@@ -42,8 +42,8 @@
         <div class="roster-grid">
 
             <!-- Trainer 1 -->
-            <div class="player-card" onclick="openLightbox('logo.webp', true)">
-                <img src="Bilder/logo.webp" alt="Trainer" style="background: #0a1128; object-fit: contain; padding: 20px; box-sizing: border-box;">
+            <div class="player-card" onclick="openLightbox('Alex.webp', 'support')">
+                <img src="Bilder/Support/Alex.webp" alt="Trainer" >
                 <div class="info">
                     <span class="info-detail">Offense | Coach</span>
                     <br>
@@ -52,8 +52,8 @@
             </div>
 
             <!-- Trainer 2 -->
-            <div class="player-card" onclick="openLightbox('logo.webp', true)">
-                <img src="Bilder/logo.webp" alt="Trainer" style="background: #0a1128; object-fit: contain; padding: 20px; box-sizing: border-box;">
+            <div class="player-card" onclick="openLightbox('Dirk.webp', 'support')">
+                <img src="Bilder/Support/Dirk.webp" alt="Trainer" >
                 <div class="info">
                     <span class="info-detail">Defence | Coach</span>
                     <br>
@@ -105,14 +105,19 @@
        
 
         // Lightbox Logik mit Browser-Verlauf-Unterstützung
-        function openLightbox(imgName, isLogo = false) {
+        function openLightbox(imgName, folder = '') {
             const imgElement = document.getElementById('lb-img');
-            if (isLogo) {
+            
+            if (folder === 'logo') {
                 imgElement.src = 'Bilder/' + imgName;
+            } else if (folder === 'support') {
+                imgElement.src = 'Bilder/Support/' + imgName;
             } else {
-                imgElement.src = 'Bilder/U13/' + imgName;
+                imgElement.src = 'Bilder/Tackle/' + imgName;
             }
-            document.getElementById('lb').classList.add('active');
+            
+            const lb = document.getElementById('lb');
+            lb.classList.add('active');
             history.pushState({ lightboxOpen: true }, '');
         }
 
