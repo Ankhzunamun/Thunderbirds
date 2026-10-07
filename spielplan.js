@@ -52,7 +52,7 @@ const tackleHTML = `
     <div class="card home">
         <span class="card-text">16.08 vs Vorpommern Vandals</span>
         <div class="badge-center"><span class="badge badge-home">Home</span></div>
-        <div class="score-area">--:--</div>
+        <div class="score-area">36:00</div>
         <div class="badge-right">Abgesagt</div>
     </div>
 	
