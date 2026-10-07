@@ -69,6 +69,13 @@ const tackleHTML = `
         <div class="score-area">00:46</div>
         <div class="badge-right"><span class="badge badge-won">Won</span></div>
     </div>
+	
+	<div class="card home">
+        <span class="card-text">10.10 vs Berlin Rebels II</span>
+        <div class="badge-center"><span class="badge badge-home">Home</span></div>
+        <div class="score-area">--:--</div>
+        <div class="badge-right"></div>
+    </div>
 `;
 
 // --- DATEN FÜR U10 ---
