@@ -25,7 +25,7 @@ const newsData = [
 	
     {
 		date: "12. September 2026",
-        title: "U13 @ Spanndau, U10 @ Cottbus",
+        title: "U13 @ Spandau, U10 @ Cottbus",
         shortText: "Die letzten Spiele vor dem Summer Bowl",
         fullText: `<p><strong>U10 glänzt in Cottbus mit Silber</strong></p>
 			<p>
