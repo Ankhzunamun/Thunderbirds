@@ -3,8 +3,8 @@
 // ==========================================
 const galleryData = [
 	{
-        id: "1. Berlin Bowl26",
-        name: "Summerbowl 2026",
+        id: "1. Berlin Bowl",
+        name: "1. Berlin Bowl",
         cover: "Bilder/Galerie/Berlinbowl/101026.webp",
         images: [
             "Bilder/Galerie/Berlinbowl/1.webp",
