@@ -2,7 +2,36 @@
 // DATEN FÜR DIE VEREINS-NEWS
 // ==========================================
 const newsData = [
-
+	
+	{
+		date: "10. Oktober 2026",
+        title: "1. Berlin Bowl",
+        shortText: "Unsere U16 beim Berlin Bowl",
+        fullText: `<p>Was für ein Football-Tag! Unsere U16-Jugend hat sich beim allerersten <strong>Berlin Bowl Juniors</strong>, ausgerichtet von den Lichtenberg Lions, von ihrer besten Seite gezeigt und nach packenden Spielen einen bärenstarken <strong>4. Platz</strong> erkämpft!</p>
+				   <p>Bereits in der Gruppenphase lieferten unsere Thunderbirds ein echtes Feuerwerk ab und zeigten, was in ihnen steckt:</p>
+				   <ul>
+				   <li><strong>Spiel 1:</strong> Gegen die <strong>Berlin Bullets</strong> lieferte sich das Team einen packenden Schlagabtausch, den unsere Truppe am Ende mit einem verdienten <strong>36:26</strong> für sich entschied!</li>
+				   <li><strong>Spiel 2:</strong> Im zweiten Gruppenspiel ließen unsere Jungs und Mädels gegen die <strong>Fighting Frogs</strong> nichts anbrennen und fuhren einen souveränen <strong>30:06</strong>-Sieg ein.</li>
+				   <li><strong>Spiel 3:</strong> Gegen eingespielte <strong>Radebeul Jackals</strong> hieß es am Ende zwar 12:24 aus unserer Sicht, aber die Leistung stimmte über weite Strecken.</li>
+				   </ul>
+				   <p>Mit dieser starken Leistung war das Ticket für das <strong>Halbfinale</strong> gelöst! Hier warteten absolute Top-Gegner: Gegen die Gastgeber der <strong>Lichtenberg Lions</strong> gab es eine 06:42-Niederlage, und auch im harten Platzierungsspiel gegen die <strong>Berlin Bullets</strong> mussten sich unsere Thunderbirds mit 08:28 geschlagen geben.</p>
+				   <p><strong>Ein riesiges Sonderlob geht an unser gesamtes Team und besonders an unsere Neulinge!</strong><br>
+				   Vier Spielerinnen und Spieler standen heute das allererste Mal in ihrem Leben bei einem offiziellen Turnier auf dem Platz – und haben sich reingehängt, als würden sie nie etwas anderes tun. Ihr habt gekämpft, euch gegenseitig angefeuert und gezeigt, was echten Teamgeist ausmacht.</p>
+				   <p>Wir sind unglaublich stolz auf euch. Der Grundstein für eine geile Saison ist gelegt! 🦅🔥</p>`,
+		image: "Bilder/News/101026.webp"
+    },
+	
+	{
+		date: "10. Oktober 2026",
+        title: "🏈 ONE. LAST. GAME. 🦅⚡️",
+        shortText: "Letzte Heimspiel der Männer",
+        fullText: `	<p> Ein letztes Mal hieß es diese Saison: Helm auf. Pads an. Gameday.</p>
+					<p>Das letzte Spiel. Unser Homefield. Unsere Chance, die Saison gemeinsam vor heimischer Kulisse zu beenden. </p>
+					<p>Das wurde auch getan, das Spiel ging mit einem 08:14 für die Rebels Prospect aus, aber wir freuten uns über jede  </p>
+					<p>Unterstützung die gekommen war um uns anzufeuern. Es war super die Saison mit soviel Rückhalt zu beenden.</p>`,
+		image: "Bilder/logo.webp"
+    },
+	
 	{
 		date: "26 & 27. September 2026",
         title: "Summerbowl 2026",

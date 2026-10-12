@@ -3,6 +3,40 @@
 // ==========================================
 const galleryData = [
 	{
+        id: "1. Berlin Bowl26",
+        name: "Summerbowl 2026",
+        cover: "Bilder/Galerie/Berlinbowl/101026.webp",
+        images: [
+            "Bilder/Galerie/Berlinbowl/1.webp",
+			"Bilder/Galerie/Berlinbowl/2.webp",
+			"Bilder/Galerie/Berlinbowl/3.webp",
+			"Bilder/Galerie/Berlinbowl/4.webp",
+			"Bilder/Galerie/Berlinbowl/5.webp",
+			"Bilder/Galerie/Berlinbowl/6.webp",
+			"Bilder/Galerie/Berlinbowl/7.webp",
+			"Bilder/Galerie/Berlinbowl/8.webp",
+			"Bilder/Galerie/Berlinbowl/9.webp",
+			"Bilder/Galerie/Berlinbowl/10.webp",
+			"Bilder/Galerie/Berlinbowl/11.webp",
+			"Bilder/Galerie/Berlinbowl/12.webp",
+			"Bilder/Galerie/Berlinbowl/13.webp",
+			"Bilder/Galerie/Berlinbowl/14.webp",
+			"Bilder/Galerie/Berlinbowl/15.webp",
+			"Bilder/Galerie/Berlinbowl/16.webp",
+			"Bilder/Galerie/Berlinbowl/17.webp",
+			"Bilder/Galerie/Berlinbowl/18.webp",
+			"Bilder/Galerie/Berlinbowl/19.webp",
+			"Bilder/Galerie/Berlinbowl/20.webp",
+			"Bilder/Galerie/Berlinbowl/21.webp",
+			"Bilder/Galerie/Berlinbowl/22.webp",
+			"Bilder/Galerie/Berlinbowl/23.webp",
+			"Bilder/Galerie/Berlinbowl/24.webp",
+			"Bilder/Galerie/Berlinbowl/25.webp",
+			"Bilder/Galerie/Berlinbowl/26.webp",
+			"Bilder/Galerie/Berlinbowl/27.webp"
+        ]
+    },
+	{
         id: "Summerbowl26",
         name: "Summerbowl 2026",
         cover: "Bilder/News/260926.webp",
@@ -51,6 +85,7 @@ const galleryData = [
             "Bilder/Team_Flag.webp",
             "Bilder/U16.webp",
             "Bilder/U13.webp",
+			"Bilder/FFOU16.webp",
             "Bilder/U10.webp"
         ]
     }

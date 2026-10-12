@@ -73,8 +73,8 @@ const tackleHTML = `
 	<div class="card home">
         <span class="card-text">10.10 vs Berlin Rebels II</span>
         <div class="badge-center"><span class="badge badge-home">Home</span></div>
-        <div class="score-area">--:--</div>
-        <div class="badge-right"></div>
+        <div class="score-area">08:14</div>
+        <div class="badge-right"><span class="badge badge-lost">Lost</span></div>
     </div>
 `;
 
