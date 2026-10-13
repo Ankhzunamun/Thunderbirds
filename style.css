@@ -1036,6 +1036,7 @@ footer { text-align: center; padding: 50px; color: var(--thunder-silver); border
     .player-overlay {
         opacity: 1 !important;
         background: rgba(27, 40, 69, 0.85);
+		bottom: 60px !important; /* Lässt den unteren Bereich für den Schriftzug "Flag" frei */
     }
 
     .u16-top-image, .u13-top-image, .u10-top-image { 
